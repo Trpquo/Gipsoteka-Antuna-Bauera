@@ -1,0 +1,32 @@
+html {
+
+    --bg-light: snow;
+    --bg-dark: #333344cc;
+    --accent-color: orangered;
+    --accent-color2: aquamarine;
+    --text-face: Verdana, Geneva, Tahoma, sans-serif;
+    --text-light: var(--bg-light);
+    --text-dark: var(--bg-dark);
+
+    --default-padding: 1rem;
+
+    background-color: var(--bg-light);
+    font-family: var(--text-face);
+    color: var(--accent-color);
+}
+html, body {
+    margin: 0;
+}
+
+#wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+
+main {
+    background-color: var(--bg-dark);
+    color: var(--accent-color2);
+    padding: var(--default-padding);
+}
