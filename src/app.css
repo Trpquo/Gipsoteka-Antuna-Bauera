@@ -1,18 +1,18 @@
 html {
 
     --bg-light: snow;
-    --bg-dark: #333344cc;
+    --bg-dark: #334c;
     --accent-color: orangered;
     --accent-color2: aquamarine;
     --text-face: Verdana, Geneva, Tahoma, sans-serif;
     --text-light: var(--bg-light);
-    --text-dark: var(--bg-dark);
+    --text-dark: #423;
 
     --default-padding: 1rem;
 
     background-color: var(--bg-light);
     font-family: var(--text-face);
-    color: var(--accent-color);
+    color: var(--text-dark);
 }
 html, body {
     margin: 0;
@@ -22,11 +22,4 @@ html, body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-}
-
-
-main {
-    background-color: var(--bg-dark);
-    color: var(--accent-color2);
-    padding: var(--default-padding);
 }

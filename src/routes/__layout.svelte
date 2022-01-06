@@ -4,34 +4,40 @@
     export function load() {
 
         const posts = import.meta.globEager( "../**/*.md" );
-        const menu = createMenu( posts )
+        // const images = import.meta.glob( "../**/*.jpg" );
+        const site = createMenu( posts )
         
-
         return {
             props: {
-                menu
+                site,
+                // images
             }
         }
     }
 </script>
 
 <script>
-    import Header from '$lib/components/Header.svelte';
+    import Header from '$lib/components/Header.svelte'
+    import Footer from '$lib/components/Footer.svelte'
     import '../app.css';
+    
+    export let site //, images
+    
+    // console.log( images )
+    // console.log( site )
 
-    export let menu
-
-    console.log(menu)
 </script>
 
-<Header { menu } />
+<Header menu={ site } />
 
 <main>
     <slot />
 </main>
 
-<footer>
-    <p>
-        Copyright 2022.
-    </p>
-</footer>
+<Footer />
+
+<style>
+    main {
+        flex-grow: 1;
+    }
+</style>

@@ -1,5 +1,6 @@
 import path from 'path';
 import { fileURLToPath } from 'url';
+import relativeImages from "mdsvex-relative-images";
 
 const dirname = path.resolve(fileURLToPath(import.meta.url), '../');
 
@@ -13,11 +14,9 @@ const config = {
 		dashes: 'oldschool'
 	},
 
-	layout: {
-		basic: path.join(dirname, './src/lib/components/Article.svelte')
-	},
+	layout:  path.join(dirname, './src/lib/components/Article.svelte'),
 
-	remarkPlugins: [],
+	remarkPlugins: [ relativeImages ],
 	rehypePlugins: []
 };
 
