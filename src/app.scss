@@ -1,26 +1,40 @@
-$big-screen: 800px;
+@charset "UTF-8";
+
 
 @mixin for-desktop {
     @media ( min-width: $big-screen ) {
         @content;
     }
+} 
+
+@mixin for-mini {
+    @media ( max-width: $tiny-screen ) {
+        @content;
+    }
 }
+$big-screen: 1000px;
+$tiny-screen: 600px;
 
 html {
 
-    --bg-light: snow;
+    --bg-light: seashell;
     --bg-dark: #334c;
     --accent-color: orangered;
-    --accent-color2: aquamarine;
-    --text-face: Verdana, Geneva, Tahoma, sans-serif;
+    --accent-color2: burlywood;
+    --text-face: "Segoe UI", Verdana, Tahoma, sans-serif;
     --text-light: var(--bg-light);
-    --text-dark: #423;
+    --text-dark: #332;
 
     --default-padding: 1rem;
+
+    --title-size: 4rem;
+    --text-size: 15px;
 
 
     background-color: var(--bg-light);
     font-family: var(--text-face);
+    font-size: var(--text-size);
+    line-height: 1.4em;
     color: var(--text-dark);
 }
 html, body {
@@ -36,25 +50,171 @@ html, body {
     min-height: 100vh;
 }
 
-article {
-    padding: 3rem;
-    
-    .textContent {
+/* zaglavlje */
+
+header {
+    h1 {
+        font-size: var(--title-size);
+        color: var(--accent-color);
+        line-height: .666em;
+        width: 5em;
+        margin-left: calc( var(--default-padding) * 3 );
         float: left;
-        width: 60%;
+    
+        & span {
+            font-size: .666em;
+            color: var(--text-dark);
+            margin-right: -.1em;
+        }
     }
 
-    .gallery {
+    nav {
         float: right;
-        width: 30%;
+        width: calc( 100vw - var(--title-size) * 5 - var(--default-padding) * 5 );
+        height: 100%;
+        background-color: var(--bg-dark);
+
+        ul {
+            display: flex;
+            flex-direction: column;
+            padding: 0;
+        }
+    
+        li {
+            list-style: none;
+            position: relative;
+            margin-right: .2rem;
+        }
+        li a {
+            display: block;
+            box-sizing: border-box;
+            padding: .5rem;
+            width: 100%;
+            height: 100%;
+            text-decoration: none;
+            background-color: var(--accent-color2);
+            color: var(--text-dark);
+        }
+        li a:hover {
+            background-color: var(--accent-color);
+        }
+        li a.active {
+            background-color: var(--accent-color);
+        }
+
+        @include for-mini {
+            clear: both;
+            float: none;
+            width: 100%;
+
+            ul {
+                flex-direction: row;
+            }
+        }
+    }
+
+} 
+
+
+/* Članak */
+article {
+    padding: calc( var(--default-padding) * 3 );
+
+    h4 {
+        font-size: 2rem;
+        line-height: 3rem;
+        margin: 0;
+        color: var(--accent-color);
+    }
+    
+    h1 {
+        font-size: 4rem;
+        line-height: 1em;
+        margin-bottom: 0;
+    }
+    .textContent {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 0 5rem;
+        grid-template-areas: 
+            "h1 h1"
+            "p1 p1"
+            "a  a"
+            "p2 p2"
+            "p3 p3"
+            "p4 p4"
+            "p5 p5"
+            "p6 p6"
+            "p7 p7"
+            "p8 p8"
+            "p9 p9"
+            "p10 p10";
+
+        h1 {
+            grid-area: h1;
+        }
+        @for $i from 1 through 10 {
+            p:nth-of-type( #{$i} ) {
+                grid-area: p + $i;
+            }
+        }
+        .gallery {
+            grid-area: a;
+        }
+    @include for-desktop {
+        
+        grid-template-areas: 
+            "h1 ."
+            "p1 a"
+            "p2 a"
+            "p3 a"
+            "p4 a"
+            "p5 a"
+            "p6 a"
+            "p7 a"
+            "p8 a"
+            "p9 a"
+            "p10 a";
+            
+    }
+    @include for-mini {
+        
+        grid-template-areas: 
+        "h1 h1"
+        "p1 p1"
+        "p2 p2"
+        "a  a"
+        "p3 p3"
+        "p4 p4"
+        "p5 p5"
+        "p6 p6"
+        "p7 p7"
+        "p8 p8"
+        "p9 p9"
+        "p10 p10";
+            
+    }
+
+    a {
+        text-decoration: none;
+        font-variant: small-caps;
+        color: var(--accent-color);
+    }
+
     }
 }
 
-
-
-
 /*  Galerija */
+p img, p figure {
+    display: none;
+    opacity: 0;
+}
 
+img {
+    max-width: 100%;
+    display: block;
+    pointer-events: none;
+}
 .gallery {
     display: flex;
     gap: .5rem;
@@ -66,22 +226,16 @@ article {
         margin: 0;
         overflow: hidden;
         
-        img {
-            max-width: 100%;
-            display: block;
-            pointer-events: none;
-        }
 
         figcaption {
             padding: 1rem;
             background-color: var(--accent-color);
             color: var(--text-light);
+        }
     }
-}
-}
-@include for-desktop {
-    .gallery {
-        display: block;
+    @include for-desktop {
+        
+        flex-direction: column;
         figure {
             max-width: 300px;
             
@@ -90,5 +244,8 @@ article {
             }
         }
     }
+    @include for-mini {
+        flex-direction: column;
+    }    
 
 }

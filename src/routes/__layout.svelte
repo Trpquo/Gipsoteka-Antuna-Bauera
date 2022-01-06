@@ -6,7 +6,7 @@
         const posts = import.meta.globEager( "../**/*.md" );
         // const images = import.meta.glob( "../**/*.jpg" );
         const site = createMenu( posts )
-        
+
         return {
             props: {
                 site,

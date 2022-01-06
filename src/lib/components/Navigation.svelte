@@ -24,32 +24,3 @@
         {/each}
     {/if}
     </ul>
-
-<style>
-    ul {
-        display: flex;
-        padding: 0;
-    }
-
-    li {
-        list-style: none;
-        position: relative;
-        margin-right: .2rem;
-    }
-    li a {
-        display: block;
-        box-sizing: border-box;
-        padding: .5rem;
-        width: 100%;
-        height: 100%;
-        text-decoration: none;
-        background-color: var(--accent-color2);
-        color: var(--text-dark);
-    }
-    li a:hover {
-        background-color: var(--accent-color);
-    }
-    li a.active {
-        background-color: var(--accent-color);
-    }
-</style>

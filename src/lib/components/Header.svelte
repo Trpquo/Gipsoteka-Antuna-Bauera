@@ -4,7 +4,7 @@
     export let menu
 </script>
 <header>
-    <h1><a href="/">Gipsoteka Antuna Bauera</a></h1>
+    <h1><a href="/">G<span>ipsoteka</span> A<span>ntuna</span> B<span>auera</span></a></h1>
 
     <nav id="menu">
         <Navigation { menu } />
@@ -12,14 +12,8 @@
 </header>
 
 <style>
-    h1 {
-        color: var(--accent-color)
-    }
     h1 a {
         text-decoration: none;
         color: inherit;
-    }
-    nav {
-        background-color: var(--bg-dark);
     }
 </style>
