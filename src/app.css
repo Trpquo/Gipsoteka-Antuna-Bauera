@@ -1,25 +1,88 @@
 html {
-
-    --bg-light: snow;
-    --bg-dark: #334c;
-    --accent-color: orangered;
-    --accent-color2: aquamarine;
-    --text-face: Verdana, Geneva, Tahoma, sans-serif;
-    --text-light: var(--bg-light);
-    --text-dark: #423;
-
-    --default-padding: 1rem;
-
-    background-color: var(--bg-light);
-    font-family: var(--text-face);
-    color: var(--text-dark);
+  --bg-light: snow;
+  --bg-dark: #334c;
+  --accent-color: orangered;
+  --accent-color2: aquamarine;
+  --text-face: Verdana, Geneva, Tahoma, sans-serif;
+  --text-light: var(--bg-light);
+  --text-dark: #423;
+  --default-padding: 1rem;
+  background-color: var(--bg-light);
+  font-family: var(--text-face);
+  color: var(--text-dark);
 }
+
 html, body {
-    margin: 0;
+  margin: 0;
+}
+
+.rm {
+  display: none !important;
 }
 
 #wrapper {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  min-height: 100vh;
 }
+
+article {
+  padding: 3rem;
+}
+
+article .textContent {
+  float: left;
+  width: 60%;
+}
+
+article .gallery {
+  float: right;
+  width: 30%;
+}
+
+/*  Galerija */
+.gallery {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: .5rem;
+  margin: 0;
+  -ms-flex-preferred-size: 33%;
+      flex-basis: 33%;
+}
+
+.gallery figure {
+  border-top: 0.5rem solid var(--accent-color);
+  margin: 0;
+  overflow: hidden;
+}
+
+.gallery figure img {
+  max-width: 100%;
+  display: block;
+  pointer-events: none;
+}
+
+.gallery figure figcaption {
+  padding: 1rem;
+  background-color: var(--accent-color);
+  color: var(--text-light);
+}
+
+@media (min-width: 800px) {
+  .gallery {
+    display: block;
+  }
+  .gallery figure {
+    max-width: 300px;
+  }
+  .gallery figure img {
+    width: 100%;
+  }
+}
+/*# sourceMappingURL=app.css.map */

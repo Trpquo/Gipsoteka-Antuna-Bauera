@@ -1,0 +1,94 @@
+$big-screen: 800px;
+
+@mixin for-desktop {
+    @media ( min-width: $big-screen ) {
+        @content;
+    }
+}
+
+html {
+
+    --bg-light: snow;
+    --bg-dark: #334c;
+    --accent-color: orangered;
+    --accent-color2: aquamarine;
+    --text-face: Verdana, Geneva, Tahoma, sans-serif;
+    --text-light: var(--bg-light);
+    --text-dark: #423;
+
+    --default-padding: 1rem;
+
+
+    background-color: var(--bg-light);
+    font-family: var(--text-face);
+    color: var(--text-dark);
+}
+html, body {
+    margin: 0;
+}
+.rm {
+    display: none !important;
+}
+
+#wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+article {
+    padding: 3rem;
+    
+    .textContent {
+        float: left;
+        width: 60%;
+    }
+
+    .gallery {
+        float: right;
+        width: 30%;
+    }
+}
+
+
+
+
+/*  Galerija */
+
+.gallery {
+    display: flex;
+    gap: .5rem;
+    margin: 0;
+    flex-basis: 33%;
+
+    figure {
+        border-top: .5rem solid var(--accent-color);
+        margin: 0;
+        overflow: hidden;
+        
+        img {
+            max-width: 100%;
+            display: block;
+            pointer-events: none;
+        }
+
+        figcaption {
+            padding: 1rem;
+            background-color: var(--accent-color);
+            color: var(--text-light);
+    }
+}
+}
+@include for-desktop {
+    .gallery {
+        display: block;
+        figure {
+            max-width: 300px;
+            
+            img {
+                width: 100%;
+            }
+        }
+    }
+
+}

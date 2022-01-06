@@ -17,5 +17,6 @@ Kroz fotografski materijal, arhivske zapise te citate njegovih muzeološki razra
 
 
 ![Zgrade kožare u kojem se nalazi Gipsoteka, 1940. godina, Knjiga negativa Gliptoteke HAZU, G/A-20](./img/G-A-20.jpg "Zgrada Gipsoteke, 1940.")
+![Zgrade kožare u kojem se nalazi Gipsoteka, 1940. godina, Knjiga negativa Gliptoteke HAZU, G/A-20](./img/G-A-20.jpg "Zgrada Gipsoteke, 1940.")
 
 [1]: <#strucni-skup-link> "Stručni skup"

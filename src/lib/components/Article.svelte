@@ -1,34 +1,32 @@
 <script>
     import { onMount } from 'svelte'
+    import { fade, fly } from 'svelte/transition'
 
     export let title, chapter, article
 
     function hasOnlyImg( el ) {
-        if (el.children.length != 1)
-            return false;
-        return el.children[0].tagName === "IMG";
+        if ( el.children.length === 0 ) return false
+        const answ = [ ...el.children ].every( ({ tagName }) => { console.log( tagName ); return tagName === "FIGURE" } )
+        console.log( answ )
+        return answ
+        
     }
 
-    function unwrapImg( el ) {
-        if ( el.children[0].tagName === 'IMG' ) {
-            const img = el.children[0]
-            // el.remove()
-            return img 
-        }
-    }
-
-    let images
-
+    let hasImages = false
     onMount(( )=>{
-
         try {
-            images = [ ...article.querySelectorAll('p') ]
-                                .filter( hasOnlyImg )
-                                .map( unwrapImg )
-            console.log( images  )
+            const aside = article.querySelector('aside')
+            if ( !aside ) return
+            article.querySelectorAll('p').forEach( p=>  {
+                 if ( hasOnlyImg( p ) ) {
+                    [ ...p.children ].forEach(f=> aside.appendChild(f) )
+                    hasImages = true
+                 }
+            } )
+
         }
-        catch ( error ) {
-            console.error( error.message )
+        catch ( err ) {
+            console.error( err )
         }
     })
 </script>
@@ -37,11 +35,14 @@
     <title>Gipsoteka | { title }</title>
 </svelte:head>
 
-<article bind:this={ article }>
+<article bind:this={ article } in:fly={{ x: 1000, delay: 300, duration: 1000 }} out:fly={{ x: -300, duration: 300 }} >
     <h4 id="chapNo">{ chapter }</h4>
-    <slot />
+    <section class="textContent">
+        <slot />
+    </section>
+    <aside class:gallery={ hasImages } ></aside>
 
-    <section class="gallery">
+    <!-- <section class="gallery">
         {#if images }
         {#each images as { src, alt, title } (title)}
             <figure>
@@ -52,7 +53,7 @@
             </figure>
         {/each}
         {/if }
-    </section>
+    </section> -->
 </article>
 
 
@@ -62,33 +63,5 @@
         line-height: 4rem;
         margin: .15rem;
         color: var(--accent-color);
-    }
-
-    .gallery {
-        display: flex;
-    }
-    img {
-        max-width: 100%;
-        display: block;
-        pointer-events: none;
-    }
-    figure {
-        margin: 0;
-    }
-    figcaption {
-        padding: 1rem;
-        background-color: var(--accent-color);
-        color: var(--text-light);
-    }
-    @media ( min-width: 800px ) {
-        .gallery figure {
-            width: 300px;
-            max-width: 30%;
-            overflow: hidden;
-        }
-        .gallery figure img {
-            width: 100%;
-        }
-
     }
 </style>
