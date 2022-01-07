@@ -1,0 +1,92 @@
+$big-screen: 1000px;
+$tiny-screen: 600px;
+
+
+html {
+
+    --bg-light: seashell;
+    --bg-dark: #334c;
+    --bg-color-medium: saddlebrown;
+    --bg-color-light: burlywood;
+    --accent-color: orangered;
+    --text-face: "Segoe UI", Verdana, Tahoma, sans-serif;
+    --text-color-light: var(--bg-light);
+    --text-color-dark: #332;
+
+    --default-padding: 1rem;
+    --large-padding: 3rem;
+
+    --musthead-size: 6rem;
+    --title-size: 3rem;
+    --text-size: 15px;
+    --chapter-no-size: 3rem;
+    --subhead-size: 2rem;
+    --menuitem-size: 1.3rem;
+}
+
+@mixin for-desktop {
+    @media ( min-width: $big-screen ) {
+        @content;
+    }
+} 
+@mixin for-mini {
+    @media ( max-width: $tiny-screen ) {
+        @content;
+    }
+}
+
+@mixin reset {
+    margin: 0;
+    border: 0;
+    padding: 0;
+}
+@mixin clearfix {
+    &:after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+}
+@mixin light-text-on-dark {
+    background-color: var(--bg-dark);
+    color: var(--text-color-light);
+}
+@mixin light-text-on-color {
+    background-color: var(--bg-color-medium);
+    color: var(--text-color-light);
+}
+@mixin light-text-on-color {
+    background-color: var(--bg-color-medium);
+    color: var(--text-color-light);
+}
+@mixin light-text-on-accent {
+    background-color: var(--accent-color);
+    color: var(--text-color-light);
+}
+@mixin dark-text-on-light {
+    background-color: var(--bg-light);
+    color: var(--text-color-dark);
+}
+@mixin dark-text-on-color {
+    background-color: var(--bg-color-light);
+    color: var(--text-color-dark);
+}
+@mixin dark-text-on-accent {
+    background-color: var(--accent-color);
+    color: var(--text-color-dark);
+}
+@mixin accent-text-on-light {
+    background-color: var(--bg-light);
+    color: var(--text-color-light);
+}
+@mixin accent-text-on-color {
+    background-color: var(--bg-color-light);
+    color: var(--text-color-light);
+}
+@mixin basic-padding {
+    padding: var(--default-padding);
+}
+@mixin large-padding {
+    padding: var(--large-padding);
+}
+

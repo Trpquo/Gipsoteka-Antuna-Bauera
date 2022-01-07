@@ -1,15 +1,15 @@
 <script context="module">
-    import { createMenu } from '$lib/utils/menuHelper'
+    import createMenu from '$lib/utils/menuHelper'
 
-    export function load() {
+    export async function load() {
 
-        const posts = import.meta.globEager( "../**/*.md" );
+        
         // const images = import.meta.glob( "../**/*.jpg" );
-        const site = createMenu( posts )
+        const menu = await createMenu()        
 
         return {
             props: {
-                site,
+                menu,
                 // images
             }
         }
@@ -21,14 +21,13 @@
     import Footer from '$lib/components/Footer.svelte'
     import '../app.css';
     
-    export let site //, images
-    
+    export let menu
     // console.log( images )
     // console.log( site )
 
 </script>
 
-<Header menu={ site } />
+<Header { menu } />
 
 <main>
     <slot />
