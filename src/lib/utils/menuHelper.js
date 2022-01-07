@@ -15,9 +15,9 @@ export default async ( ) => {
 
 
     if ( !response ) {
-        const { body } = await get()
-        console.log( "Get in place of fetch!", body )
-        return body
+        const { body: { menu } } = await get()
+        console.log( "Get in place of fetch!", menu )
+        return menu
     } else {
         
         console.log( "Fetch in place of get!" )
