@@ -10,12 +10,12 @@ html {
   --text-color-dark: #332;
   --default-padding: 1rem;
   --large-padding: 3rem;
-  --musthead-size: 6rem;
+  --musthead-size: 4rem;
   --title-size: 3rem;
   --text-size: 15px;
   --chapter-no-size: 3rem;
   --subhead-size: 2rem;
-  --menuitem-size: 1.3rem;
+  --menuitem-size: 4vh;
 }
 
 html {
@@ -26,8 +26,10 @@ html {
   color: var(--text-color-dark);
 }
 
-html, body {
+html, body, p, h1, h2, h3, h4, h5, h6, blockquote {
   margin: 0;
+  border: 0;
+  padding: 0;
 }
 
 .rm {
@@ -55,16 +57,25 @@ button {
 /* zaglavlje */
 header h1 {
   font-size: var(--musthead-size);
-  color: var(--accent-color);
-  line-height: 0.666em;
-  width: 5em;
-  margin-left: var(--large-padding);
+  color: var(--text-color-dark);
+  line-height: 1em;
+  width: 3em;
+  padding: var(--large-padding);
   float: left;
 }
-header h1 span {
-  font-size: 0.666em;
-  color: var(--text-color-dark);
-  margin-right: -0.1em;
+header h1 a {
+  color: inherit;
+}
+header h1 a span {
+  color: var(--accent-color);
+  font-size: 1.5em;
+}
+header h1 a span:first-of-type {
+  margin-left: -0.07em;
+  margin-right: 0.01em;
+}
+header h1 a span:nth-of-type(2) {
+  margin-left: -0.04em;
 }
 
 #menuButton {
@@ -94,6 +105,7 @@ header h1 span {
   background-color: var(--bg-dark);
   z-index: 900;
   font-size: var(--menuitem-size);
+  line-height: 1em;
 }
 #menu a {
   color: inherit;
@@ -135,8 +147,8 @@ header h1 span {
   border: 0;
   padding: 0;
   text-indent: -9999px;
-  width: 1.2rem;
-  height: 1.2rem;
+  width: 2em;
+  height: 100%;
   position: relative;
   background-color: transparent;
 }
@@ -146,13 +158,16 @@ header h1 span {
   border-width: 0 2px 2px 0;
   border-style: solid;
   display: block;
-  width: 0.5rem;
-  height: 0.5rem;
+  width: 0.666em;
+  height: 0.666em;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -60%) rotate(45deg);
   transition: transform 0.5s;
+}
+#menu ul li a button:hover:after {
+  border-color: var(--text-color-light);
 }
 #menu ul li a button.submenuOpen:after {
   transform: translate(-50%, -40%) rotate(-135deg);
@@ -167,6 +182,7 @@ header h1 span {
 }
 #menu ul li.active > a {
   cursor: default;
+  pointer-events: none;
 }
 #menu ul li.active li {
   padding-left: var(--large-padding);
@@ -190,11 +206,15 @@ article h4 {
   margin: 0;
   border: 0;
   padding: 0;
-  font-size: 2rem;
+  font-size: var(--chapter-no-size);
   line-height: 3rem;
   color: var(--accent-color);
   text-align: right;
-  width: 60%;
+}
+@media (min-width: 1000px) {
+  article h4 {
+    width: 60%;
+  }
 }
 article h1 {
   margin: 0;
@@ -206,40 +226,40 @@ article h1 {
 article .textContent {
   display: grid;
   grid-template-columns: 2fr 1fr;
-  gap: 0 5rem;
+  gap: 1.4em 5rem;
   grid-template-areas: "h1 ." "p1 p1" "a  a" "p2 p2" "p3 p3" "p4 p4" "p5 p5" "p6 p6" "p7 p7" "p8 p8" "p9 p9" "p10 p10";
 }
 article .textContent h1 {
   grid-area: h1;
 }
-article .textContent p:nth-of-type(1) {
+article .textContent > *:not(.gallery):nth-child(1) {
   grid-area: p1;
 }
-article .textContent p:nth-of-type(2) {
+article .textContent > *:not(.gallery):nth-child(2) {
   grid-area: p2;
 }
-article .textContent p:nth-of-type(3) {
+article .textContent > *:not(.gallery):nth-child(3) {
   grid-area: p3;
 }
-article .textContent p:nth-of-type(4) {
+article .textContent > *:not(.gallery):nth-child(4) {
   grid-area: p4;
 }
-article .textContent p:nth-of-type(5) {
+article .textContent > *:not(.gallery):nth-child(5) {
   grid-area: p5;
 }
-article .textContent p:nth-of-type(6) {
+article .textContent > *:not(.gallery):nth-child(6) {
   grid-area: p6;
 }
-article .textContent p:nth-of-type(7) {
+article .textContent > *:not(.gallery):nth-child(7) {
   grid-area: p7;
 }
-article .textContent p:nth-of-type(8) {
+article .textContent > *:not(.gallery):nth-child(8) {
   grid-area: p8;
 }
-article .textContent p:nth-of-type(9) {
+article .textContent > *:not(.gallery):nth-child(9) {
   grid-area: p9;
 }
-article .textContent p:nth-of-type(10) {
+article .textContent > *:not(.gallery):nth-child(10) {
   grid-area: p10;
 }
 article .textContent .gallery {

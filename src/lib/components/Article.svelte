@@ -6,7 +6,6 @@
     import { fly } from 'svelte/transition'
 
     export let title, chapter
-    let article, content
 
 </script>
 
@@ -14,11 +13,11 @@
     <title>Gipsoteka | { title }</title>
 </svelte:head>
 
-<article bind:this={ article } in:fly={{ x: 1000, delay: 300, duration: 1000 }} out:fly={{ x: -300, duration: 300 }} >
+<article in:fly={{ x: 1000, delay: 300, duration: 1000 }} out:fly={{ x: -300, duration: 300 }} >
     {#if chapter }
     <h4 id="chapNo">{ chapter }</h4>
     {/if}
-    <section class="textContent" bind:this={ content }>
+    <section class="textContent" >
         <slot />
     </section>
 

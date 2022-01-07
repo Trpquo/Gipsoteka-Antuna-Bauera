@@ -9,8 +9,8 @@ html {
     line-height: 1.4em;
     color: var(--text-color-dark);
 }
-html, body {
-    margin: 0;
+html, body, p, h1, h2, h3, h4, h5, h6, blockquote {
+    @include reset;
 }
 .rm {
     display: none !important;
@@ -38,17 +38,28 @@ button {
 header {
     h1 {
         font-size: var(--musthead-size);
-        color: var(--accent-color);
-        line-height: .666em;
-        width: 5em;
-        margin-left: var(--large-padding);
+        color: var(--text-color-dark);
+        line-height: 1em;
+        width: 3em;
+        padding: var(--large-padding);
         float: left;
-    
-        & span {
-            font-size: .666em;
-            color: var(--text-color-dark);
-            margin-right: -.1em;
+
+        a {
+            color: inherit;
+            
+            & span {
+                color: var(--accent-color);
+                font-size: 1.5em;
+            }
+            & span:first-of-type {
+                margin-left: -.07em;
+                margin-right: 0.01em;
+            }
+            & span:nth-of-type(2) {
+                margin-left: -.04em;
+            }
         }
+        
     }
 
     
@@ -81,6 +92,7 @@ header {
     background-color: var(--bg-dark);
     z-index: 900;
     font-size: var(--menuitem-size);
+    line-height: 1em;
 
 
     a {
@@ -120,8 +132,8 @@ header {
                     @include reset;
 
                     text-indent: -9999px;
-                    width: 1.2rem;
-                    height: 1.2rem;
+                    width: 2em;
+                    height: 100%;
                     position: relative;
                     background-color: transparent;
 
@@ -131,13 +143,17 @@ header {
                         border-width: 0 2px 2px 0;
                         border-style: solid;
                         display: block;
-                        width: .5rem;
-                        height: .5rem;
+                        width: .666em;
+                        height: .666em;
                         position: absolute;
                         top: 50%;
                         left: 50%;
                         transform: translate(-50%, -60%) rotate(45deg);
                         transition: transform .5s;
+
+                    }
+                    &:hover:after {
+                        border-color: var(--text-color-light);
                     }
 
                     &.submenuOpen:after {
@@ -154,6 +170,7 @@ header {
             
             & > a {
                 cursor: default;
+                pointer-events: none;
             }
             li {
                 padding-left: var(--large-padding);
@@ -183,11 +200,14 @@ article {
 
     h4 {
         @include reset;
-        font-size: 2rem;
+        font-size: var(--chapter-no-size);
         line-height: 3rem;
         color: var(--accent-color);
         text-align: right;
-        width: 60%;
+
+        @include for-desktop {
+            width: 60%;
+        }
     }
     
     h1 {
@@ -198,7 +218,7 @@ article {
     .textContent {
         display: grid;
         grid-template-columns: 2fr 1fr;
-        gap: 0 5rem;
+        gap: 1.4em 5rem;
         grid-template-areas: 
             "h1 ."
             "p1 p1"
@@ -217,7 +237,8 @@ article {
             grid-area: h1;
         }
         @for $i from 1 through 10 {
-            p:nth-of-type( #{$i} ) {
+            & > *:not( .gallery ):nth-child( #{$i} )
+            {
                 grid-area: p + $i;
             }
         }

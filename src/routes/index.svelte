@@ -1,6 +1,9 @@
-<svelte:head>
-    <title>Gipsoteka | Otvor</title>
-</svelte:head>
+<script>
+    import Article from '$lib/components/Article.svelte'
+</script>
 
-<h1>Prva</h1>
-<p>Nisi još ništo vidio</p>
+<Article title="Otvor" chapter="100 god.">
+    <h1>Dobrodošli!</h1>
+    <h3>Na žalost, još nemamo naslovnicu.</h3>
+    <p>Probajte izbornik.</p>
+</Article> 

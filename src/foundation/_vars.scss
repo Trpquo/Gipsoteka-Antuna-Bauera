@@ -16,12 +16,12 @@ html {
     --default-padding: 1rem;
     --large-padding: 3rem;
 
-    --musthead-size: 6rem;
+    --musthead-size: 4rem;
     --title-size: 3rem;
     --text-size: 15px;
     --chapter-no-size: 3rem;
     --subhead-size: 2rem;
-    --menuitem-size: 1.3rem;
+    --menuitem-size: 4vh;
 }
 
 @mixin for-desktop {

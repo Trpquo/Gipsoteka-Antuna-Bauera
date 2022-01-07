@@ -9,15 +9,20 @@
     }
 </script>
 <script>
-    export let status;
-    export let error;
+    import Article from '$lib/components/Article.svelte'
+
+    export let status, error
 </script>
 
-<h1>Greška <strong>{ status }</strong> pri učitavanju!</h1>
+<Article chapter={ 0 } title={ status } >
+    <h1>Greška <strong>{ status }</strong> pri učitavanju!</h1>
+    <h3>
+        { error.message.substring( error.message.indexOf( "/" ) ) }
+    </h3>
 
-<p>
-    { error.message }
-</p>
+</Article>
+
+
 
 
 <style>

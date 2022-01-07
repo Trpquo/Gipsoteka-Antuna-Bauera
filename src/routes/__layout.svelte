@@ -17,17 +17,20 @@
 </script>
 
 <script>
+    import { site } from '$lib/utils/stores'
     import Header from '$lib/components/Header.svelte'
     import Footer from '$lib/components/Footer.svelte'
     import '../app.css';
     
     export let menu
+
+    $site = menu;
     // console.log( images )
     // console.log( site )
 
 </script>
 
-<Header { menu } />
+<Header />
 
 <main>
     <slot />

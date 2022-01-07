@@ -16,13 +16,12 @@ export default async ( ) => {
 
     if ( !response ) {
         const { body: { menu } } = await get()
-        console.log( "Get in place of fetch!", menu )
-        return menu
+        response = menu
+
+        console.log( "Get in place of fetch!" )
     } else {
-        
         console.log( "Fetch in place of get!" )
-        return response
     }
     
-
+    return response
 }
