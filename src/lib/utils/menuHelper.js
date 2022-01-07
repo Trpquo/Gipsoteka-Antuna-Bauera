@@ -2,12 +2,11 @@ import { get } from '../../routes/posts.json.js'
 
 export default async ( ) => {
 
-    let gotIt = false, response = null;
+    let response = null;
 
     try {
         const posts = await fetch( '/posts.json' )
         const { menu } = await posts.json()
-        gotIt = true
         response = menu 
     }
     catch ({ message }) {
@@ -15,9 +14,9 @@ export default async ( ) => {
     }
 
 
-    if ( !gotIt ) {
+    if ( !response ) {
         const { body } = await get()
-        console.log( "Get in place of fetch!" )
+        console.log( "Get in place of fetch!", body )
         return body
     } else {
         
