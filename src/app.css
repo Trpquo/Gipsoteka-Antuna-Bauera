@@ -2,9 +2,10 @@
 html {
   --bg-light: seashell;
   --bg-dark: #334c;
-  --bg-color-medium: saddlebrown;
-  --bg-color-light: burlywood;
+  --bg-color-medium: sienna;
+  --bg-color-light: tan;
   --accent-color: orangered;
+  --accent-color2: darkseagreen;
   --text-face: "Segoe UI", Verdana, Tahoma, sans-serif;
   --text-color-light: var(--bg-light);
   --text-color-dark: #332;
@@ -26,10 +27,30 @@ html {
   color: var(--text-color-dark);
 }
 
-html, body, p, h1, h2, h3, h4, h5, h6, blockquote {
+* {
+  box-sizing: border-box;
+}
+
+html, body, p, h1, h2, h3, h4, h5, h6, blockquote, figure {
   margin: 0;
   border: 0;
   padding: 0;
+}
+html:nth-of-type(2n - 1)::-moz-selection, body:nth-of-type(2n - 1)::-moz-selection, p:nth-of-type(2n - 1)::-moz-selection, h1:nth-of-type(2n - 1)::-moz-selection, h2:nth-of-type(2n - 1)::-moz-selection, h3:nth-of-type(2n - 1)::-moz-selection, h4:nth-of-type(2n - 1)::-moz-selection, h5:nth-of-type(2n - 1)::-moz-selection, h6:nth-of-type(2n - 1)::-moz-selection, blockquote:nth-of-type(2n - 1)::-moz-selection, figure:nth-of-type(2n - 1)::-moz-selection {
+  color: var(--text-color-light);
+  background-color: var(--accent-color);
+}
+html:nth-of-type(2n - 1)::selection, body:nth-of-type(2n - 1)::selection, p:nth-of-type(2n - 1)::selection, h1:nth-of-type(2n - 1)::selection, h2:nth-of-type(2n - 1)::selection, h3:nth-of-type(2n - 1)::selection, h4:nth-of-type(2n - 1)::selection, h5:nth-of-type(2n - 1)::selection, h6:nth-of-type(2n - 1)::selection, blockquote:nth-of-type(2n - 1)::selection, figure:nth-of-type(2n - 1)::selection {
+  color: var(--text-color-light);
+  background-color: var(--accent-color);
+}
+html:nth-of-type(2n)::-moz-selection, html figcaption::-moz-selection, body:nth-of-type(2n)::-moz-selection, body figcaption::-moz-selection, p:nth-of-type(2n)::-moz-selection, p figcaption::-moz-selection, h1:nth-of-type(2n)::-moz-selection, h1 figcaption::-moz-selection, h2:nth-of-type(2n)::-moz-selection, h2 figcaption::-moz-selection, h3:nth-of-type(2n)::-moz-selection, h3 figcaption::-moz-selection, h4:nth-of-type(2n)::-moz-selection, h4 figcaption::-moz-selection, h5:nth-of-type(2n)::-moz-selection, h5 figcaption::-moz-selection, h6:nth-of-type(2n)::-moz-selection, h6 figcaption::-moz-selection, blockquote:nth-of-type(2n)::-moz-selection, blockquote figcaption::-moz-selection, figure:nth-of-type(2n)::-moz-selection, figure figcaption::-moz-selection {
+  color: var(--text-color-light);
+  background-color: var(--accent-color2);
+}
+html:nth-of-type(2n)::selection, html figcaption::selection, body:nth-of-type(2n)::selection, body figcaption::selection, p:nth-of-type(2n)::selection, p figcaption::selection, h1:nth-of-type(2n)::selection, h1 figcaption::selection, h2:nth-of-type(2n)::selection, h2 figcaption::selection, h3:nth-of-type(2n)::selection, h3 figcaption::selection, h4:nth-of-type(2n)::selection, h4 figcaption::selection, h5:nth-of-type(2n)::selection, h5 figcaption::selection, h6:nth-of-type(2n)::selection, h6 figcaption::selection, blockquote:nth-of-type(2n)::selection, blockquote figcaption::selection, figure:nth-of-type(2n)::selection, figure figcaption::selection {
+  color: var(--text-color-light);
+  background-color: var(--accent-color2);
 }
 
 .rm {
@@ -39,6 +60,14 @@ html, body, p, h1, h2, h3, h4, h5, h6, blockquote {
 a {
   color: var(--accent-color);
   text-decoration: none;
+}
+a::-moz-selection {
+  background-color: var(--accent-color);
+  color: var(--text-color-light);
+}
+a::selection {
+  background-color: var(--accent-color);
+  color: var(--text-color-light);
 }
 
 button {
@@ -79,19 +108,31 @@ header h1 a span:nth-of-type(2) {
 }
 
 #menuButton {
+  margin: 0;
+  border: 0;
+  padding: 0;
   position: fixed;
   top: var(--large-padding);
   right: var(--large-padding);
+  width: var(--large-padding);
+  height: var(--large-padding);
   padding: var(--default-padding);
-  border: 0;
-  cursor: pointer;
-  transition: background-color 0.5s;
+  text-align: center;
+  transition: background-color 0.5s, border-radius 1s;
   z-index: 1000;
+  cursor: pointer;
   background-color: var(--bg-dark);
   color: var(--text-color-light);
 }
 #menuButton:hover, #menuButton.active {
   background-color: var(--bg-color-medium);
+}
+#menuButton.active {
+  border-radius: 50%;
+}
+#menuButton.active:hover {
+  background-color: var(--accent-color);
+  color: var(--text-color-light);
 }
 
 #menu {
@@ -100,7 +141,8 @@ header h1 a span:nth-of-type(2) {
   right: 0;
   width: 100%;
   height: 100%;
-  padding: var(--large-padding);
+  padding: calc( var(--large-padding) / 2 );
+  padding-top: calc( var(--large-padding) * 2.333 );
   box-sizing: border-box;
   background-color: var(--bg-dark);
   z-index: 900;
@@ -123,16 +165,17 @@ header h1 a span:nth-of-type(2) {
   margin-right: 0.2rem;
   margin: 0;
   padding: 0;
+  transition: background-color 0.3s, color 0.1s;
   background-color: var(--bg-color-light);
   color: var(--text-color-dark);
 }
 #menu ul li li {
-  background-color: var(--bg-color-medium);
-  color: var(--text-color-light);
+  background-color: var(--bg-color-light);
+  color: var(--text-color-dark);
   padding-left: var(--large-padding);
 }
 #menu ul li li:hover {
-  background-color: var(--bg-dark);
+  background-color: var(--bg-color-medium);
   color: var(--text-color-light);
 }
 #menu ul li a {
@@ -158,34 +201,44 @@ header h1 a span:nth-of-type(2) {
   border-width: 0 2px 2px 0;
   border-style: solid;
   display: block;
-  width: 0.666em;
-  height: 0.666em;
+  width: 0.85em;
+  height: 0.85em;
+  margin-left: -0.666em;
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -60%) rotate(45deg);
+  top: 40%;
+  left: 60%;
+  transform: translate(-70%, -70%) rotate(-45deg);
   transition: transform 0.5s;
 }
 #menu ul li a button:hover:after {
   border-color: var(--text-color-light);
 }
 #menu ul li a button.submenuOpen:after {
-  transform: translate(-50%, -40%) rotate(-135deg);
+  transform: translate(-50%, -50%) rotate(45deg);
 }
 #menu ul li:hover {
   background-color: var(--accent-color);
   color: var(--text-color-light);
 }
 #menu ul li.active {
-  background-color: var(--accent-color);
+  background-color: var(--bg-color-light);
   color: var(--text-color-dark);
+  font-weight: 800;
 }
 #menu ul li.active > a {
   cursor: default;
-  pointer-events: none;
+  border-left: 0.25em solid var(--accent-color);
+}
+#menu ul li.active > a button:hover:after {
+  border-color: var(--text-color-dark);
 }
 #menu ul li.active li {
+  font-weight: 400;
   padding-left: var(--large-padding);
+}
+#menu ul li.active li.active:hover {
+  background-color: var(--bg-color-light);
+  color: var(--text-color-dark);
 }
 @media (max-width: 600px) {
   #menu {
