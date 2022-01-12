@@ -1,45 +1,78 @@
 <script context="module">
-    let active = 0
+        let active = "foo"
 </script>
 <script>
     import { fly, slide } from 'svelte/transition'
 
     export let menu, level = 1
 
+    let openedSubmenu = "bar", noNewSubmenu = true
 
-    let submenuOpen = false, speed = 200
-    function openSubmenu( e ) {
-        submenuOpen = !submenuOpen
-        // console.log( submenuOpen, active )
+
+    let speed = 200
+    
+    function toggleSubmenu( { target }, { slug } ) {
+        target.removeEventListener( "mouseover", openIfHold )
+        openedSubmenu === slug ? openedSubmenu = "" : openedSubmenu = slug
+        noNewSubmenu = false
+        setTimeout(()=>{
+            target.addEventListener( "mouseover",  ()=>openIfHold( { target }, { slug } ) )
+        }, 5000)
     }
-    function selectItem( el, slug ) {
+
+    function openIfHold( { target }, { slug } ) {
+        
+
+            const anticipation = setTimeout( ()=> { 
+                if ( !target.classList.contains( "submenuOpen" ) ) {
+                    toggleSubmenu( { target }, { slug } )
+                }
+            }, 1000 )
+            
+            const withdrawal = ()=>{
+                clearTimeout( anticipation )
+                target.removeEventListener( "mouseout", withdrawal )
+            }
+            
+            target.addEventListener( "mouseout", withdrawal )
+    } 
+
+    function selectItem( el, item ) {
         if ( el.tagName !== 'BUTTON' ) {
-            active = slug
+            active = item.slug
         }
     }
+
 
 </script>
 
 <ul id="first" in:slide={{ duration: 500 }} out:slide={{ delay: (menu.length - level) * speed }}>
 {#if menu }
-    {#each menu as item, i }
+{#each menu as item, i }
     {#if !!item.slug && !!item.meta.title }
-    <li class:active={ !!active ? active.indexOf( item.slug ) + 1 : 0 } >
+
+    <li class:active={ active.indexOf( item.slug ) >= 0 } class:current={ active === item.slug } >
         <a href="{ item.slug }" 
-            on:click={ ({ target  })=>selectItem( target, item.slug ) } 
+            on:click={ ({ target  })=>selectItem( target, item ) } 
             in:fly={{ y: 20, duration: 500, delay: speed + speed * i }}
             out:fly={{ y: 20, duration: 500, delay: menu.length * speed - speed * ( menu.length - i ) }}
         >
             { item.meta.title }
-            {#if !!item.sub }
-            <button on:click|preventDefault={ openSubmenu } class:submenuOpen >open</button>
+            {#if item.sub }
+            <button on:click|preventDefault={ e=>toggleSubmenu( e, item ) } on:mouseover={ e=>openIfHold( e, item ) } on:focus={()=>{}} class:submenuOpen={ openedSubmenu === item.slug } >open</button>
             {/if}
         </a>
-        {#if !!item.sub && ( submenuOpen || [ ...item.sub.map( i=>i.slug ) ].includes( active ) ) } 
+        {#if item.sub  && 
+            ( 
+                openedSubmenu === item.slug || 
+                ( [ item.slug, ...item.sub.map(i=> i.slug) ].includes( active ) && noNewSubmenu )
+            ) 
+        } 
             <svelte:self  menu={ item.sub } level={ level + 1 } />
         {/if}
     </li>  
+
     {/if} 
-    {/each}
+{/each}
 {/if}
 </ul>

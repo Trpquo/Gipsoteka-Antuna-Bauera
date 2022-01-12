@@ -20,8 +20,12 @@
 		"mdsvex-relative-images": "^1.0.1",
 		"prettier": "^2.4.1",
 		"prettier-plugin-svelte": "^2.4.0",
+		"remark-footnotes": "2.0",
 		"svelte": "^3.44.0",
 		"unist-util-visit": "^4.1.0"
 	},
-	"type": "module"
+	"type": "module",
+	"dependencies": {
+		"aos": "^2.3.4"
+	}
 }

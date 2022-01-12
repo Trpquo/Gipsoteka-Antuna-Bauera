@@ -1,0 +1,23 @@
+{
+	"article": {
+		"scope": "markdown",
+		"prefix": "art",
+		"body": [
+			"---",
+			"title: ${1:string}",
+			"chapter: ${2:number}",
+			"coverImage: ",
+			"imgRoot: ./img/",
+			"layout: basic",
+			"---",
+			"",
+			"# {title}",
+			"",
+			"$3",
+			"",
+			"![tekst za opis slike odnosno alt](./img/ '')",
+			""
+		],
+		"description": "Postavljanje osnovne strukture članka"
+	}
+}

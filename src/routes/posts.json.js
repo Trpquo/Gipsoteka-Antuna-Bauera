@@ -1,49 +1,87 @@
 export const get = async () => {
 
     const posts = import.meta.globEager( "../**/*.md" );
+    const jpegs = Object.keys( import.meta.glob( "../**/*.jpg" ) )
+    const pngs = Object.keys( import.meta.glob( "../**/*.png" ) )
+    const webps = Object.keys( import.meta.glob( "../**/*.webp" ) )
+    const images = [ ...jpegs, ...pngs, ...webps ] // .map(url=> url.replace("../routes/", "") );
 
-    const menu = []
-    for ( let key  of Object.keys( posts )) {
-        const path = key.split("/").splice(2)
-        const createSubmenu = index => {
-
-            if ( index === path.length - 1 ) {
-                return { slug: "/" + path.join("/").replace("index.md", ""), content: posts[ key ].default, meta: posts[ key ].metadata }
-            } 
-            else {
-                if ( menu[ menu.length - 1 ].sub ) {
-
-                    menu[ menu.length -1 ].sub = [ ...menu[ menu.length - 1 ].sub, createSubmenu( index + 1 ) ] 
-                } 
-                else {
-                    menu[ menu.length - 1 ].sub = [ createSubmenu( index + 1 ) ]
-                }
-                
-                return menu.pop() 
+   
+    const makeTree = keys => {
+        const base = { sub: [] };
+        
+        for (const url of keys) {
+          const path = url.match(/\/[^/]+/g).slice(1);
+        //   console.log(path)
+          
+          let curr = base;
+          
+          path.forEach((e, i) => {
+            if ( i === path.length - 1 ) return  // zato da ne duplicira podmenie zbog index.md
+            const currPath = path.slice(0, i + 1).join("");
+            const child = curr.sub.find(e => e.slug === currPath.replace("index.md", ""));
+            
+            if ( child ) {
+              curr = child;
             }
+            else {
+              curr.sub.push({
+                slug: currPath.replace("index.md", ""), 
+                content: posts[ url ].default, 
+                meta: posts[ url ].metadata,
+                sub: []
+              });
+              curr = curr.sub[curr.sub.length-1];
+            }
+          });
         }
+        
+        return base.sub;
+      };
+
+    const  menu = makeTree( Object.keys( posts ) )
 
 
-        menu.push( createSubmenu(1) )
-    }
 
     const sortByChapNo = (f, s)=> {
-        // console.log( "Chap #", parseFloat( s.meta.chapter ), s.meta.title )
-        if ( s.sub ) s.sub.sort( sortByChapNo )
-        
-        return !!f.meta.chapter && s.meta.chapter 
-        ?
-        parseFloat(f.meta.chapter) - parseFloat(s.meta.chapter) 
-        :
-        1
+        if ( f.meta && s.meta ) {
+
+          return !!f.meta.chapter && !!s.meta.chapter 
+          ?
+          parseFloat(f.meta.chapter) - parseFloat(s.meta.chapter) 
+          :
+          1
+        } else return 1       
     }  
+
+    function editMenu( menu ) {
+        // console.log( menu )
+
+        menu.forEach(item=> {
+            if ( item.sub ) {
+                if ( item.sub.length === 0 ) {    
+                    item.sub = false
+                } else {
+                    editMenu( item.sub ) 
+                }
+            }
+            // console.log( "Chap #", parseFloat( item.meta.chapter ), item.meta.title, item.sub )
+            
+        })
+        menu.sort( sortByChapNo )
+    }
+
+    editMenu( menu )
     
-    menu.sort( sortByChapNo )
+
+    // console.log( menu )
 
     return {
         status: 200,
         body: {
-            menu
+            menu,
+            posts,
+            images
         }
     }
 }

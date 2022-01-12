@@ -1,5 +1,5 @@
 <footer>
     <p>
-        Copyright Gliptoteka HAZU, 2022.
+        Copyright <strong>&#169;</strong> Gliptoteka HAZU, 2022.
     </p>
 </footer>

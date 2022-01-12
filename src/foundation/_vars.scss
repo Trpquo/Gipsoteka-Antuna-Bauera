@@ -5,24 +5,30 @@ $tiny-screen: 600px;
 html {
 
     --bg-light: seashell; // papayawhip, oldlace
-    --bg-dark: #334c;
+    --bg-dark: #334e;
     --bg-color-medium: sienna; // peru, chocolate, sienna
     --bg-color-light: tan; // burlywood
     --accent-color: orangered; // crimson
     --accent-color2: darkseagreen;  // cadetblue, darkcyan
-    --text-face: "Segoe UI", Verdana, Tahoma, sans-serif;
+    --text-face: 'Fira Sans', "Segoe UI", Verdana, Tahoma, sans-serif;
+    --title-face: 'Petrona', serif;
+    --head-face: 'Nobile', 'Fira Sans', "Segoe UI", Verdana, Tahoma, sans-serif;
+    --caption-face: var(--title-face);
+    --quote-face: var(--title-face);
     --text-color-light: var(--bg-light);
     --text-color-dark: #332;
 
-    --default-padding: 1rem;
-    --large-padding: 3rem;
+    --default-padding: clamp( .25rem, 1.5vmax, 2rem );
+    --large-padding: clamp( 2rem, 3vw, 6rem);
 
-    --musthead-size: 4rem;
-    --title-size: 3rem;
-    --text-size: 15px;
-    --chapter-no-size: 3rem;
-    --subhead-size: 2rem;
-    --menuitem-size: 4vh;
+    --head-size: clamp(3.5rem, 6vw, 5rem);
+    --title-size: clamp( 2.5rem, 5vw, 3rem);
+    --text-size: clamp( 15px, 1.3vw, 18px );
+    --quote-size: clamp( 20px, 1.3vw, 24px );
+    --caption-size: clamp( 14px, 1.1vw, 16px );
+    --chapter-no-size: clamp( 2rem, 3vw, 2.666rem );
+    --subhead-size: var(--text-quote);
+    --menuitem-size: clamp( 1.5rem, 3vh, 2.666rem );
 }
 
 @mixin for-desktop {
@@ -48,6 +54,9 @@ html {
         clear: both;
     }
 }
+
+
+
 @mixin light-text-on-dark {
     background-color: var(--bg-dark);
     color: var(--text-color-light);
@@ -89,5 +98,33 @@ html {
 }
 @mixin large-padding {
     padding: var(--large-padding);
+}
+@mixin outer-padding {
+    padding: var(--default-padding);
+    margin: 0 calc( var(--default-padding) * -1 );
+}
+@mixin pseudo-background {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+}
+@mixin quotes {
+    font-family: var(--quote-face);
+    font-size: var(--quote-size);
+    line-height: 1.3em;
+    font-style: italic;
+}
+@mixin footnotes {
+    font-size: var(--caption-size);
+    line-height: 1.3em;
+
+    li {
+        margin-top: .5rem;
+    }
 }
 

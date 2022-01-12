@@ -1,7 +1,7 @@
 import path from 'path';
 import { fileURLToPath } from 'url';
 import relativeImages from "mdsvex-relative-images";
-// import wrapImages from "./functions/remark-images.js";
+import remarkFootnotes from "remark-footnotes";
 
 const dirname = path.resolve(fileURLToPath(import.meta.url), '../');
 
@@ -17,7 +17,7 @@ const config = {
 
 	layout:  path.join(dirname, './src/lib/components/Article.svelte'),
 
-	remarkPlugins: [ relativeImages ],
+	remarkPlugins: [ remarkFootnotes, relativeImages ],
 	rehypePlugins: []
 };
 

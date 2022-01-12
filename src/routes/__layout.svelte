@@ -1,32 +1,18 @@
 <script context="module">
-    import createMenu from '$lib/utils/menuHelper'
+    import loader from '$lib/utils/server'
 
-    export async function load() {
+    export const load = ({ fetch } )=>{
+        loader( fetch )
 
-        
-        // const images = import.meta.glob( "../**/*.jpg" );
-        const menu = await createMenu()        
-
-        return {
-            props: {
-                menu,
-                // images
-            }
-        }
+        return { props: {} }
     }
 </script>
-
 <script>
-    import { site } from '$lib/utils/stores'
-    import Header from '$lib/components/Header.svelte'
-    import Footer from '$lib/components/Footer.svelte'
+    import { Header, Footer } from '$lib/components/all'
     import '../app.css';
-    
-    export let menu
+    import '../../node_modules/aos/dist/aos.css';
 
-    $site = menu;
-    // console.log( images )
-    // console.log( site )
+    
 
 </script>
 

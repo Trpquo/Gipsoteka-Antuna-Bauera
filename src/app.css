@@ -1,27 +1,34 @@
 @charset "UTF-8";
 html {
   --bg-light: seashell;
-  --bg-dark: #334c;
+  --bg-dark: #334e;
   --bg-color-medium: sienna;
   --bg-color-light: tan;
   --accent-color: orangered;
   --accent-color2: darkseagreen;
-  --text-face: "Segoe UI", Verdana, Tahoma, sans-serif;
+  --text-face: "Fira Sans", "Segoe UI", Verdana, Tahoma, sans-serif;
+  --title-face: "Petrona", serif;
+  --head-face: "Nobile", "Fira Sans", "Segoe UI", Verdana, Tahoma, sans-serif;
+  --caption-face: var(--title-face);
+  --quote-face: var(--title-face);
   --text-color-light: var(--bg-light);
   --text-color-dark: #332;
-  --default-padding: 1rem;
-  --large-padding: 3rem;
-  --musthead-size: 4rem;
-  --title-size: 3rem;
-  --text-size: 15px;
-  --chapter-no-size: 3rem;
-  --subhead-size: 2rem;
-  --menuitem-size: 4vh;
+  --default-padding: clamp( .25rem, 1.5vmax, 2rem );
+  --large-padding: clamp( 2rem, 3vw, 6rem);
+  --head-size: clamp(3.5rem, 6vw, 5rem);
+  --title-size: clamp( 2.5rem, 5vw, 3rem);
+  --text-size: clamp( 15px, 1.3vw, 18px );
+  --quote-size: clamp( 20px, 1.3vw, 24px );
+  --caption-size: clamp( 14px, 1.1vw, 16px );
+  --chapter-no-size: clamp( 2rem, 3vw, 2.666rem );
+  --subhead-size: var(--text-quote);
+  --menuitem-size: clamp( 1.5rem, 3vh, 2.666rem );
 }
 
 html {
   background-color: var(--bg-light);
   font-family: var(--text-face);
+  font-weight: 400;
   font-size: var(--text-size);
   line-height: 1.4em;
   color: var(--text-color-dark);
@@ -31,28 +38,6 @@ html {
   box-sizing: border-box;
 }
 
-html, body, p, h1, h2, h3, h4, h5, h6, blockquote, figure {
-  margin: 0;
-  border: 0;
-  padding: 0;
-}
-html:nth-of-type(2n - 1)::-moz-selection, body:nth-of-type(2n - 1)::-moz-selection, p:nth-of-type(2n - 1)::-moz-selection, h1:nth-of-type(2n - 1)::-moz-selection, h2:nth-of-type(2n - 1)::-moz-selection, h3:nth-of-type(2n - 1)::-moz-selection, h4:nth-of-type(2n - 1)::-moz-selection, h5:nth-of-type(2n - 1)::-moz-selection, h6:nth-of-type(2n - 1)::-moz-selection, blockquote:nth-of-type(2n - 1)::-moz-selection, figure:nth-of-type(2n - 1)::-moz-selection {
-  color: var(--text-color-light);
-  background-color: var(--accent-color);
-}
-html:nth-of-type(2n - 1)::selection, body:nth-of-type(2n - 1)::selection, p:nth-of-type(2n - 1)::selection, h1:nth-of-type(2n - 1)::selection, h2:nth-of-type(2n - 1)::selection, h3:nth-of-type(2n - 1)::selection, h4:nth-of-type(2n - 1)::selection, h5:nth-of-type(2n - 1)::selection, h6:nth-of-type(2n - 1)::selection, blockquote:nth-of-type(2n - 1)::selection, figure:nth-of-type(2n - 1)::selection {
-  color: var(--text-color-light);
-  background-color: var(--accent-color);
-}
-html:nth-of-type(2n)::-moz-selection, html figcaption::-moz-selection, body:nth-of-type(2n)::-moz-selection, body figcaption::-moz-selection, p:nth-of-type(2n)::-moz-selection, p figcaption::-moz-selection, h1:nth-of-type(2n)::-moz-selection, h1 figcaption::-moz-selection, h2:nth-of-type(2n)::-moz-selection, h2 figcaption::-moz-selection, h3:nth-of-type(2n)::-moz-selection, h3 figcaption::-moz-selection, h4:nth-of-type(2n)::-moz-selection, h4 figcaption::-moz-selection, h5:nth-of-type(2n)::-moz-selection, h5 figcaption::-moz-selection, h6:nth-of-type(2n)::-moz-selection, h6 figcaption::-moz-selection, blockquote:nth-of-type(2n)::-moz-selection, blockquote figcaption::-moz-selection, figure:nth-of-type(2n)::-moz-selection, figure figcaption::-moz-selection {
-  color: var(--text-color-light);
-  background-color: var(--accent-color2);
-}
-html:nth-of-type(2n)::selection, html figcaption::selection, body:nth-of-type(2n)::selection, body figcaption::selection, p:nth-of-type(2n)::selection, p figcaption::selection, h1:nth-of-type(2n)::selection, h1 figcaption::selection, h2:nth-of-type(2n)::selection, h2 figcaption::selection, h3:nth-of-type(2n)::selection, h3 figcaption::selection, h4:nth-of-type(2n)::selection, h4 figcaption::selection, h5:nth-of-type(2n)::selection, h5 figcaption::selection, h6:nth-of-type(2n)::selection, h6 figcaption::selection, blockquote:nth-of-type(2n)::selection, blockquote figcaption::selection, figure:nth-of-type(2n)::selection, figure figcaption::selection {
-  color: var(--text-color-light);
-  background-color: var(--accent-color2);
-}
-
 .rm {
   display: none !important;
 }
@@ -60,14 +45,6 @@ html:nth-of-type(2n)::selection, html figcaption::selection, body:nth-of-type(2n
 a {
   color: var(--accent-color);
   text-decoration: none;
-}
-a::-moz-selection {
-  background-color: var(--accent-color);
-  color: var(--text-color-light);
-}
-a::selection {
-  background-color: var(--accent-color);
-  color: var(--text-color-light);
 }
 
 button {
@@ -85,9 +62,11 @@ button {
 
 /* zaglavlje */
 header h1 {
-  font-size: var(--musthead-size);
+  font-size: var(--head-size);
+  font-family: var(--head-face);
+  font-weight: 800;
   color: var(--text-color-dark);
-  line-height: 1em;
+  line-height: 1.05em;
   width: 3em;
   padding: var(--large-padding);
   float: left;
@@ -97,14 +76,19 @@ header h1 a {
 }
 header h1 a span {
   color: var(--accent-color);
-  font-size: 1.5em;
+  font-size: 1.2em;
 }
 header h1 a span:first-of-type {
-  margin-left: -0.07em;
+  margin-left: -0.05em;
   margin-right: 0.01em;
 }
 header h1 a span:nth-of-type(2) {
-  margin-left: -0.04em;
+  margin-left: -0.01em;
+  margin-right: 0¸1em;
+}
+header h1 a span:nth-of-type(3) {
+  margin-left: 0em;
+  margin-right: 0.01em;
 }
 
 #menuButton {
@@ -181,7 +165,7 @@ header h1 a span:nth-of-type(2) {
 #menu ul li a {
   display: block;
   box-sizing: border-box;
-  padding: var(--default-padding);
+  padding: 1em;
   width: 100%;
   height: 100%;
 }
@@ -223,17 +207,21 @@ header h1 a span:nth-of-type(2) {
 #menu ul li.active {
   background-color: var(--bg-color-light);
   color: var(--text-color-dark);
+}
+#menu ul li.active.current {
   font-weight: 800;
+  cursor: default;
+}
+#menu ul li.active.current li {
+  font-weight: 400;
 }
 #menu ul li.active > a {
-  cursor: default;
   border-left: 0.25em solid var(--accent-color);
 }
 #menu ul li.active > a button:hover:after {
   border-color: var(--text-color-dark);
 }
 #menu ul li.active li {
-  font-weight: 400;
   padding-left: var(--large-padding);
 }
 #menu ul li.active li.active:hover {
@@ -242,12 +230,9 @@ header h1 a span:nth-of-type(2) {
 }
 @media (max-width: 600px) {
   #menu {
-    position: static;
-    clear: both;
-    float: none;
-  }
-  #menu ul {
-    flex-direction: row;
+    padding: 0;
+    padding-top: calc( var(--large-padding) * 2.333 );
+    background-color: var(--bg-color-light);
   }
 }
 
@@ -270,17 +255,21 @@ article h4 {
   }
 }
 article h1 {
-  margin: 0;
-  border: 0;
-  padding: 0;
   font-size: var(--title-size);
   line-height: 1em;
+  margin-bottom: 0.5em;
+}
+article h2, article h3, article h4, article h5, article h6 {
+  margin-top: 0.5em;
+}
+article h1, article h3, article h5, article blockquote, article figcaption {
+  font-family: var(--title-face);
 }
 article .textContent {
   display: grid;
   grid-template-columns: 2fr 1fr;
-  gap: 1.4em 5rem;
-  grid-template-areas: "h1 ." "p1 p1" "a  a" "p2 p2" "p3 p3" "p4 p4" "p5 p5" "p6 p6" "p7 p7" "p8 p8" "p9 p9" "p10 p10";
+  gap: 0.7em 5rem;
+  grid-template-areas: "h1 ." "p1 p1" "a  a" "p2 p2" "p3 p3" "p4 p4" "p5 p5" "p6 p6" "p7 p7" "p8 p8" "p9 p9" "p10 p10" "p11 p11" "p12 p12" "p13 p13" "p14 p14" "p15 p15";
 }
 article .textContent h1 {
   grid-area: h1;
@@ -315,48 +304,315 @@ article .textContent > *:not(.gallery):nth-child(9) {
 article .textContent > *:not(.gallery):nth-child(10) {
   grid-area: p10;
 }
+article .textContent > *:not(.gallery):nth-child(11) {
+  grid-area: p11;
+}
+article .textContent > *:not(.gallery):nth-child(12) {
+  grid-area: p12;
+}
+article .textContent > *:not(.gallery):nth-child(13) {
+  grid-area: p13;
+}
+article .textContent > *:not(.gallery):nth-child(14) {
+  grid-area: p14;
+}
+article .textContent > *:not(.gallery):nth-child(15) {
+  grid-area: p15;
+}
 article .textContent .gallery {
   grid-area: a;
 }
+article .textContent blockquote {
+  font-family: var(--quote-face);
+  font-size: var(--quote-size);
+  line-height: 1.3em;
+  font-style: italic;
+  margin: 1rem 0;
+  position: relative;
+}
+article .textContent blockquote:before {
+  content: "“";
+  display: block;
+  font-size: var(--title-size);
+  position: absolute;
+  color: var(--accent-color);
+  top: -0.2em;
+  line-height: 1em;
+  left: -0.45em;
+}
+article .textContent p > figure, article .textContent p > img {
+  display: none;
+}
+article .textContent figure {
+  transition: opacity 0.3s;
+}
+article .textContent figure div {
+  overflow: hidden;
+  cursor: none;
+  position: relative;
+}
+article .textContent figure div img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  max-width: 100%;
+  pointer-events: none;
+  filter: grayscale(0.8) sepia(0.3) contrast(0.666);
+}
+article .textContent figure figcaption .short {
+  display: inline;
+}
+article .textContent figure figcaption .long {
+  display: none;
+}
+article .textContent figure.lightboxtime {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  max-width: 100% !important;
+  top: 50%;
+  left: 50%;
+  background-color: var(--bg-dark);
+  -webkit-animation: zoom 0.5s forwards;
+          animation: zoom 0.5s forwards;
+  z-index: 9000;
+  display: flex;
+  flex-direction: column;
+}
+article .textContent figure.lightboxtime div {
+  flex-grow: 1;
+  display: grid;
+  place-items: center;
+  padding: 1rem 0;
+}
+article .textContent figure.lightboxtime img {
+  display: block;
+  width: 80%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  filter: grayscale(0.2) contrast(0.7);
+}
+article .textContent figure.lightboxtime figcaption {
+  padding: var(--default-padding);
+  padding-bottom: 2em;
+  background-color: var(--bg-dark);
+  color: var(--text-color-light);
+  text-align: center;
+}
+article .textContent figure.lightboxtime figcaption .short {
+  display: none;
+}
+article .textContent figure.lightboxtime figcaption .long {
+  display: inline;
+  font-size: var(--quote-size);
+}
+@-webkit-keyframes zoom {
+  0% {
+    transform: translate(-50%, -50%) scale(0.25);
+    opacity: 0.85;
+  }
+  100% {
+    top: 0;
+    left: 0;
+    transform: none;
+    opacity: 1;
+  }
+}
+@keyframes zoom {
+  0% {
+    transform: translate(-50%, -50%) scale(0.25);
+    opacity: 0.85;
+  }
+  100% {
+    top: 0;
+    left: 0;
+    transform: none;
+    opacity: 1;
+  }
+}
+article .textContent .showbox {
+  display: flex;
+  margin: var(--default-padding) 0;
+  justify-content: center;
+}
+article .textContent .showbox figure {
+  background-color: var(--bg-light);
+  color: var(--text-color-dark);
+  padding: var(--default-padding);
+  padding-bottom: 0;
+  box-shadow: 0.05rem 0.2rem 0.25rem #3333;
+  margin-right: 1rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+article .textContent .showbox figure.lightboxtime {
+  background-color: var(--bg-dark);
+  color: var(--text-color-light);
+  border-top: 0.5rem solid var(--accent-color);
+}
+article .textContent .showbox figure div {
+  flex-grow: 1;
+}
+article .textContent .showbox figure figcaption {
+  font-size: var(--caption-size);
+  line-height: 1.3em;
+  padding: var(--default-padding) 0;
+}
+article .textContent .showbox figure figcaption li {
+  margin-top: 0.5rem;
+}
+article .textContent .showbox.for2 figure {
+  max-width: 50%;
+}
+article .textContent .showbox.for3 figure {
+  max-width: 33%;
+}
+article .textContent .showbox.for4 figure {
+  max-width: 25%;
+}
+article .textContent .showbox.for5 figure {
+  max-width: 20%;
+}
 @media (min-width: 1000px) {
   article .textContent {
-    grid-template-areas: "h1 ." "p1 a" "p2 a" "p3 a" "p4 a" "p5 a" "p6 a" "p7 a" "p8 a" "p9 a" "p10 a";
+    grid-template-areas: "h1 ." "p1 a" "p2 a" "p3 a" "p4 a" "p5 a" "p6 a" "p7 a" "p8 a" "p9 a" "p10 a" "p11 a" "p12 a" "p13 a" "p14 a" "p15 a";
   }
 }
 @media (max-width: 600px) {
   article .textContent {
-    grid-template-areas: "h1 h1" "p1 p1" "p2 p2" "a  a" "p3 p3" "p4 p4" "p5 p5" "p6 p6" "p7 p7" "p8 p8" "p9 p9" "p10 p10";
+    grid-template-areas: "h1 h1" "p1 p1" "p2 p2" "a  a" "p3 p3" "p4 p4" "p5 p5" "p6 p6" "p7 p7" "p8 p8" "p9 p9" "p10 p10" "p11 p11" "p12 p12" "p13 p13" "p14 p14" "p15 p15";
   }
+}
+article .textContent > *:nth-last-child(1):not(.gallery), article .textContent > p:last-of-type {
+  padding: var(--default-padding);
+  margin: 0 calc( var(--default-padding) * -1 );
+  position: relative;
+  text-shadow: 0 0 0.666rem var(--bg-light);
+}
+article .textContent > *:nth-last-child(1):not(.gallery):before, article .textContent > p:last-of-type:before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  background-image: linear-gradient(#FFF0 20%, var(--bg-light) 50%);
+  opacity: 0.5;
 }
 article .textContent a {
   font-variant: small-caps;
 }
+article .textContent a:hover {
+  text-decoration: underline;
+}
+article .textContent a.footnote-ref, article .textContent a.footnote-backref {
+  font-variant: normal;
+  font-weight: bold;
+  font-size: 0.8em;
+  color: var(--accent-color);
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  margin-right: -0.35rem;
+}
+article .textContent a.footnote-backref {
+  font-size: 0.666em;
+  color: var(--accent-color2);
+}
+article .textContent .footnotes {
+  padding: var(--default-padding);
+  margin: 0 calc( var(--default-padding) * -1 );
+  margin-left: calc( var(--large-padding) * -1 );
+  position: relative;
+}
+article .textContent .footnotes:before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  background-color: var(--bg-light);
+  opacity: 0.4;
+}
+article .textContent .footnotes hr {
+  width: var(--large-padding);
+  border-color: var(--bg-dark);
+  border-width: 0;
+  border-top-width: 1px;
+  display: block;
+  float: left;
+  opacity: 0.666;
+}
+article .textContent .footnotes ol, article .textContent .footnotes ul {
+  font-size: var(--caption-size);
+  line-height: 1.3em;
+  clear: both;
+}
+article .textContent .footnotes ol li, article .textContent .footnotes ul li {
+  margin-top: 0.5rem;
+}
+article .textContent .footnotes ol li, article .textContent .footnotes ul li {
+  counter-increment: foot;
+}
+article .textContent .footnotes ol li::marker, article .textContent .footnotes ul li::marker {
+  content: counter(foot) " ";
+  font-size: 0.95em;
+  font-weight: 800;
+}
+article #bgImage {
+  content: "";
+  display: block;
+  --vignette: calc( var(--large-padding) * 2 );
+  width: calc( 100% + var(--vignette) );
+  height: 100%;
+  position: fixed;
+  z-index: -10;
+  top: 100%;
+  left: calc( 50% - var(--vignette) / 2 );
+  transform: translate(-50%);
+  box-shadow: var(--large-padding) var(--vignette) var(--vignette) var(--bg-light) inset;
+  background-image: linear-gradient(var(--vignette-angle), var(--bg-light) 0%, #FFF0 50%, var(--bg-light) 98%), var(--background-image);
+  background-repeat: no-repeat, no-repeat;
+  background-size: cover;
+  background-position: 50% 100%;
+  opacity: 0.2;
+  filter: contrast(4) contrast(0.95);
+  mix-blend-mode: luminosity;
+}
 
 /*  Galerija */
-p img, p figure {
-  display: none;
-  opacity: 0;
-}
-
-img {
-  max-width: 100%;
-  display: block;
-  pointer-events: none;
-}
-
 .gallery {
   display: flex;
   gap: 0.5rem;
   margin: 0;
-  flex-basis: 33%;
 }
 .gallery figure {
+  display: flex;
+  flex-direction: column;
   border-top: 0.5rem solid var(--accent-color);
   margin: 0;
+}
+.gallery figure div {
+  flex-grow: 1;
   overflow: hidden;
+}
+.gallery figure div img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 .gallery figure figcaption {
   padding: 1rem;
+  width: 100%;
   background-color: var(--accent-color);
   color: var(--text-color-light);
 }
@@ -366,9 +622,6 @@ img {
   }
   .gallery figure {
     max-width: 300px;
-  }
-  .gallery figure img {
-    width: 100%;
   }
 }
 @media (max-width: 600px) {
@@ -381,4 +634,28 @@ img {
 footer {
   background-color: var(--bg-dark);
   color: var(--text-color-light);
+  padding: var(--default-padding) var(--large-padding);
+}
+
+/* global style  */
+html, body, p, h1, h2, h3, h4, h5, h6, blockquote, figure, li {
+  margin: 0;
+  border: 0;
+  padding: 0;
+}
+html:nth-of-type(2n + 1)::-moz-selection, html:nth-of-type(2n + 1) *::-moz-selection, body:nth-of-type(2n + 1)::-moz-selection, body:nth-of-type(2n + 1) *::-moz-selection, p:nth-of-type(2n + 1)::-moz-selection, p:nth-of-type(2n + 1) *::-moz-selection, h1:nth-of-type(2n + 1)::-moz-selection, h1:nth-of-type(2n + 1) *::-moz-selection, h2:nth-of-type(2n + 1)::-moz-selection, h2:nth-of-type(2n + 1) *::-moz-selection, h3:nth-of-type(2n + 1)::-moz-selection, h3:nth-of-type(2n + 1) *::-moz-selection, h4:nth-of-type(2n + 1)::-moz-selection, h4:nth-of-type(2n + 1) *::-moz-selection, h5:nth-of-type(2n + 1)::-moz-selection, h5:nth-of-type(2n + 1) *::-moz-selection, h6:nth-of-type(2n + 1)::-moz-selection, h6:nth-of-type(2n + 1) *::-moz-selection, blockquote:nth-of-type(2n + 1)::-moz-selection, blockquote:nth-of-type(2n + 1) *::-moz-selection, figure:nth-of-type(2n + 1)::-moz-selection, figure:nth-of-type(2n + 1) *::-moz-selection, li:nth-of-type(2n + 1)::-moz-selection, li:nth-of-type(2n + 1) *::-moz-selection {
+  color: var(--text-color-light);
+  background-color: var(--accent-color);
+}
+html:nth-of-type(2n + 1)::selection, html:nth-of-type(2n + 1) *::selection, body:nth-of-type(2n + 1)::selection, body:nth-of-type(2n + 1) *::selection, p:nth-of-type(2n + 1)::selection, p:nth-of-type(2n + 1) *::selection, h1:nth-of-type(2n + 1)::selection, h1:nth-of-type(2n + 1) *::selection, h2:nth-of-type(2n + 1)::selection, h2:nth-of-type(2n + 1) *::selection, h3:nth-of-type(2n + 1)::selection, h3:nth-of-type(2n + 1) *::selection, h4:nth-of-type(2n + 1)::selection, h4:nth-of-type(2n + 1) *::selection, h5:nth-of-type(2n + 1)::selection, h5:nth-of-type(2n + 1) *::selection, h6:nth-of-type(2n + 1)::selection, h6:nth-of-type(2n + 1) *::selection, blockquote:nth-of-type(2n + 1)::selection, blockquote:nth-of-type(2n + 1) *::selection, figure:nth-of-type(2n + 1)::selection, figure:nth-of-type(2n + 1) *::selection, li:nth-of-type(2n + 1)::selection, li:nth-of-type(2n + 1) *::selection {
+  color: var(--text-color-light);
+  background-color: var(--accent-color);
+}
+html:nth-of-type(2n)::-moz-selection, html:nth-of-type(2n) *::-moz-selection, html figcaption::-moz-selection, html figcaption *::-moz-selection, body:nth-of-type(2n)::-moz-selection, body:nth-of-type(2n) *::-moz-selection, body figcaption::-moz-selection, body figcaption *::-moz-selection, p:nth-of-type(2n)::-moz-selection, p:nth-of-type(2n) *::-moz-selection, p figcaption::-moz-selection, p figcaption *::-moz-selection, h1:nth-of-type(2n)::-moz-selection, h1:nth-of-type(2n) *::-moz-selection, h1 figcaption::-moz-selection, h1 figcaption *::-moz-selection, h2:nth-of-type(2n)::-moz-selection, h2:nth-of-type(2n) *::-moz-selection, h2 figcaption::-moz-selection, h2 figcaption *::-moz-selection, h3:nth-of-type(2n)::-moz-selection, h3:nth-of-type(2n) *::-moz-selection, h3 figcaption::-moz-selection, h3 figcaption *::-moz-selection, h4:nth-of-type(2n)::-moz-selection, h4:nth-of-type(2n) *::-moz-selection, h4 figcaption::-moz-selection, h4 figcaption *::-moz-selection, h5:nth-of-type(2n)::-moz-selection, h5:nth-of-type(2n) *::-moz-selection, h5 figcaption::-moz-selection, h5 figcaption *::-moz-selection, h6:nth-of-type(2n)::-moz-selection, h6:nth-of-type(2n) *::-moz-selection, h6 figcaption::-moz-selection, h6 figcaption *::-moz-selection, blockquote:nth-of-type(2n)::-moz-selection, blockquote:nth-of-type(2n) *::-moz-selection, blockquote figcaption::-moz-selection, blockquote figcaption *::-moz-selection, figure:nth-of-type(2n)::-moz-selection, figure:nth-of-type(2n) *::-moz-selection, figure figcaption::-moz-selection, figure figcaption *::-moz-selection, li:nth-of-type(2n)::-moz-selection, li:nth-of-type(2n) *::-moz-selection, li figcaption::-moz-selection, li figcaption *::-moz-selection {
+  color: var(--text-color-light);
+  background-color: var(--accent-color2);
+}
+html:nth-of-type(2n)::selection, html:nth-of-type(2n) *::selection, html figcaption::selection, html figcaption *::selection, body:nth-of-type(2n)::selection, body:nth-of-type(2n) *::selection, body figcaption::selection, body figcaption *::selection, p:nth-of-type(2n)::selection, p:nth-of-type(2n) *::selection, p figcaption::selection, p figcaption *::selection, h1:nth-of-type(2n)::selection, h1:nth-of-type(2n) *::selection, h1 figcaption::selection, h1 figcaption *::selection, h2:nth-of-type(2n)::selection, h2:nth-of-type(2n) *::selection, h2 figcaption::selection, h2 figcaption *::selection, h3:nth-of-type(2n)::selection, h3:nth-of-type(2n) *::selection, h3 figcaption::selection, h3 figcaption *::selection, h4:nth-of-type(2n)::selection, h4:nth-of-type(2n) *::selection, h4 figcaption::selection, h4 figcaption *::selection, h5:nth-of-type(2n)::selection, h5:nth-of-type(2n) *::selection, h5 figcaption::selection, h5 figcaption *::selection, h6:nth-of-type(2n)::selection, h6:nth-of-type(2n) *::selection, h6 figcaption::selection, h6 figcaption *::selection, blockquote:nth-of-type(2n)::selection, blockquote:nth-of-type(2n) *::selection, blockquote figcaption::selection, blockquote figcaption *::selection, figure:nth-of-type(2n)::selection, figure:nth-of-type(2n) *::selection, figure figcaption::selection, figure figcaption *::selection, li:nth-of-type(2n)::selection, li:nth-of-type(2n) *::selection, li figcaption::selection, li figcaption *::selection {
+  color: var(--text-color-light);
+  background-color: var(--accent-color2);
 }/*# sourceMappingURL=app.css.map */

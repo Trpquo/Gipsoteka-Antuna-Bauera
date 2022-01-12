@@ -1,10 +1,47 @@
 ---
 title: Arhiv
 chapter: 4
+coverImage: 
+imgRoot: ./img/
+layout: basic
 ---
 
-# { title }
+# {title}
 
-Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime eum ad vero fugiat placeat, ipsum quia voluptate facilis odit necessitatibus ducimus distinctio accusantium, dolorum debitis consectetur. Nemo aut ad itaque illo non error doloribus corrupti, temporibus voluptatem necessitatibus! Culpa, earum iste. Dolor doloremque voluptatem sint esse dolorem quos accusantium distinctio nisi aliquam dolorum ex asperiores ullam et cum iusto, eum eveniet hic perferendis, cupiditate voluptas fugiat expedita veritatis debitis itaque. Modi, eius distinctio obcaecati totam rem laborum quas exercitationem provident aspernatur. Maxime facilis porro dolore corrupti accusamus optio quas at atque alias quasi! Commodi ea ipsa cupiditate pariatur aliquam exercitationem sint quidem natus voluptate sit ducimus nemo asperiores sequi a saepe nesciunt, eaque voluptatibus doloremque repellendus. Laborum nihil esse sapiente dolore eveniet blanditiis ut fugit quaerat nobis fugiat repellendus sunt unde sint id molestiae debitis ipsa est ea consectetur repellat perferendis eius, ullam cumque voluptates. 
+Arhiv za domaću likovnu umjetnost osnovan je u sklopu Gipsoteke 1937. godine i početno je koncipiran kao pomoćna studijska zbirka građom prvenstveno vezana uz zbirke Gipsoteke, koji ubrzo širi svoj stručni interes na cjelokupnu domaću likovnu praksu. U tu su svrhu sabirani novinski članci, reprodukcije djela, arhivski podaci, originalne skice i crteži te fotografije izložaba, privatnih atelijera i javnih spomenika. Arhiv služ¬beno započinje s radom 1943. godine, kada Bauer darovnicom Gipsoteci ustupa sav sakupljen materijal, uz uvjet da se nastavi s njegovim prikupljanjem. 
 
-Consequatur necessitatibus cupiditate recusandae assumenda quos. Ut repellendus nulla laboriosam alias voluptatum quis consequuntur, beatae expedita odit eum, nemo, facere quos? Commodi accusamus repellendus nam eaque quisquam, facilis earum asperiores esse error culpa totam excepturi accusantium fuga tempora expedita animi? Animi voluptatum dolore voluptatem quaerat quo obcaecati. Necessitatibus inventore voluptatem debitis hic harum obcaecati aliquid reiciendis ut, quasi temporibus voluptates fugiat provident, dolorum id? Voluptatem totam doloremque laborum aliquid officia illum fugit qui recusandae harum voluptatibus facilis quaerat nemo eius impedit asperiores natus, nostrum eveniet aspernatur beatae distinctio magnam officiis! Quidem, corrupti, tempore molestias quibusdam fuga possimus omnis nemo accusamus dignissimos harum, optio id tempora quasi illo sit doloribus odit qui. Eos saepe fugiat quod vel dolores nulla amet nostrum, minima est minus sunt modi libero similique, quisquam reiciendis excepturi enim repudiandae dolor provident beatae atque magni illo. Iste dignissimos, sint aspernatur ea maxime soluta dolor aliquam odit omnis voluptate debitis laborum, rem voluptatum! Voluptate.
+Sređene su i inventirane mape sa crtežima, skicama, akvarelima i uljima domaćih umjetnika. 
+
+_Za arhiv je primljen i osobni arhiv kipara Kerdića, Hrvatskog društva umjetnosti, dio arhive ljevaone Umjetničke akademije, Kluba likovnih umjetnica._
+
+U fototeci je sređen materijal o domaćoj umjetnosti prema autorima. Napravljen je i znatan broj snimaka, fotograf Gipsoteke snimao je svaku izložbu u Zagrebu, privatne zbirke i dr.
+
+Za arhiv su skupljeni podaci o umjetnicima, izložbama, likovnom radu i zbivanjima tokom 19. stojeća uz novinske članke i sustavno pripremljenu bibliografiju. U formi strojopisa izdana je iscrpna Bibliografija i građa za umjetnost i srodne struke , koja sadrži 31 knjigu.
+
+_Time ovaj arhiv dobiva jednu širu i veću značajku on obuhvaća rad, razvoj, život čitave naše moderne umjetnosti._
+![Arhiv i knjižnica prije uređenja 1949., Knjiga negativa Gliptoteke HAZU G/M-1](./img/G-M-1.jpg 'Arhiv i knjižnica prije uređenja 1949.')
+![Prostor knjižnice Gipsoteke 1946., Knjiga negativa Gliptoteke HAZU G/M-3](./img/G-M-3.jpg 'Prostor knjižnice Gipsoteke 1946.')
+![Prostor Zbirke crteža Gipsoteke 1946., Knjiga negativa Gliptoteke HAZU G/M-4](./img/G-M-4.jpg 'Prostor Zbirke crteža Gipsoteke 1946.')
+
+![Fototeka Gipsoteke 1946., Knjiga negativa Gliptoteke HAZU G/M-2](./img/G-M-2.jpg 'Fototeka Gipsoteke 1946.')
+![Prostor za studij u Zbirci crteža Gipsoteke 1946., Knjiga negativa Gliptoteke HAZU G/M-5](./img/G-M-5.jpg 'Prostor za studij u Zbirci crteža Gipsoteke 1946.')
+![Arhiv Gipsoteke 1950., Knjiga negativa Gliptoteke HAZU G/M-7](./img/G-M-7-2.jpg 'Arhiv Gipsoteke 1950.')
+![Prostor čitaonice Gipsoteke, 1951., Knjiga negativa Gliptoteke HAZU G/N-4](./img/G-N-4.jpg 'Prostor čitaonice Gipsoteke, 1951.')
+![Prostor čitaonice Gipsoteke, 1951., Knjiga negativa Gliptoteke HAZU](./img/img226.jpg 'Prostor čitaonice Gipsoteke, 1951.')
+
+Formirane su slijedeće zbirke:
+-	_Fototeka suvremene domaće umjetnosti_ koja obuhvaća članke, kataloge, reprodukcije, složena je prema autorima (domaćim i stranim koji su djelovali u našoj zemlji) 
+-	_Kartoteka izložaba_ naše suvre¬mene umjetnosti: fotografije, reprodukcije, članci i katalozi, bilješke o izložbama s kraja 19. i početka 20. stoljeća 
+-	_Zbirka studija, crteža, skica i grafika_ suvremenih domaćih umjetnika (današnja Zbirka crteža hrvatskih umjetnika Gliptoteke HAZU)
+-	_Fototeka negativa i dijapozitiva_
+-	_Arhiv strane umjetnosti_, osobito suvremene, u reprodukcijama i člancima kao priručni kom¬parativni materijal
+-	_Knjižnica_ s djelima iz područja domaće i strane umjetnosti, _Fotolaboratorij_ i _čitaonica Arhiva_ 
+
+
+
+
+ 
+
+
+[^1]: PDF <a rel="external" href="/downloads/Bauer-Kečkemet_Arhiv-za-domaću-likovnu-umjetnost.pdf" target="_blank">Antun Bauer, Duško Kečkemet, Gipsoteka Arhiv za domaću likovnu umjetnost, tipkopis, Zagreb, 1948.</a>
+
