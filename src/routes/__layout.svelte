@@ -6,18 +6,21 @@
 
         return { props: {} }
     }
+
 </script>
 <script>
-    import { Header, Footer } from '$lib/components/all'
+
+    import { Header, Footer, Loader } from '$lib/components/all'
     import '../app.css';
     import '../../node_modules/aos/dist/aos.css';
-
     
+   
 
 </script>
 
 <Header />
 
+<Loader />
 <main>
     <slot />
 </main>

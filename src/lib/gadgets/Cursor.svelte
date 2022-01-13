@@ -60,7 +60,8 @@
         margin-left: -405px;
 	}
 	circle {
-        fill: #ff3e0088;
+        fill: var(--accent-color);
+        opacity: .5;
 	}
 
 

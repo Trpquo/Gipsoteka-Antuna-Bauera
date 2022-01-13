@@ -1,34 +1,41 @@
-$big-screen: 1000px;
+$big-screen: 1400px;
 $tiny-screen: 600px;
 
 
-html {
+:root {
 
     --bg-light: seashell; // papayawhip, oldlace
-    --bg-dark: #334e;
-    --bg-color-medium: sienna; // peru, chocolate, sienna
-    --bg-color-light: tan; // burlywood
-    --accent-color: orangered; // crimson
+    --bg-dark: #5a554cdd;
+    --bg-color-medium: #9e9175; // sienna, peru, chocolate, sienna
+    --bg-color-light: var(--accent-color)  ; // tan, burlywood
+    --accent-color: #d1ad64; // orangered, crimson
     --accent-color2: darkseagreen;  // cadetblue, darkcyan
-    --text-face: 'Fira Sans', "Segoe UI", Verdana, Tahoma, sans-serif;
-    --title-face: 'Petrona', serif;
-    --head-face: 'Nobile', 'Fira Sans', "Segoe UI", Verdana, Tahoma, sans-serif;
-    --caption-face: var(--title-face);
-    --quote-face: var(--title-face);
+    --accent-color3: #da5630;  // cadetblue, darkcyan
     --text-color-light: var(--bg-light);
-    --text-color-dark: #332;
+    --text-color-dark: #363626;
+    
 
-    --default-padding: clamp( .25rem, 1.5vmax, 2rem );
-    --large-padding: clamp( 2rem, 3vw, 6rem);
-
-    --head-size: clamp(3.5rem, 6vw, 5rem);
+    --head-face: 'Petrona', serif;
+    --text-face: 'Fira Sans', "Segoe UI", Verdana, Tahoma, sans-serif;
+    --text-face2: 'Vesper Libre', serif;
+    --title-face: 'Nobile', Verdana, Tahoma, sans-serif;
+    --title-face2: var(--text-face2);
+    --caption-face: var(--text-face2);
+    --quote-face: var(--text-face2);
+    --number-style: oldstyle-nums;
+    
+    --head-size: clamp(4rem, 6vw, 6rem);
     --title-size: clamp( 2.5rem, 5vw, 3rem);
     --text-size: clamp( 15px, 1.3vw, 18px );
     --quote-size: clamp( 20px, 1.3vw, 24px );
     --caption-size: clamp( 14px, 1.1vw, 16px );
-    --chapter-no-size: clamp( 2rem, 3vw, 2.666rem );
+    --chapter-no-size: clamp( 7rem, 13vmax, 11rem );/* clamp( 2rem, 3vw, 2.666rem ); */
     --subhead-size: var(--text-quote);
     --menuitem-size: clamp( 1.5rem, 3vh, 2.666rem );
+
+    
+    --default-padding: clamp( .666rem, 1.5vw, 2rem );
+    --large-padding: clamp( 2rem, 3vw, 6rem);
 }
 
 @mixin for-desktop {
@@ -113,6 +120,11 @@ html {
     left: 0;
     z-index: -1;
 }
+@mixin titles {
+    font-family: var(--title-face2);
+    line-height: 1.3em;
+    margin-top: .5em;
+}
 @mixin quotes {
     font-family: var(--quote-face);
     font-size: var(--quote-size);
@@ -120,11 +132,17 @@ html {
     font-style: italic;
 }
 @mixin footnotes {
+    font-family: var(--caption-face);
     font-size: var(--caption-size);
     line-height: 1.3em;
+    font-weight: 500;
+    font-style: normal;
 
     li {
         margin-top: .5rem;
     }
+}
+@mixin captions {
+    @include footnotes;
 }
 

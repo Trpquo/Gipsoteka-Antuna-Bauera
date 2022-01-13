@@ -1,14 +1,15 @@
 @charset "UTF-8";
-@use 'foundation/vars' as *;
+@use 'styles/vars' as *;
 
 
-html {
+:root {
     background-color: var(--bg-light);
     font-family: var(--text-face);
     font-weight: 400;
     font-size: var(--text-size);
     line-height: 1.4em;
     color: var(--text-color-dark);
+    font-variant-numeric: var(--number-style);
 }
 * {
     box-sizing: border-box;
@@ -37,41 +38,73 @@ button {
 /* zaglavlje */
 
 header {
+    padding: var(--large-padding);
+    padding-top: min( var(--large-padding) * 6.66, 20vh );
+    background-color: var(--bg-dark);
+
+    @include for-mini {
+        padding: 0;
+        padding-top: 13vh;
+    }
+    
     h1 {
-        font-size: var(--head-size);
         font-family: var(--head-face);
-        font-weight: 800;
-        // letter-spacing: .05em;
-        color: var(--text-color-dark);
-        line-height: 1.05em;
-        width: 3em;
-        padding: var(--large-padding);
-        float: left;
+        font-size: var(--head-size);
+        font-weight: 400;
+        text-transform: uppercase;
+        text-align: center;
+        background-color: var(--bg-color-light);
+        color: var(--text-color-light);
+        line-height: .8em;
+        letter-spacing: .01em;
+        padding: max( var(--default-padding), 1rem ) var(--large-padding);
+        display: inline-block;
 
 
+        div {
+            font-size: .63em;
+            border-bottom: .0666em solid currentColor;
+            padding-bottom: .0666em;
+        }
+        
         a {
             color: inherit;
+            
+            //     & span {
+            //         color: var(--accent-color);
+            //         font-size: 1.2em;
+            //     }
+            //     & span:first-of-type {
+            //         margin-left: -.05em;
+            //         margin-right: 0.01em;
+            //     }
+            //     & span:nth-of-type(2) {
+            //         margin-left: -.01em;
+            //         margin-right: 0.0¸1em;
+            //     }
+            //     & span:nth-of-type(3) {
+            //         margin-left: -.00em;
+            //         margin-right: 0.01em;
+            //     }
+        }
+        
+        @include for-mini {
+            display: block;
 
-            & span {
-                color: var(--accent-color);
-                font-size: 1.2em;
-            }
-            & span:first-of-type {
-                margin-left: -.05em;
-                margin-right: 0.01em;
-            }
-            & span:nth-of-type(2) {
-                margin-left: -.01em;
-                margin-right: 0.0¸1em;
-            }
-            & span:nth-of-type(3) {
-                margin-left: -.00em;
-                margin-right: 0.01em;
+            div {
+                display: inline-block;
+                padding-bottom: 0;
+                border-bottom: none;
+                line-height: 1;
             }
         }
-
     }
 
+    &.moj h1 {
+        font-family: var(--text-face2);
+        font-size: calc( var(--head-size) * .9 );
+        padding: 2.5vmax var(--large-padding) var(--default-padding);
+    }
 
 }
 
@@ -80,8 +113,8 @@ header {
     position: fixed;
     top: var(--large-padding);
     right: var(--large-padding);
-    width: var(--large-padding);
-    height: var(--large-padding);
+    width: 3rem;
+    height: 3rem;
     padding: var(--default-padding);
     text-align: center;
     transition: background-color .5s, border-radius 1s;
@@ -97,6 +130,15 @@ header {
     }
     &.active:hover {
         @include light-text-on-accent
+    }
+
+    @include for-mini {
+        background-color: var(--accent-color2);
+        width: 100%;
+        height: 3rem;
+        top: auto;
+        bottom: 0;
+        right: 0;
     }
 }
 
@@ -131,11 +173,11 @@ header {
             margin: 0;
             padding: 0;
             transition: background-color .3s, color .1s;
-            @include dark-text-on-color;
+            @include dark-text-on-light;
 
 
             li {
-                @include dark-text-on-color;
+                @include dark-text-on-light;
                 padding-left: var(--large-padding);
 
                 &:hover {
@@ -188,7 +230,7 @@ header {
             @include light-text-on-accent;
         }
         li.active {
-            @include dark-text-on-color;
+            @include dark-text-on-light;
 
             &.current {
                 font-weight: 800;
@@ -233,34 +275,60 @@ header {
 
 article {
     padding: var(--large-padding);
-    
-
-    h4 {
-        @include reset;
-        font-size: var(--chapter-no-size);
-        line-height: 3rem;
-        color: var(--accent-color);
-        text-align: right;
-
-        @include for-desktop {
-            width: 60%;
-        }
-    }
-
+       
     h1 {
         font-size: var(--title-size);
         line-height: 1em;
         margin-bottom: .5em;
+        
+        
+        @include for-mini {
+            text-align: center;
+        }
     }
 
-    h2, h3, h4, h5, h6 {
-        margin-top: .5em;
+    h2, h3, h4, h5 {
+        @include titles
     }
 
-    h1, h3, h5, blockquote, figcaption {
+    h1, h3, h5 {
         font-family: var(--title-face);
     }
 
+    h2 {
+        font-size: var(--title-size);
+    }
+    h1 + h2 {
+        margin-top: var(--large-padding);
+    }
+
+    h6 { /* Ovaj se koristi za broj poglavlja */
+        @include reset;
+        font-size: var(--chapter-no-size);
+        font-weight: 666;
+        line-height: .3em;
+        color: var(--bg-color-medium);
+        text-align: right;
+        margin-top: -.5em;
+        margin-bottom: .5em;
+        letter-spacing: -.02em;
+
+        &::first-letter {
+            color: var(--accent-color);
+        }
+        
+        @include for-mini {
+            font-size: calc( var(--chapter-no-size) / 2 );
+            margin-top: .3em;
+            text-align: center;
+            opacity: 1;
+        }
+        
+        @include for-desktop {
+            width: 60%;
+            opacity: .8;
+        }
+    }
 
     .textContent {
 
@@ -316,10 +384,6 @@ article {
             }
         }
 
-        p > figure, p > img {
-            display: none;
-        }
-
         figure {
             // animation: shrink .3s forwards;
             transition: opacity .3s;
@@ -345,6 +409,7 @@ article {
             }
 
             figcaption {
+                @include captions;
                 .short {
                     display: inline;
                 }
@@ -416,13 +481,14 @@ article {
 
         .showbox {
             display: flex;
-            margin: var(--default-padding) 0;
+            margin: var(--default-padding) 0 var(--large-padding);
             justify-content: center;
             
             
             figure {
                 @include dark-text-on-light;
-                padding:  var(--default-padding);
+                max-width: 800px;
+                padding:  min( var(--default-padding), 1rem);
                 padding-bottom: 0;
                 box-shadow: .05rem .2rem .25rem #3333;
                 margin-right: 1rem;
@@ -432,6 +498,7 @@ article {
                 
                 &.lightboxtime {
                     @include light-text-on-dark;
+                    max-width: none;
                     border-top: .5rem solid var(--accent-color);
                 }
 
@@ -441,7 +508,6 @@ article {
 
             
                 figcaption {
-                    @include footnotes;
                     padding: var(--default-padding) 0;
                 }
             }
@@ -481,7 +547,8 @@ article {
                 "p12 a"
                 "p13 a"
                 "p14 a"
-                "p15 a";
+                "p15 a"
+                ;
 
         }
         @include for-mini {
@@ -490,7 +557,6 @@ article {
                 "h1 h1"
                 "p1 p1"
                 "p2 p2"
-                "a  a"
                 "p3 p3"
                 "p4 p4"
                 "p5 p5"
@@ -503,7 +569,9 @@ article {
                 "p12 p12"
                 "p13 p13"
                 "p14 p14"
-                "p15 p15";
+                "p15 p15"
+                "a  a"
+                ;
 
         }
 
@@ -554,6 +622,7 @@ article {
 
         .footnotes {
             @include outer-padding;
+            @include footnotes;
             margin-left: calc( var(--large-padding) * -1 );
             position: relative;
 
@@ -575,8 +644,6 @@ article {
             }
 
             ol, ul {
-
-                @include footnotes;
                 clear: both;
 
                 li {
@@ -625,9 +692,14 @@ article {
     gap: .5rem;
     margin: 0;
 
+    h2 {
+        display: none;
+    }
+
     figure {
         display: flex;
         flex-direction: column;
+        flex-wrap: wrap;
         border-top: .5rem solid var(--accent-color);
         margin: 0;
 
@@ -659,6 +731,10 @@ article {
     }
     @include for-mini {
         flex-direction: column;
+
+        h2 {
+            display: block;
+        }
     }
 
 }

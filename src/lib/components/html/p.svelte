@@ -1,5 +1,5 @@
 <script>
-    import { onMount } from 'svelte'
+    import { beforeUpdate } from 'svelte'
     import Img from '$lib/components/html/img.svelte'
 
     let p, showbox = [], gallery = false
@@ -29,7 +29,7 @@
 
     $: twist = showbox.length >  0
     
-    onMount(async ( )=>{
+    beforeUpdate(async ( )=>{
         try {
             if ( p ) gallery = hasOnlyImg( p )
         }
@@ -45,6 +45,7 @@
 
 {#if gallery }
 <aside class="gallery">
+    <h2>Galerija</h2>
     <slot />
 </aside>
 {:else}

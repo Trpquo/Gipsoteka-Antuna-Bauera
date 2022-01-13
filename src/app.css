@@ -1,37 +1,43 @@
 @charset "UTF-8";
-html {
+:root {
   --bg-light: seashell;
-  --bg-dark: #334e;
-  --bg-color-medium: sienna;
-  --bg-color-light: tan;
-  --accent-color: orangered;
+  --bg-dark: #5a554cdd;
+  --bg-color-medium: #9e9175;
+  --bg-color-light: var(--accent-color) ;
+  --accent-color: #d1ad64;
   --accent-color2: darkseagreen;
-  --text-face: "Fira Sans", "Segoe UI", Verdana, Tahoma, sans-serif;
-  --title-face: "Petrona", serif;
-  --head-face: "Nobile", "Fira Sans", "Segoe UI", Verdana, Tahoma, sans-serif;
-  --caption-face: var(--title-face);
-  --quote-face: var(--title-face);
+  --accent-color3: #da5630;
   --text-color-light: var(--bg-light);
-  --text-color-dark: #332;
-  --default-padding: clamp( .25rem, 1.5vmax, 2rem );
-  --large-padding: clamp( 2rem, 3vw, 6rem);
-  --head-size: clamp(3.5rem, 6vw, 5rem);
+  --text-color-dark: #363626;
+  --head-face: "Petrona", serif;
+  --text-face: "Fira Sans", "Segoe UI", Verdana, Tahoma, sans-serif;
+  --text-face2: "Vesper Libre", serif;
+  --title-face: "Nobile", Verdana, Tahoma, sans-serif;
+  --title-face2: var(--text-face2);
+  --caption-face: var(--text-face2);
+  --quote-face: var(--text-face2);
+  --number-style: oldstyle-nums;
+  --head-size: clamp(4rem, 6vw, 6rem);
   --title-size: clamp( 2.5rem, 5vw, 3rem);
   --text-size: clamp( 15px, 1.3vw, 18px );
   --quote-size: clamp( 20px, 1.3vw, 24px );
   --caption-size: clamp( 14px, 1.1vw, 16px );
-  --chapter-no-size: clamp( 2rem, 3vw, 2.666rem );
+  --chapter-no-size: clamp( 7rem, 13vmax, 11rem );
+  /* clamp( 2rem, 3vw, 2.666rem ); */
   --subhead-size: var(--text-quote);
   --menuitem-size: clamp( 1.5rem, 3vh, 2.666rem );
+  --default-padding: clamp( .666rem, 1.5vw, 2rem );
+  --large-padding: clamp( 2rem, 3vw, 6rem);
 }
 
-html {
+:root {
   background-color: var(--bg-light);
   font-family: var(--text-face);
   font-weight: 400;
   font-size: var(--text-size);
   line-height: 1.4em;
   color: var(--text-color-dark);
+  font-variant-numeric: var(--number-style);
 }
 
 * {
@@ -61,34 +67,53 @@ button {
 }
 
 /* zaglavlje */
-header h1 {
-  font-size: var(--head-size);
-  font-family: var(--head-face);
-  font-weight: 800;
-  color: var(--text-color-dark);
-  line-height: 1.05em;
-  width: 3em;
+header {
   padding: var(--large-padding);
-  float: left;
+  padding-top: min(var(--large-padding) * 6.66, 20vh);
+  background-color: var(--bg-dark);
+}
+@media (max-width: 600px) {
+  header {
+    padding: 0;
+    padding-top: 13vh;
+  }
+}
+header h1 {
+  font-family: var(--head-face);
+  font-size: var(--head-size);
+  font-weight: 400;
+  text-transform: uppercase;
+  text-align: center;
+  background-color: var(--bg-color-light);
+  color: var(--text-color-light);
+  line-height: 0.8em;
+  letter-spacing: 0.01em;
+  padding: max(var(--default-padding), 1rem) var(--large-padding);
+  display: inline-block;
+}
+header h1 div {
+  font-size: 0.63em;
+  border-bottom: 0.0666em solid currentColor;
+  padding-bottom: 0.0666em;
 }
 header h1 a {
   color: inherit;
 }
-header h1 a span {
-  color: var(--accent-color);
-  font-size: 1.2em;
+@media (max-width: 600px) {
+  header h1 {
+    display: block;
+  }
+  header h1 div {
+    display: inline-block;
+    padding-bottom: 0;
+    border-bottom: none;
+    line-height: 1;
+  }
 }
-header h1 a span:first-of-type {
-  margin-left: -0.05em;
-  margin-right: 0.01em;
-}
-header h1 a span:nth-of-type(2) {
-  margin-left: -0.01em;
-  margin-right: 0¸1em;
-}
-header h1 a span:nth-of-type(3) {
-  margin-left: 0em;
-  margin-right: 0.01em;
+header.moj h1 {
+  font-family: var(--text-face2);
+  font-size: calc( var(--head-size) * .9 );
+  padding: 2.5vmax var(--large-padding) var(--default-padding);
 }
 
 #menuButton {
@@ -98,8 +123,8 @@ header h1 a span:nth-of-type(3) {
   position: fixed;
   top: var(--large-padding);
   right: var(--large-padding);
-  width: var(--large-padding);
-  height: var(--large-padding);
+  width: 3rem;
+  height: 3rem;
   padding: var(--default-padding);
   text-align: center;
   transition: background-color 0.5s, border-radius 1s;
@@ -117,6 +142,16 @@ header h1 a span:nth-of-type(3) {
 #menuButton.active:hover {
   background-color: var(--accent-color);
   color: var(--text-color-light);
+}
+@media (max-width: 600px) {
+  #menuButton {
+    background-color: var(--accent-color2);
+    width: 100%;
+    height: 3rem;
+    top: auto;
+    bottom: 0;
+    right: 0;
+  }
 }
 
 #menu {
@@ -150,11 +185,11 @@ header h1 a span:nth-of-type(3) {
   margin: 0;
   padding: 0;
   transition: background-color 0.3s, color 0.1s;
-  background-color: var(--bg-color-light);
+  background-color: var(--bg-light);
   color: var(--text-color-dark);
 }
 #menu ul li li {
-  background-color: var(--bg-color-light);
+  background-color: var(--bg-light);
   color: var(--text-color-dark);
   padding-left: var(--large-padding);
 }
@@ -205,7 +240,7 @@ header h1 a span:nth-of-type(3) {
   color: var(--text-color-light);
 }
 #menu ul li.active {
-  background-color: var(--bg-color-light);
+  background-color: var(--bg-light);
   color: var(--text-color-dark);
 }
 #menu ul li.active.current {
@@ -240,30 +275,60 @@ header h1 a span:nth-of-type(3) {
 article {
   padding: var(--large-padding);
 }
-article h4 {
-  margin: 0;
-  border: 0;
-  padding: 0;
-  font-size: var(--chapter-no-size);
-  line-height: 3rem;
-  color: var(--accent-color);
-  text-align: right;
-}
-@media (min-width: 1000px) {
-  article h4 {
-    width: 60%;
-  }
-}
 article h1 {
   font-size: var(--title-size);
   line-height: 1em;
   margin-bottom: 0.5em;
 }
-article h2, article h3, article h4, article h5, article h6 {
+@media (max-width: 600px) {
+  article h1 {
+    text-align: center;
+  }
+}
+article h2, article h3, article h4, article h5 {
+  font-family: var(--title-face2);
+  line-height: 1.3em;
   margin-top: 0.5em;
 }
-article h1, article h3, article h5, article blockquote, article figcaption {
+article h1, article h3, article h5 {
   font-family: var(--title-face);
+}
+article h2 {
+  font-size: var(--title-size);
+}
+article h1 + h2 {
+  margin-top: var(--large-padding);
+}
+article h6 {
+  /* Ovaj se koristi za broj poglavlja */
+  margin: 0;
+  border: 0;
+  padding: 0;
+  font-size: var(--chapter-no-size);
+  font-weight: 666;
+  line-height: 0.3em;
+  color: var(--bg-color-medium);
+  text-align: right;
+  margin-top: -0.5em;
+  margin-bottom: 0.5em;
+  letter-spacing: -0.02em;
+}
+article h6::first-letter {
+  color: var(--accent-color);
+}
+@media (max-width: 600px) {
+  article h6 {
+    font-size: calc( var(--chapter-no-size) / 2 );
+    margin-top: 0.3em;
+    text-align: center;
+    opacity: 1;
+  }
+}
+@media (min-width: 1400px) {
+  article h6 {
+    width: 60%;
+    opacity: 0.8;
+  }
 }
 article .textContent {
   display: grid;
@@ -340,9 +405,6 @@ article .textContent blockquote:before {
   line-height: 1em;
   left: -0.45em;
 }
-article .textContent p > figure, article .textContent p > img {
-  display: none;
-}
 article .textContent figure {
   transition: opacity 0.3s;
 }
@@ -359,6 +421,16 @@ article .textContent figure div img {
   max-width: 100%;
   pointer-events: none;
   filter: grayscale(0.8) sepia(0.3) contrast(0.666);
+}
+article .textContent figure figcaption {
+  font-family: var(--caption-face);
+  font-size: var(--caption-size);
+  line-height: 1.3em;
+  font-weight: 500;
+  font-style: normal;
+}
+article .textContent figure figcaption li {
+  margin-top: 0.5rem;
 }
 article .textContent figure figcaption .short {
   display: inline;
@@ -434,13 +506,14 @@ article .textContent figure.lightboxtime figcaption .long {
 }
 article .textContent .showbox {
   display: flex;
-  margin: var(--default-padding) 0;
+  margin: var(--default-padding) 0 var(--large-padding);
   justify-content: center;
 }
 article .textContent .showbox figure {
   background-color: var(--bg-light);
   color: var(--text-color-dark);
-  padding: var(--default-padding);
+  max-width: 800px;
+  padding: min(var(--default-padding), 1rem);
   padding-bottom: 0;
   box-shadow: 0.05rem 0.2rem 0.25rem #3333;
   margin-right: 1rem;
@@ -451,18 +524,14 @@ article .textContent .showbox figure {
 article .textContent .showbox figure.lightboxtime {
   background-color: var(--bg-dark);
   color: var(--text-color-light);
+  max-width: none;
   border-top: 0.5rem solid var(--accent-color);
 }
 article .textContent .showbox figure div {
   flex-grow: 1;
 }
 article .textContent .showbox figure figcaption {
-  font-size: var(--caption-size);
-  line-height: 1.3em;
   padding: var(--default-padding) 0;
-}
-article .textContent .showbox figure figcaption li {
-  margin-top: 0.5rem;
 }
 article .textContent .showbox.for2 figure {
   max-width: 50%;
@@ -476,14 +545,14 @@ article .textContent .showbox.for4 figure {
 article .textContent .showbox.for5 figure {
   max-width: 20%;
 }
-@media (min-width: 1000px) {
+@media (min-width: 1400px) {
   article .textContent {
     grid-template-areas: "h1 ." "p1 a" "p2 a" "p3 a" "p4 a" "p5 a" "p6 a" "p7 a" "p8 a" "p9 a" "p10 a" "p11 a" "p12 a" "p13 a" "p14 a" "p15 a";
   }
 }
 @media (max-width: 600px) {
   article .textContent {
-    grid-template-areas: "h1 h1" "p1 p1" "p2 p2" "a  a" "p3 p3" "p4 p4" "p5 p5" "p6 p6" "p7 p7" "p8 p8" "p9 p9" "p10 p10" "p11 p11" "p12 p12" "p13 p13" "p14 p14" "p15 p15";
+    grid-template-areas: "h1 h1" "p1 p1" "p2 p2" "p3 p3" "p4 p4" "p5 p5" "p6 p6" "p7 p7" "p8 p8" "p9 p9" "p10 p10" "p11 p11" "p12 p12" "p13 p13" "p14 p14" "p15 p15" "a  a";
   }
 }
 article .textContent > *:nth-last-child(1):not(.gallery), article .textContent > p:last-of-type {
@@ -527,8 +596,16 @@ article .textContent a.footnote-backref {
 article .textContent .footnotes {
   padding: var(--default-padding);
   margin: 0 calc( var(--default-padding) * -1 );
+  font-family: var(--caption-face);
+  font-size: var(--caption-size);
+  line-height: 1.3em;
+  font-weight: 500;
+  font-style: normal;
   margin-left: calc( var(--large-padding) * -1 );
   position: relative;
+}
+article .textContent .footnotes li {
+  margin-top: 0.5rem;
 }
 article .textContent .footnotes:before {
   content: "";
@@ -552,12 +629,7 @@ article .textContent .footnotes hr {
   opacity: 0.666;
 }
 article .textContent .footnotes ol, article .textContent .footnotes ul {
-  font-size: var(--caption-size);
-  line-height: 1.3em;
   clear: both;
-}
-article .textContent .footnotes ol li, article .textContent .footnotes ul li {
-  margin-top: 0.5rem;
 }
 article .textContent .footnotes ol li, article .textContent .footnotes ul li {
   counter-increment: foot;
@@ -594,9 +666,13 @@ article #bgImage {
   gap: 0.5rem;
   margin: 0;
 }
+.gallery h2 {
+  display: none;
+}
 .gallery figure {
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
   border-top: 0.5rem solid var(--accent-color);
   margin: 0;
 }
@@ -616,7 +692,7 @@ article #bgImage {
   background-color: var(--accent-color);
   color: var(--text-color-light);
 }
-@media (min-width: 1000px) {
+@media (min-width: 1400px) {
   .gallery {
     flex-direction: column;
   }
@@ -627,6 +703,9 @@ article #bgImage {
 @media (max-width: 600px) {
   .gallery {
     flex-direction: column;
+  }
+  .gallery h2 {
+    display: block;
   }
 }
 

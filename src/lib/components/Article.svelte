@@ -51,7 +51,7 @@
 
 <article in:fly={{ x: 1000, delay: 300, duration: 1000 }} out:fly={{ x: -300, duration: 300 }} bind:this={ article } >
     {#if chapter }
-    <h4 id="chapNo">{ chapter }</h4>
+    <h6 id="chapNo">{ chapter }</h6>
     {/if}
     <section class="textContent" >
         <slot />

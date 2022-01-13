@@ -54,7 +54,7 @@ export const get = async () => {
         } else return 1       
     }  
 
-    function editMenu( menu ) {
+    function cleanAndSortMenu( menu ) {
         // console.log( menu )
 
         menu.forEach(item=> {
@@ -62,7 +62,7 @@ export const get = async () => {
                 if ( item.sub.length === 0 ) {    
                     item.sub = false
                 } else {
-                    editMenu( item.sub ) 
+                    cleanAndSortMenu( item.sub ) 
                 }
             }
             // console.log( "Chap #", parseFloat( item.meta.chapter ), item.meta.title, item.sub )
@@ -71,10 +71,10 @@ export const get = async () => {
         menu.sort( sortByChapNo )
     }
 
-    editMenu( menu )
+    cleanAndSortMenu( menu )
     
 
-    // console.log( menu )
+    console.log( menu )
 
     return {
         status: 200,

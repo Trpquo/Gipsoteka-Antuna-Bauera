@@ -32,8 +32,8 @@
 
     
 </script>
-<header>
-    <h1><a href="/"><span>G</span>ipsoteka <span>A</span>ntuna <span>B</span>auera</a></h1>
+<header class="moj">
+    <h1><a href="/"><span>G</span>ipsoteka <div><span>A</span>ntuna <span>B</span>auera</div></a></h1>
 
     <button id="menuButton" on:click={ openMenu } class:active={ menuOpen }>Izbornik</button>
     {#if menuOpen }
