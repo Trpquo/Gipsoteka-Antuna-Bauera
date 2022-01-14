@@ -7,7 +7,7 @@
 			"title: ${1:string}",
 			"chapter: ${2:number}",
 			"coverImage: ",
-			"imgRoot: ./img/",
+			"imgRoot: /img/",
 			"layout: basic",
 			"---",
 			"",
@@ -15,7 +15,7 @@
 			"",
 			"$3",
 			"",
-			"![tekst za opis slike odnosno alt](./img/ '')",
+			"![tekst za opis slike odnosno alt]({imgRoot} '')",
 			""
 		],
 		"description": "Postavljanje osnovne strukture članka"

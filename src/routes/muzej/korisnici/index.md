@@ -2,7 +2,7 @@
 title: O postavu i korisnicima
 chapter: 2.3
 coverImage: Dvorana-Rendic.jpg
-imgRoot: ./img/
+imgRoot: /img/muzej/korisnici/
 layout: basic
 ---
 
@@ -14,13 +14,13 @@ Bauer u opisu i analizi stalnog postava[^1] promišlja o svim njegovim segmentim
 
 > ... bitna je razlika između današnjih posjetilaca u muzeju i onih (...) ranije (…) to je manji broj većinom samo stručnjaka i naučnika…Postav jednog muzeja nameće niz problema koje treba riješiti, da se dobije i poluči ono što jedan moderni i suvremeni postav muzejske zbirke zahtjeva. (…) 
 
-![Razgledavanje antičke zbirke u Gipsoteci, Fototeka Gliptoteke HAZU, F-243](./img/F-243-1.jpg 'Razgledavanje antičke zbirke')
-![Antičke zbirka u Gipsoteci, Fototeka Gliptoteke HAZU, G/J-112](./img/G-J-112-1.jpg 'Antička zbirka u Gipsoteci')
+![Razgledavanje antičke zbirke u Gipsoteci, Fototeka Gliptoteke HAZU, F-243]({imgRoot}F-243-1.jpg 'Razgledavanje antičke zbirke')
+![Antičke zbirka u Gipsoteci, Fototeka Gliptoteke HAZU, G/J-112]({imgRoot}G-J-112-1.jpg 'Antička zbirka u Gipsoteci')
 
 > Izlaganje mora biti takvo da ne umara, nego da publika ima primaran osjećaj uživanja i razonode u tim zbirkama.
 
 > Važno je (...) postaviti posjetiocima u izložbenim dvoranama mogućnosti za sjedenje. Publika kada prolazi kroz veći muzej, umori se (…) psihički umor daleko je važniji (…) nego fizički.
-![Stalni postav Dvorana Rendić – Valdec s mjestom za odmor i studij, Fototeka Gliptoteke HAZU](./img/Dvorana-Rendic.jpg 'Stalni postav Dvorana Rendić – Valdec')
+![Stalni postav Dvorana Rendić – Valdec s mjestom za odmor i studij, Fototeka Gliptoteke HAZU]({imgRoot}Dvorana-Rendic.jpg 'Stalni postav Dvorana Rendić – Valdec')
 
 Cilj muzejskog postava za Bauera i danas je aktualno, suvremeno razmišljanje muzejsko- baštinskih institucija sažeto u rečenici: _Muzeji moraju odgojiti publiku i dati im kriterij vrijednosti._
 

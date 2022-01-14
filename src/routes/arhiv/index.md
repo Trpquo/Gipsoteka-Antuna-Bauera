@@ -2,7 +2,7 @@
 title: Arhiv
 chapter: 4
 coverImage: 
-imgRoot: ./img/
+imgRoot: /img/arhiv/
 layout: basic
 ---
 
@@ -19,15 +19,15 @@ U fototeci je sređen materijal o domaćoj umjetnosti prema autorima. Napravljen
 Za arhiv su skupljeni podaci o umjetnicima, izložbama, likovnom radu i zbivanjima tokom 19. stojeća uz novinske članke i sustavno pripremljenu bibliografiju. U formi strojopisa izdana je iscrpna Bibliografija i građa za umjetnost i srodne struke , koja sadrži 31 knjigu.
 
 _Time ovaj arhiv dobiva jednu širu i veću značajku on obuhvaća rad, razvoj, život čitave naše moderne umjetnosti._
-![Arhiv i knjižnica prije uređenja 1949., Knjiga negativa Gliptoteke HAZU G/M-1](./img/G-M-1.jpg 'Arhiv i knjižnica prije uređenja 1949.')
-![Prostor knjižnice Gipsoteke 1946., Knjiga negativa Gliptoteke HAZU G/M-3](./img/G-M-3.jpg 'Prostor knjižnice Gipsoteke 1946.')
-![Prostor Zbirke crteža Gipsoteke 1946., Knjiga negativa Gliptoteke HAZU G/M-4](./img/G-M-4.jpg 'Prostor Zbirke crteža Gipsoteke 1946.')
+![Arhiv i knjižnica prije uređenja 1949., Knjiga negativa Gliptoteke HAZU G/M-1]({imgRoot}G-M-1.jpg 'Arhiv i knjižnica prije uređenja 1949.')
+![Prostor knjižnice Gipsoteke 1946., Knjiga negativa Gliptoteke HAZU G/M-3]({imgRoot}G-M-3.jpg 'Prostor knjižnice Gipsoteke 1946.')
+![Prostor Zbirke crteža Gipsoteke 1946., Knjiga negativa Gliptoteke HAZU G/M-4]({imgRoot}G-M-4.jpg 'Prostor Zbirke crteža Gipsoteke 1946.')
 
-![Fototeka Gipsoteke 1946., Knjiga negativa Gliptoteke HAZU G/M-2](./img/G-M-2.jpg 'Fototeka Gipsoteke 1946.')
-![Prostor za studij u Zbirci crteža Gipsoteke 1946., Knjiga negativa Gliptoteke HAZU G/M-5](./img/G-M-5.jpg 'Prostor za studij u Zbirci crteža Gipsoteke 1946.')
-![Arhiv Gipsoteke 1950., Knjiga negativa Gliptoteke HAZU G/M-7](./img/G-M-7-2.jpg 'Arhiv Gipsoteke 1950.')
-![Prostor čitaonice Gipsoteke, 1951., Knjiga negativa Gliptoteke HAZU G/N-4](./img/G-N-4.jpg 'Prostor čitaonice Gipsoteke, 1951.')
-![Prostor čitaonice Gipsoteke, 1951., Knjiga negativa Gliptoteke HAZU](./img/img226.jpg 'Prostor čitaonice Gipsoteke, 1951.')
+![Fototeka Gipsoteke 1946., Knjiga negativa Gliptoteke HAZU G/M-2]({imgRoot}G-M-2.jpg 'Fototeka Gipsoteke 1946.')
+![Prostor za studij u Zbirci crteža Gipsoteke 1946., Knjiga negativa Gliptoteke HAZU G/M-5]({imgRoot}G-M-5.jpg 'Prostor za studij u Zbirci crteža Gipsoteke 1946.')
+![Arhiv Gipsoteke 1950., Knjiga negativa Gliptoteke HAZU G/M-7]({imgRoot}G-M-7-2.jpg 'Arhiv Gipsoteke 1950.')
+![Prostor čitaonice Gipsoteke, 1951., Knjiga negativa Gliptoteke HAZU G/N-4]({imgRoot}G-N-4.jpg 'Prostor čitaonice Gipsoteke, 1951.')
+![Prostor čitaonice Gipsoteke, 1951., Knjiga negativa Gliptoteke HAZU]({imgRoot}img226.jpg 'Prostor čitaonice Gipsoteke, 1951.')
 
 Formirane su slijedeće zbirke:
 -	_Fototeka suvremene domaće umjetnosti_ koja obuhvaća članke, kataloge, reprodukcije, složena je prema autorima (domaćim i stranim koji su djelovali u našoj zemlji) 

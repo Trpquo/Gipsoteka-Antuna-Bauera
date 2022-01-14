@@ -1,4 +1,4 @@
-$big-screen: 1400px;
+$big-screen: 1200px;
 $tiny-screen: 600px;
 
 
@@ -6,29 +6,29 @@ $tiny-screen: 600px;
 
     --bg-light: seashell; // papayawhip, oldlace
     --bg-dark: #5a554cdd;
-    --bg-color-medium: #9e9175; // sienna, peru, chocolate, sienna
-    --bg-color-light: var(--accent-color)  ; // tan, burlywood
-    --accent-color: #d1ad64; // orangered, crimson
-    --accent-color2: darkseagreen;  // cadetblue, darkcyan
-    --accent-color3: #da5630;  // cadetblue, darkcyan
+    --bg-color-light: #d1ad64; // tan, burlywood
+    --bg-color-medium: #9e9175; 
+    --bg-color-dark: sienna; // peru, chocolate, sienna
+    --accent-color: #da5630; // orangered, crimson
+    --accent-color2: darkseagreen;  // cadetblue, darkcyan, darkseagreen
     --text-color-light: var(--bg-light);
     --text-color-dark: #363626;
     
 
-    --head-face: 'Petrona', serif;
+    --head-face: 'Vesper Libre', serif;
     --text-face: 'Fira Sans', "Segoe UI", Verdana, Tahoma, sans-serif;
-    --text-face2: 'Vesper Libre', serif;
+    --text-face2: 'Petrona', serif;
     --title-face: 'Nobile', Verdana, Tahoma, sans-serif;
-    --title-face2: var(--text-face2);
+    --title-face2: var(--head-face);
     --caption-face: var(--text-face2);
     --quote-face: var(--text-face2);
     --number-style: oldstyle-nums;
     
     --head-size: clamp(4rem, 6vw, 6rem);
     --title-size: clamp( 2.5rem, 5vw, 3rem);
-    --text-size: clamp( 15px, 1.3vw, 18px );
-    --quote-size: clamp( 20px, 1.3vw, 24px );
-    --caption-size: clamp( 14px, 1.1vw, 16px );
+    --text-size: clamp( 16px, 1.3vw, 18px );
+    --quote-size: clamp( 20px, 1.3vw, 22px );
+    --caption-size: clamp( 15px, 1.2vw, 17px );
     --chapter-no-size: clamp( 7rem, 13vmax, 11rem );/* clamp( 2rem, 3vw, 2.666rem ); */
     --subhead-size: var(--text-quote);
     --menuitem-size: clamp( 1.5rem, 3vh, 2.666rem );
@@ -65,40 +65,36 @@ $tiny-screen: 600px;
 
 
 @mixin light-text-on-dark {
+    color: var(--text-color-light);
     background-color: var(--bg-dark);
-    color: var(--text-color-light);
 }
 @mixin light-text-on-color {
-    background-color: var(--bg-color-medium);
     color: var(--text-color-light);
-}
-@mixin light-text-on-color {
-    background-color: var(--bg-color-medium);
-    color: var(--text-color-light);
+    background-color: var(--bg-color-dark);
 }
 @mixin light-text-on-accent {
-    background-color: var(--accent-color);
     color: var(--text-color-light);
+    background-color: var(--accent-color);
 }
 @mixin dark-text-on-light {
-    background-color: var(--bg-light);
     color: var(--text-color-dark);
+    background-color: var(--bg-light);
 }
 @mixin dark-text-on-color {
-    background-color: var(--bg-color-light);
     color: var(--text-color-dark);
+    background-color: var(--bg-color-medium);
 }
 @mixin dark-text-on-accent {
-    background-color: var(--accent-color);
     color: var(--text-color-dark);
+    background-color: var(--accent-color);
 }
 @mixin accent-text-on-light {
-    background-color: var(--bg-light);
     color: var(--accent-color);
+    background-color: var(--bg-light);
 }
 @mixin accent-text-on-color {
-    background-color: var(--bg-color-light);
     color: var(--accent-color);
+    background-color: var(--bg-color-light);
 }
 @mixin basic-padding {
     padding: var(--default-padding);

@@ -12,7 +12,7 @@
 
 
 {#if hideInitialContent}
-    <div out:blur={{ duration: 1666 }}>
+    <div  transition:blur={{ duration: 666 }}>
         <div id="spinner"><span>G</span></div>
     </div>
 {/if}
@@ -33,7 +33,7 @@
         height: var(--spin-dims);
         margin: auto;
         border: var(--spin-stroke) solid var(--bg-dark);
-        border-right: var(--spin-stroke) solid var(--accent-color);
+        border-right: var(--spin-stroke) solid var(--bg-color-light);
         border-radius: 50%;
         animation: spin 1.666s linear infinite;
     }
@@ -42,16 +42,22 @@
         display: block;
         text-align: center;
         padding-top: .05em;
-        font-family: var(--text-face2);
+        font-family: var(--head-face);
         font-size: calc( var(--spin-dims) * .666 );
         font-weight: 500;
         line-height: var(--spin-dims);
-        color: var(--accent-color);
-        opacity: .83;
+        color: var(--bg-color-light);
+        opacity: 0;
+        filter: blur(4px);
+        animation: blurIn 1s forwards;
     }
 
     @keyframes spin {
         from { transform: rotate(0deg) }
         to { transform: rotate(360deg) }
+    }
+    @keyframes blurIn {
+        50% { filter: blur(4px); opacity: 0; }
+        100% { filter: blur(0); opacity: .83; }
     }
 </style>

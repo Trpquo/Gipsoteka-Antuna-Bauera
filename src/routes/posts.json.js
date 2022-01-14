@@ -74,7 +74,7 @@ export const get = async () => {
     cleanAndSortMenu( menu )
     
 
-    console.log( menu )
+    // console.log( menu )
 
     return {
         status: 200,

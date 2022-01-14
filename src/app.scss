@@ -48,7 +48,7 @@ header {
     }
     
     h1 {
-        font-family: var(--head-face);
+        font-family: var(--text-face2);
         font-size: var(--head-size);
         font-weight: 400;
         text-transform: uppercase;
@@ -101,7 +101,7 @@ header {
     }
 
     &.moj h1 {
-        font-family: var(--text-face2);
+        font-family: var(--head-face);
         font-size: calc( var(--head-size) * .9 );
         padding: 2.5vmax var(--large-padding) var(--default-padding);
     }
@@ -113,6 +113,7 @@ header {
     position: fixed;
     top: var(--large-padding);
     right: var(--large-padding);
+    display: inline-block;
     width: 3rem;
     height: 3rem;
     padding: var(--default-padding);
@@ -133,12 +134,16 @@ header {
     }
 
     @include for-mini {
-        background-color: var(--accent-color2);
+        background-color: var(--bg-color-dark);
         width: 100%;
-        height: 3rem;
+        height: 4rem;
         top: auto;
         bottom: 0;
         right: 0;
+
+        &.active {
+            border-radius: 0;
+        }
     }
 }
 
@@ -195,24 +200,24 @@ header {
                     @include reset;
 
                     text-indent: -9999px;
-                    width: 2em;
-                    height: 100%;
+                    width: 3em;
+                    height: 3rem;
+                    margin: -2rem -.5rem;
+                    line-height: 1rem;
                     position: relative;
                     background-color: transparent;
 
                     &:after {
                         content: '';
-                        border-color: var(--bg-color-medium);
-                        border-width: 0 2px 2px 0;
-                        border-style: solid;
                         display: block;
                         width: .85em;
                         height: .85em;
-                        margin-left: -.666em;
                         position: absolute;
-                        top: 40%;
-                        left: 60%;
-                        transform: translate(-70%, -70%) rotate(-45deg);
+                        inset: 0;
+                        border-width: 0 2px 2px 0;
+                        border-style: solid;
+                        border-color: var(--bg-color-medium);
+                        transform: translate(50%, 100%) rotate(-45deg);
                         transition: transform .5s;
 
                     }
@@ -221,13 +226,16 @@ header {
                     }
 
                     &.submenuOpen:after {
-                        transform: translate(-50%, -50%) rotate(45deg);
+                        transform: translate(70%, 100%) rotate(45deg);
                     }
                 }
             }
         }
         li:hover {
             @include light-text-on-accent;
+            a button:after {
+                border-color: var(--bg-color-light);
+            }
         }
         li.active {
             @include dark-text-on-light;
@@ -242,7 +250,7 @@ header {
             }
 
             & > a {
-                border-left: .25em solid var(--accent-color);
+                border-left: .25em solid var(--bg-color-light);
 
                 button:hover:after {
                     border-color: var(--text-color-dark);
@@ -307,14 +315,16 @@ article {
         font-size: var(--chapter-no-size);
         font-weight: 666;
         line-height: .3em;
-        color: var(--bg-color-medium);
+        color: var(--bg-color-light);
         text-align: right;
-        margin-top: -.5em;
+        margin-top: -.4em;
         margin-bottom: .5em;
         letter-spacing: -.02em;
-
-        &::first-letter {
-            color: var(--accent-color);
+        
+        span {
+            font-size: calc( var(--chapter-no-size) * .8 );
+            margin-left: -.2em;
+            color: var(--bg-color-medium);
         }
         
         @include for-mini {
@@ -322,12 +332,48 @@ article {
             margin-top: .3em;
             text-align: center;
             opacity: 1;
+
+            span {
+                font-size: calc( var(--chapter-no-size) / 2.3 );
+                letter-spacing: .05em;
+                margin-left: -.2em;
+                color: var(--bg-color-medium);
+            }
         }
         
         @include for-desktop {
             width: 60%;
             opacity: .8;
         }
+    }
+
+    a {
+        font-variant: small-caps;
+
+        &:hover {
+            text-decoration: underline;
+        }
+
+        &.footnote-ref, &.footnote-backref {
+            font-variant: normal;
+            font-weight: bold;
+            font-size: .8em;
+            color: var(--bg-color-dark);
+            display: inline-block;
+            width: 1em;
+            height: 1em;
+            margin-right: -.35rem;
+        }
+        &.footnote-backref {
+            font-size: .666em;
+            color: var(--bg-color-medium);
+            margin-left: .25em;
+        }
+
+        // &::selection {
+        //     background-color: var(--accent-color);
+        //     color: var(--text-color-light);
+        // }
     }
 
     .textContent {
@@ -377,7 +423,7 @@ article {
                 // font-family: var(--text-face);
                 font-size: var(--title-size);
                 position: absolute;
-                color: var(--accent-color);
+                color: var(--accent-color2);
                 top: -.2em;
                 line-height: 1em;
                 left: -.45em;
@@ -423,7 +469,8 @@ article {
                 position: fixed; 
                 width: 100%;
                 height: 100%;
-                max-width: 100% !important;
+                max-width: none;
+                max-height: none;
                 top: 50%; 
                 left: 50%; 
                 background-color: var(--bg-dark);
@@ -444,18 +491,24 @@ article {
     
                 img {
                     display: block;
-                    width: 80%;
+                    width: 90%;
                     height: 100%;
                     object-fit: contain;
                     filter: grayscale(.2) contrast(.7);
+
+                    @include for-desktop {
+                        width: 80%;
+                    }
                 }
 
 
                 figcaption {
                     @include basic-padding;
-                    padding-bottom: 2em;
+                    margin: 0 calc( var(--default-padding) * -1 );
+                    box-sizing: content-box;
                     @include light-text-on-dark;
                     text-align: center;
+                    text-shadow: none;
                     
                     .short {
                         display: none;
@@ -488,9 +541,10 @@ article {
             figure {
                 @include dark-text-on-light;
                 max-width: 800px;
+                max-height: 70vh;
                 padding:  min( var(--default-padding), 1rem);
                 padding-bottom: 0;
-                box-shadow: .05rem .2rem .25rem #3333;
+                box-shadow: .05rem .15rem .3rem #3332;
                 margin-right: 1rem;
                 display: flex;
                 flex-direction: column;
@@ -499,7 +553,7 @@ article {
                 &.lightboxtime {
                     @include light-text-on-dark;
                     max-width: none;
-                    border-top: .5rem solid var(--accent-color);
+                    border-top: .5rem solid var(--bg-color-light);
                 }
 
                 div {
@@ -514,9 +568,11 @@ article {
 
             &.for2 figure {
                 max-width: 50%;
+                max-height: 40vh;
             }
             &.for3 figure {
                 max-width: 33%;
+                max-height: 32vh;
             }
             &.for4 figure {
                 max-width: 25%;
@@ -592,34 +648,6 @@ article {
             }
         }
 
-        a {
-            font-variant: small-caps;
-
-            &:hover {
-                text-decoration: underline;
-            }
-
-            &.footnote-ref, &.footnote-backref {
-                font-variant: normal;
-                font-weight: bold;
-                font-size: .8em;
-                color: var(--accent-color);
-                display: inline-block;
-                width: 1em;
-                height: 1em;
-                margin-right: -.35rem;
-            }
-            &.footnote-backref {
-                font-size: .666em;
-                color: var(--accent-color2);
-            }
-
-            // &::selection {
-            //     background-color: var(--accent-color);
-            //     color: var(--text-color-light);
-            // }
-        }
-
         .footnotes {
             @include outer-padding;
             @include footnotes;
@@ -677,7 +705,7 @@ article {
         background-repeat: no-repeat, no-repeat;
         background-size: cover;
         background-position: 50% 100%, ;
-        opacity: .2;
+        opacity: .13;
         filter: contrast(4) contrast(.95);
         mix-blend-mode: luminosity;
     }
@@ -689,19 +717,32 @@ article {
 
 .gallery {
     display: flex;
+    flex-wrap: wrap;
     gap: .5rem;
     margin: 0;
-
+    margin-bottom: var(--large-padding);
+    
+    
     h2 {
         display: none;
     }
 
+    &.for1 {
+        figure {
+            max-height: 80vh;
+            max-width: min(100%, 800px);
+        }
+    }
+    
     figure {
+        flex: 1 1 32%;
         display: flex;
         flex-direction: column;
-        flex-wrap: wrap;
-        border-top: .5rem solid var(--accent-color);
+        border-top: .5rem solid var(--bg-color-light);
         margin: 0;
+        max-width: 50%;
+        max-height: 40vh;
+
 
         div {
             flex-grow: 1;
@@ -718,22 +759,31 @@ article {
         figcaption {
             padding: 1rem;
             width: 100%;
-            background-color: var(--accent-color);
+            background-color: var(--bg-color-light);
             color: var(--text-color-light);
         }
     }
     @include for-desktop {
-
         flex-direction: column;
+        flex-wrap: nowrap;
+
         figure {
-            max-width: 300px;
+            flex-grow: 0;
+            max-width: 60%;
+            max-height: 30vh;
+            
         }
     }
     @include for-mini {
         flex-direction: column;
-
+        flex-wrap: nowrap;
+        
         h2 {
             display: block;
+        }
+        figure {
+            flex-grow: 0;
+            max-width: none;
         }
     }
 

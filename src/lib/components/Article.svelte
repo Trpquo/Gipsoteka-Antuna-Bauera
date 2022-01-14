@@ -8,11 +8,10 @@
     import { fly } from 'svelte/transition'
     import AOS from 'aos'
 
-    export let title, chapter, coverImage
-    
+    export let title, chapter, coverImage;  
     let coverImageUrl, scrollY, innerHeight, article, client = {}
     
-
+    if (chapter) chapter = chapter.toString()
     
     onMount(async ()=>{
         
@@ -38,6 +37,8 @@
 
 
     $: imageTransfer =  innerHeight - (1 - ( client.height - scrollY ) / client.height ) * innerHeight - ( client.width / client.height ) * (client.height - scrollY) / 4 
+
+
 </script>
 
 <svelte:head>
@@ -51,7 +52,14 @@
 
 <article in:fly={{ x: 1000, delay: 300, duration: 1000 }} out:fly={{ x: -300, duration: 300 }} bind:this={ article } >
     {#if chapter }
-    <h6 id="chapNo">{ chapter }</h6>
+    <h6 id="chapNo">
+        {#if chapter.indexOf(".") > 0 }
+            { chapter.substring(0, chapter.indexOf(".")) }
+            <span>{chapter.substring(chapter.indexOf("."), chapter.length)}</span>
+        {:else}
+            { chapter }
+        {/if}
+    </h6>
     {/if}
     <section class="textContent" >
         <slot />

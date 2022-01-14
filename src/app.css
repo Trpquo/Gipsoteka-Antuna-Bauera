@@ -2,26 +2,26 @@
 :root {
   --bg-light: seashell;
   --bg-dark: #5a554cdd;
+  --bg-color-light: #d1ad64;
   --bg-color-medium: #9e9175;
-  --bg-color-light: var(--accent-color) ;
-  --accent-color: #d1ad64;
+  --bg-color-dark: sienna;
+  --accent-color: #da5630;
   --accent-color2: darkseagreen;
-  --accent-color3: #da5630;
   --text-color-light: var(--bg-light);
   --text-color-dark: #363626;
-  --head-face: "Petrona", serif;
+  --head-face: "Vesper Libre", serif;
   --text-face: "Fira Sans", "Segoe UI", Verdana, Tahoma, sans-serif;
-  --text-face2: "Vesper Libre", serif;
+  --text-face2: "Petrona", serif;
   --title-face: "Nobile", Verdana, Tahoma, sans-serif;
-  --title-face2: var(--text-face2);
+  --title-face2: var(--head-face);
   --caption-face: var(--text-face2);
   --quote-face: var(--text-face2);
   --number-style: oldstyle-nums;
   --head-size: clamp(4rem, 6vw, 6rem);
   --title-size: clamp( 2.5rem, 5vw, 3rem);
-  --text-size: clamp( 15px, 1.3vw, 18px );
-  --quote-size: clamp( 20px, 1.3vw, 24px );
-  --caption-size: clamp( 14px, 1.1vw, 16px );
+  --text-size: clamp( 16px, 1.3vw, 18px );
+  --quote-size: clamp( 20px, 1.3vw, 22px );
+  --caption-size: clamp( 15px, 1.2vw, 17px );
   --chapter-no-size: clamp( 7rem, 13vmax, 11rem );
   /* clamp( 2rem, 3vw, 2.666rem ); */
   --subhead-size: var(--text-quote);
@@ -79,7 +79,7 @@ header {
   }
 }
 header h1 {
-  font-family: var(--head-face);
+  font-family: var(--text-face2);
   font-size: var(--head-size);
   font-weight: 400;
   text-transform: uppercase;
@@ -111,7 +111,7 @@ header h1 a {
   }
 }
 header.moj h1 {
-  font-family: var(--text-face2);
+  font-family: var(--head-face);
   font-size: calc( var(--head-size) * .9 );
   padding: 2.5vmax var(--large-padding) var(--default-padding);
 }
@@ -123,6 +123,7 @@ header.moj h1 {
   position: fixed;
   top: var(--large-padding);
   right: var(--large-padding);
+  display: inline-block;
   width: 3rem;
   height: 3rem;
   padding: var(--default-padding);
@@ -130,8 +131,8 @@ header.moj h1 {
   transition: background-color 0.5s, border-radius 1s;
   z-index: 1000;
   cursor: pointer;
-  background-color: var(--bg-dark);
   color: var(--text-color-light);
+  background-color: var(--bg-dark);
 }
 #menuButton:hover, #menuButton.active {
   background-color: var(--bg-color-medium);
@@ -140,17 +141,20 @@ header.moj h1 {
   border-radius: 50%;
 }
 #menuButton.active:hover {
-  background-color: var(--accent-color);
   color: var(--text-color-light);
+  background-color: var(--accent-color);
 }
 @media (max-width: 600px) {
   #menuButton {
-    background-color: var(--accent-color2);
+    background-color: var(--bg-color-dark);
     width: 100%;
-    height: 3rem;
+    height: 4rem;
     top: auto;
     bottom: 0;
     right: 0;
+  }
+  #menuButton.active {
+    border-radius: 0;
   }
 }
 
@@ -185,17 +189,17 @@ header.moj h1 {
   margin: 0;
   padding: 0;
   transition: background-color 0.3s, color 0.1s;
-  background-color: var(--bg-light);
   color: var(--text-color-dark);
+  background-color: var(--bg-light);
 }
 #menu ul li li {
-  background-color: var(--bg-light);
   color: var(--text-color-dark);
+  background-color: var(--bg-light);
   padding-left: var(--large-padding);
 }
 #menu ul li li:hover {
-  background-color: var(--bg-color-medium);
   color: var(--text-color-light);
+  background-color: var(--bg-color-dark);
 }
 #menu ul li a {
   display: block;
@@ -209,39 +213,42 @@ header.moj h1 {
   border: 0;
   padding: 0;
   text-indent: -9999px;
-  width: 2em;
-  height: 100%;
+  width: 3em;
+  height: 3rem;
+  margin: -2rem -0.5rem;
+  line-height: 1rem;
   position: relative;
   background-color: transparent;
 }
 #menu ul li a button:after {
   content: "";
-  border-color: var(--bg-color-medium);
-  border-width: 0 2px 2px 0;
-  border-style: solid;
   display: block;
   width: 0.85em;
   height: 0.85em;
-  margin-left: -0.666em;
   position: absolute;
-  top: 40%;
-  left: 60%;
-  transform: translate(-70%, -70%) rotate(-45deg);
+  inset: 0;
+  border-width: 0 2px 2px 0;
+  border-style: solid;
+  border-color: var(--bg-color-medium);
+  transform: translate(50%, 100%) rotate(-45deg);
   transition: transform 0.5s;
 }
 #menu ul li a button:hover:after {
   border-color: var(--text-color-light);
 }
 #menu ul li a button.submenuOpen:after {
-  transform: translate(-50%, -50%) rotate(45deg);
+  transform: translate(70%, 100%) rotate(45deg);
 }
 #menu ul li:hover {
-  background-color: var(--accent-color);
   color: var(--text-color-light);
+  background-color: var(--accent-color);
+}
+#menu ul li:hover a button:after {
+  border-color: var(--bg-color-light);
 }
 #menu ul li.active {
-  background-color: var(--bg-light);
   color: var(--text-color-dark);
+  background-color: var(--bg-light);
 }
 #menu ul li.active.current {
   font-weight: 800;
@@ -251,7 +258,7 @@ header.moj h1 {
   font-weight: 400;
 }
 #menu ul li.active > a {
-  border-left: 0.25em solid var(--accent-color);
+  border-left: 0.25em solid var(--bg-color-light);
 }
 #menu ul li.active > a button:hover:after {
   border-color: var(--text-color-dark);
@@ -260,8 +267,8 @@ header.moj h1 {
   padding-left: var(--large-padding);
 }
 #menu ul li.active li.active:hover {
-  background-color: var(--bg-color-light);
   color: var(--text-color-dark);
+  background-color: var(--bg-color-medium);
 }
 @media (max-width: 600px) {
   #menu {
@@ -307,14 +314,16 @@ article h6 {
   font-size: var(--chapter-no-size);
   font-weight: 666;
   line-height: 0.3em;
-  color: var(--bg-color-medium);
+  color: var(--bg-color-light);
   text-align: right;
-  margin-top: -0.5em;
+  margin-top: -0.4em;
   margin-bottom: 0.5em;
   letter-spacing: -0.02em;
 }
-article h6::first-letter {
-  color: var(--accent-color);
+article h6 span {
+  font-size: calc( var(--chapter-no-size) * .8 );
+  margin-left: -0.2em;
+  color: var(--bg-color-medium);
 }
 @media (max-width: 600px) {
   article h6 {
@@ -323,12 +332,39 @@ article h6::first-letter {
     text-align: center;
     opacity: 1;
   }
+  article h6 span {
+    font-size: calc( var(--chapter-no-size) / 2.3 );
+    letter-spacing: 0.05em;
+    margin-left: -0.2em;
+    color: var(--bg-color-medium);
+  }
 }
-@media (min-width: 1400px) {
+@media (min-width: 1200px) {
   article h6 {
     width: 60%;
     opacity: 0.8;
   }
+}
+article a {
+  font-variant: small-caps;
+}
+article a:hover {
+  text-decoration: underline;
+}
+article a.footnote-ref, article a.footnote-backref {
+  font-variant: normal;
+  font-weight: bold;
+  font-size: 0.8em;
+  color: var(--bg-color-dark);
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  margin-right: -0.35rem;
+}
+article a.footnote-backref {
+  font-size: 0.666em;
+  color: var(--bg-color-medium);
+  margin-left: 0.25em;
 }
 article .textContent {
   display: grid;
@@ -400,7 +436,7 @@ article .textContent blockquote:before {
   display: block;
   font-size: var(--title-size);
   position: absolute;
-  color: var(--accent-color);
+  color: var(--accent-color2);
   top: -0.2em;
   line-height: 1em;
   left: -0.45em;
@@ -442,7 +478,8 @@ article .textContent figure.lightboxtime {
   position: fixed;
   width: 100%;
   height: 100%;
-  max-width: 100% !important;
+  max-width: none;
+  max-height: none;
   top: 50%;
   left: 50%;
   background-color: var(--bg-dark);
@@ -460,18 +497,25 @@ article .textContent figure.lightboxtime div {
 }
 article .textContent figure.lightboxtime img {
   display: block;
-  width: 80%;
+  width: 90%;
   height: 100%;
   -o-object-fit: contain;
      object-fit: contain;
   filter: grayscale(0.2) contrast(0.7);
 }
+@media (min-width: 1200px) {
+  article .textContent figure.lightboxtime img {
+    width: 80%;
+  }
+}
 article .textContent figure.lightboxtime figcaption {
   padding: var(--default-padding);
-  padding-bottom: 2em;
-  background-color: var(--bg-dark);
+  margin: 0 calc( var(--default-padding) * -1 );
+  box-sizing: content-box;
   color: var(--text-color-light);
+  background-color: var(--bg-dark);
   text-align: center;
+  text-shadow: none;
 }
 article .textContent figure.lightboxtime figcaption .short {
   display: none;
@@ -510,22 +554,23 @@ article .textContent .showbox {
   justify-content: center;
 }
 article .textContent .showbox figure {
-  background-color: var(--bg-light);
   color: var(--text-color-dark);
+  background-color: var(--bg-light);
   max-width: 800px;
+  max-height: 70vh;
   padding: min(var(--default-padding), 1rem);
   padding-bottom: 0;
-  box-shadow: 0.05rem 0.2rem 0.25rem #3333;
+  box-shadow: 0.05rem 0.15rem 0.3rem #3332;
   margin-right: 1rem;
   display: flex;
   flex-direction: column;
   flex: 1;
 }
 article .textContent .showbox figure.lightboxtime {
-  background-color: var(--bg-dark);
   color: var(--text-color-light);
+  background-color: var(--bg-dark);
   max-width: none;
-  border-top: 0.5rem solid var(--accent-color);
+  border-top: 0.5rem solid var(--bg-color-light);
 }
 article .textContent .showbox figure div {
   flex-grow: 1;
@@ -535,9 +580,11 @@ article .textContent .showbox figure figcaption {
 }
 article .textContent .showbox.for2 figure {
   max-width: 50%;
+  max-height: 40vh;
 }
 article .textContent .showbox.for3 figure {
   max-width: 33%;
+  max-height: 32vh;
 }
 article .textContent .showbox.for4 figure {
   max-width: 25%;
@@ -545,7 +592,7 @@ article .textContent .showbox.for4 figure {
 article .textContent .showbox.for5 figure {
   max-width: 20%;
 }
-@media (min-width: 1400px) {
+@media (min-width: 1200px) {
   article .textContent {
     grid-template-areas: "h1 ." "p1 a" "p2 a" "p3 a" "p4 a" "p5 a" "p6 a" "p7 a" "p8 a" "p9 a" "p10 a" "p11 a" "p12 a" "p13 a" "p14 a" "p15 a";
   }
@@ -572,26 +619,6 @@ article .textContent > *:nth-last-child(1):not(.gallery):before, article .textCo
   z-index: -1;
   background-image: linear-gradient(#FFF0 20%, var(--bg-light) 50%);
   opacity: 0.5;
-}
-article .textContent a {
-  font-variant: small-caps;
-}
-article .textContent a:hover {
-  text-decoration: underline;
-}
-article .textContent a.footnote-ref, article .textContent a.footnote-backref {
-  font-variant: normal;
-  font-weight: bold;
-  font-size: 0.8em;
-  color: var(--accent-color);
-  display: inline-block;
-  width: 1em;
-  height: 1em;
-  margin-right: -0.35rem;
-}
-article .textContent a.footnote-backref {
-  font-size: 0.666em;
-  color: var(--accent-color2);
 }
 article .textContent .footnotes {
   padding: var(--default-padding);
@@ -655,7 +682,7 @@ article #bgImage {
   background-repeat: no-repeat, no-repeat;
   background-size: cover;
   background-position: 50% 100%;
-  opacity: 0.2;
+  opacity: 0.13;
   filter: contrast(4) contrast(0.95);
   mix-blend-mode: luminosity;
 }
@@ -663,18 +690,26 @@ article #bgImage {
 /*  Galerija */
 .gallery {
   display: flex;
+  flex-wrap: wrap;
   gap: 0.5rem;
   margin: 0;
+  margin-bottom: var(--large-padding);
 }
 .gallery h2 {
   display: none;
 }
+.gallery.for1 figure {
+  max-height: 80vh;
+  max-width: min(100%, 800px);
+}
 .gallery figure {
+  flex: 1 1 32%;
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
-  border-top: 0.5rem solid var(--accent-color);
+  border-top: 0.5rem solid var(--bg-color-light);
   margin: 0;
+  max-width: 50%;
+  max-height: 40vh;
 }
 .gallery figure div {
   flex-grow: 1;
@@ -689,30 +724,38 @@ article #bgImage {
 .gallery figure figcaption {
   padding: 1rem;
   width: 100%;
-  background-color: var(--accent-color);
+  background-color: var(--bg-color-light);
   color: var(--text-color-light);
 }
-@media (min-width: 1400px) {
+@media (min-width: 1200px) {
   .gallery {
     flex-direction: column;
+    flex-wrap: nowrap;
   }
   .gallery figure {
-    max-width: 300px;
+    flex-grow: 0;
+    max-width: 60%;
+    max-height: 30vh;
   }
 }
 @media (max-width: 600px) {
   .gallery {
     flex-direction: column;
+    flex-wrap: nowrap;
   }
   .gallery h2 {
     display: block;
+  }
+  .gallery figure {
+    flex-grow: 0;
+    max-width: none;
   }
 }
 
 /* Footer */
 footer {
-  background-color: var(--bg-dark);
   color: var(--text-color-light);
+  background-color: var(--bg-dark);
   padding: var(--default-padding) var(--large-padding);
 }
 

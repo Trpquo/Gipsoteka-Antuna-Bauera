@@ -2,7 +2,7 @@
     import { beforeUpdate } from 'svelte'
     import Img from '$lib/components/html/img.svelte'
 
-    let p, showbox = [], gallery = false
+    let p, showbox = [], gallery = false, gallerians
    
     function hasOnlyImg( el ) {
 
@@ -14,10 +14,10 @@
         } 
         else if ( [ ...el.childNodes ].every(n=> (n.tagName === 'FIGURE' || (n.nodeType === 3 && n.textContent.trim().length === 0) || n.nodeType === 8) )) {
             // console.log( el, "Samo slike!" )
+            gallerians = el.children.length
             return true
         } else {
             // console.log( el, "Kombo!" )
-            const figures = el.querySelectorAll('p > figure')
             const images = el.querySelectorAll('img')
             showbox =  [ ...images ].map( ({ src, alt, title })=>({ src, alt, title }) )
 
@@ -44,7 +44,7 @@
 
 
 {#if gallery }
-<aside class="gallery">
+<aside class="gallery for{ gallerians }" >
     <h2>Galerija</h2>
     <slot />
 </aside>
