@@ -45,12 +45,14 @@ export const get = async () => {
 
     const sortByChapNo = (f, s)=> {
         if ( f.meta && s.meta ) {
-
-          return !!f.meta.chapter && !!s.meta.chapter 
-          ?
-          parseFloat(f.meta.chapter) - parseFloat(s.meta.chapter) 
-          :
-          1
+          if ( !!f.meta.chapter && !!s.meta.chapter ) {
+            // console.log( f.meta.chapter, typeof f.meta.chapter )
+            if ( typeof f.meta.chapter === "string" && typeof s.meta.chapter === "string" ) {
+              return parseInt( f.meta.chapter.substring( f.meta.chapter.lastIndexOf('.') + 1, f.meta.chapter.length ) ) - parseInt( s.meta.chapter.substring( s.meta.chapter.lastIndexOf('.') + 1, s.meta.chapter.length ) )
+            }
+            // console.log( f.meta.chapter, isNaN(parseFloat(f.meta.chapter)), parseFloat(f.meta.chapter), typeof f.meta.chapter )
+            else return parseFloat(f.meta.chapter) - parseFloat(s.meta.chapter) 
+          }
         } else return 1       
     }  
 

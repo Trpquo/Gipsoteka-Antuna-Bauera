@@ -1,10 +1,17 @@
 ---
 title: Antička zbirka Gipsoteke
 chapter: 3.2
+coverImage: 
+imgRoot: postavi/antika/
+layout: basic
 ---
 
 # { title }
 
-Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime eum ad vero fugiat placeat, ipsum quia voluptate facilis odit necessitatibus ducimus distinctio accusantium, dolorum debitis consectetur. Nemo aut ad itaque illo non error doloribus corrupti, temporibus voluptatem necessitatibus! Culpa, earum iste. Dolor doloremque voluptatem sint esse dolorem quos accusantium distinctio nisi aliquam dolorum ex asperiores ullam et cum iusto, eum eveniet hic perferendis, cupiditate voluptas fugiat expedita veritatis debitis itaque. Modi, eius distinctio obcaecati totam rem laborum quas exercitationem provident aspernatur. Maxime facilis porro dolore corrupti accusamus optio quas at atque alias quasi! Commodi ea ipsa cupiditate pariatur aliquam exercitationem sint quidem natus voluptate sit ducimus nemo asperiores sequi a saepe nesciunt, eaque voluptatibus doloremque repellendus. Laborum nihil esse sapiente dolore eveniet blanditiis ut fugit quaerat nobis fugiat repellendus sunt unde sint id molestiae debitis ipsa est ea consectetur repellat perferendis eius, ullam cumque voluptates. 
+### [ Južna zgrada ]
 
-Consequatur necessitatibus cupiditate recusandae assumenda quos. Ut repellendus nulla laboriosam alias voluptatum quis consequuntur, beatae expedita odit eum, nemo, facere quos? Commodi accusamus repellendus nam eaque quisquam, facilis earum asperiores esse error culpa totam excepturi accusantium fuga tempora expedita animi? Animi voluptatum dolore voluptatem quaerat quo obcaecati. Necessitatibus inventore voluptatem debitis hic harum obcaecati aliquid reiciendis ut, quasi temporibus voluptates fugiat provident, dolorum id? Voluptatem totam doloremque laborum aliquid officia illum fugit qui recusandae harum voluptatibus facilis quaerat nemo eius impedit asperiores natus, nostrum eveniet aspernatur beatae distinctio magnam officiis! Quidem, corrupti, tempore molestias quibusdam fuga possimus omnis nemo accusamus dignissimos harum, optio id tempora quasi illo sit doloribus odit qui. Eos saepe fugiat quod vel dolores nulla amet nostrum, minima est minus sunt modi libero similique, quisquam reiciendis excepturi enim repudiandae dolor provident beatae atque magni illo. Iste dignissimos, sint aspernatur ea maxime soluta dolor aliquam odit omnis voluptate debitis laborum, rem voluptatum! Voluptate.
+Sakupljanje sadrenih odljeva antičke skulpture u Hrvatskoj inicirao je 1892. godine Izidor Kršnjavi, koji nabavom antičkih sadrenih odljeva osniva prvi muzej gipsanih odljeva u Hrvatskoj (_Gipsmuseum_). Njegovu ideju u proširenom smislu nastavlja Antun Bauer osnivanjem Gipsoteke.[^1] U zbirci su sakupljeni odljevi kapitalnih djela grčkoga kiparstva od arhajskog do rimskog doba, iz raznih muzeja u Europi, ali i odljevi s našeg područja, iz rimske provincije Dalmacije. To je prva zbirka u Gipsoteci uređena tijekom 1945. godine i postavljena u četiri dvorane u stalnom postavu južne zgrade. Izložene su najpoznatije antičke skulpture poput Mironova _Bacača diska_, Polikletova _Dorifora_, Lizipova _Apoksiomena, Venere Milske, Gala na umoru, Apolona Belvederskog_ i _Laokontove skupine_, skulpture s Partenona i dr.
+
+Bauer u svojim tekstovima i analizi postava ističe da je kriterij postava ove zbirke bio stilski. Naglašava kako je izložen u prostorijama bivšega tvorničkog postrojenja, koje nisu povezane zbog čega posjetioci nemaju kontinuitet obilaska, već se iz svake prostorije moraju vraćati istim putem. 
+
+[^1]: Više u: Getaldić, Magdalena, _Izidor Kršnjavi &ndash; inicijator zbirke sadrenih odljeva antičke skulpture i Gyps-Museuma, Iso Kršnjavi &ndash; veliki utemeljitelj,_ ur. Mance, Ivana, Matijević, Zlatko, Institut za povijest umjetnosti, Hrvatski institut za povijest, Zagreb, 2015., 182-199.

@@ -2,7 +2,7 @@
 title: O postavu i korisnicima
 chapter: 2.3
 coverImage: Dvorana-Rendic.jpg
-imgRoot: /img/muzej/korisnici/
+imgRoot: muzej/korisnici/
 layout: basic
 ---
 

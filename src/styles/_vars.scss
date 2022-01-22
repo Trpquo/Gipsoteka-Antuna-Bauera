@@ -1,5 +1,5 @@
-$big-screen: 1200px;
-$tiny-screen: 600px;
+$big-screen: 1500px;
+$tiny-screen: 800px;
 
 
 :root {
@@ -36,6 +36,7 @@ $tiny-screen: 600px;
     
     --default-padding: clamp( .666rem, 1.5vw, 2rem );
     --large-padding: clamp( 2rem, 3vw, 6rem);
+    --max-p-width: 1000px;
 }
 
 @mixin for-desktop {

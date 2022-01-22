@@ -2,7 +2,7 @@
 title: Prvo poslanje muzeja 1937. godine
 chapter: 2.2
 coverImage: 
-imgRoot: /img/muzej/prvo-poslanje/
+imgRoot: muzej/prvo-poslanje/
 layout: basic
 ---
 

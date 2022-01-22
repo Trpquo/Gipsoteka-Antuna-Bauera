@@ -4,6 +4,5 @@
 
 <Article title="Otvor" chapter="110 god.">
     <h1>Dobrodošli!</h1>
-    <h3>Na žalost, još nemamo naslovnicu.</h3>
-    <p>Probajte izbornik.</p>
+    <p>Izložba u povodu 110. godišnjice rođenja dr. sc. Antuna Bauera, osnivača Gipsoteke, prezentira njegov vizionarski pothvat i djelatnost ovog jedinstvenog muzeja u Hrvatskoj. Bauerove pionirske ideje i muzeološki rad prikazuju se na primjeru prvog muzeja koji je osnovao i u njega pretočio svoja iskustva i vizije.</p>
 </Article> 

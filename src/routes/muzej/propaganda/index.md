@@ -2,7 +2,7 @@
 title: Propaganda
 chapter: 2.4
 coverImage: 
-imgRoot: /img/muzej/propaganda/
+imgRoot: muzej/propaganda/
 layout: basic
 ---
 

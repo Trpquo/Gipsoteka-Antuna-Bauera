@@ -1,6 +1,8 @@
 <script>
     import { beforeUpdate } from 'svelte'
     import Img from '$lib/components/html/img.svelte'
+    import { imageRoot } from '$lib/utils/stores'
+
 
     let p, showbox = [], gallery = false, gallerians
    
@@ -19,7 +21,7 @@
         } else {
             // console.log( el, "Kombo!" )
             const images = el.querySelectorAll('img')
-            showbox =  [ ...images ].map( ({ src, alt, title })=>({ src, alt, title }) )
+            showbox =  [ ...images ].map( ({ src, alt, title })=>({ src: src.substring( src.indexOf($imageRoot) + $imageRoot.length + 1, src.length ), alt, title }) )
 
             // console.log( figures, images, showbox )
             

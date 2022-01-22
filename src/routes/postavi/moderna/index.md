@@ -1,10 +1,31 @@
 ---
 title: Zbirka moderne plastike u Gipsoteci
 chapter: 3.1
+coverImage: 
+imgRoot: postavi/moderna/
+layout: basic
 ---
 
 # { title }
 
-Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime eum ad vero fugiat placeat, ipsum quia voluptate facilis odit necessitatibus ducimus distinctio accusantium, dolorum debitis consectetur. Nemo aut ad itaque illo non error doloribus corrupti, temporibus voluptatem necessitatibus! Culpa, earum iste. Dolor doloremque voluptatem sint esse dolorem quos accusantium distinctio nisi aliquam dolorum ex asperiores ullam et cum iusto, eum eveniet hic perferendis, cupiditate voluptas fugiat expedita veritatis debitis itaque. Modi, eius distinctio obcaecati totam rem laborum quas exercitationem provident aspernatur. Maxime facilis porro dolore corrupti accusamus optio quas at atque alias quasi! Commodi ea ipsa cupiditate pariatur aliquam exercitationem sint quidem natus voluptate sit ducimus nemo asperiores sequi a saepe nesciunt, eaque voluptatibus doloremque repellendus. Laborum nihil esse sapiente dolore eveniet blanditiis ut fugit quaerat nobis fugiat repellendus sunt unde sint id molestiae debitis ipsa est ea consectetur repellat perferendis eius, ullam cumque voluptates. 
+## Postav zbirke moderne plastike
 
-Consequatur necessitatibus cupiditate recusandae assumenda quos. Ut repellendus nulla laboriosam alias voluptatum quis consequuntur, beatae expedita odit eum, nemo, facere quos? Commodi accusamus repellendus nam eaque quisquam, facilis earum asperiores esse error culpa totam excepturi accusantium fuga tempora expedita animi? Animi voluptatum dolore voluptatem quaerat quo obcaecati. Necessitatibus inventore voluptatem debitis hic harum obcaecati aliquid reiciendis ut, quasi temporibus voluptates fugiat provident, dolorum id? Voluptatem totam doloremque laborum aliquid officia illum fugit qui recusandae harum voluptatibus facilis quaerat nemo eius impedit asperiores natus, nostrum eveniet aspernatur beatae distinctio magnam officiis! Quidem, corrupti, tempore molestias quibusdam fuga possimus omnis nemo accusamus dignissimos harum, optio id tempora quasi illo sit doloribus odit qui. Eos saepe fugiat quod vel dolores nulla amet nostrum, minima est minus sunt modi libero similique, quisquam reiciendis excepturi enim repudiandae dolor provident beatae atque magni illo. Iste dignissimos, sint aspernatur ea maxime soluta dolor aliquam odit omnis voluptate debitis laborum, rem voluptatum! Voluptate.
+### [ Zapadna zgrada ]
+
+>Kod određivanja izložbenog prostora za pojedinog majstora i kod materijala za izlaganje držali smo se u prvom redu **znanstvenog principa** (…) izbor materijala bio je uglavnom usmjeren na značaj i glavne karakteristike cjelokupnog opusa dotičnog majstora….
+
+**Estetski princip** postava bio je primaran za kompoziciju kako pojedine dvorane, tako i cjeline ukupnog izložbenog prostora. 
+
+> (...) da ne budu pretrpane (...) da ima dovoljnu distancu za promatranje ...
+![Stalni postav Zbirke moderne plastike Gipsoteke, dvorana na drugom katu, 1947., Knjiga negativa Gliptoteke HAZU, G/J-68]({imgRoot}2.jpg 'Stalni postav Zbirke moderne plastike Gipsoteke')
+
+Bauer promatra izložbenu dvoranu kao jedinstvenu kompozicija kojoj _(…) sve dimenzije moraju biti usklađene tako da jedna drugu ne pokriva, a da jedna popuni prazninu druge figure._
+
+> (…) Nastojalo se kod postava izložbenih objekata paziti na **izvor svjetla** (...)
+![Dvorana „Meštrović“ postav u Gipsoteci, Fototeka Gliptoteke HAZU, F-432]({imgRoot}1.jpg 'Dvorana „Meštrović“')
+
+> **Postament** na kojem je plastika izložena je isto tako odlučujući faktor (…) visina se mora odrediti prema samoj figuri.
+
+> Za **dekoraciju prostora** mogu se upotrebljavati najrazličitija sredstva… Izloženi su crteži (…) skice za spomenike pojedinih majstora…
+
+Postav u zbirci moderne plastike izložen je uglavnom **kronološki**, odnosno _u granicama mogućnosti prema autorima._

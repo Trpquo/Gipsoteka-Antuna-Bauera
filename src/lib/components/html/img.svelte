@@ -1,6 +1,8 @@
 <script>
     import { onMount } from 'svelte';
     import Cursor from '$lib/gadgets/Cursor.svelte'
+    import { imageRoot } from '$lib/utils/stores'
+    
     export let twist
     const acuteness = 3
     const angle =  Math.random() * acuteness - acuteness / 2
@@ -40,7 +42,7 @@
     data-aos-delay={ r() * 500 } data-aos-duration={ r() * 500 + 1000 } data-aos-offset={ r() * 20 }
     >
     <div on:mouseover={ setCursor } on:focus={ ()=>{} } on:mouseleave={ ()=>hover = false }>
-        <img { ...$$props } alt={ $$props.alt }  >
+        <img src={ `${$imageRoot}/${$$props.src}` } title={ $$props.title } alt={ $$props.alt }  >
         {#if hover  }
          <Cursor { ...hover }  />
         {/if}

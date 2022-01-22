@@ -92,7 +92,7 @@ header {
             display: block;
 
             div {
-                display: inline-block;
+                // display: inline-block;
                 padding-bottom: 0;
                 border-bottom: none;
                 line-height: 1;
@@ -149,12 +149,9 @@ header {
 
 #menu {
     position: fixed;
-    top: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
+    inset: 0;
+    overflow: scroll;
     padding: calc( var(--large-padding) / 2 );
-    padding-top: calc( var(--large-padding) * 2.333 );
     box-sizing: border-box;
     background-color: var(--bg-dark);
     z-index: 900;
@@ -187,6 +184,13 @@ header {
 
                 &:hover {
                     @include light-text-on-color;
+                }
+
+                li {
+                    font-size: .85em;
+                    a {
+                        padding: .5em 1em;
+                    }
                 }
             }
             a {
@@ -377,6 +381,12 @@ article {
     }
 
     .textContent {
+        max-width: var(--max-p-width);
+        margin-inline: auto;
+
+        @include for-desktop {
+            max-width: none;
+        }
 
         display: grid;
         grid-template-columns: 2fr 1fr;
@@ -384,8 +394,8 @@ article {
         grid-template-areas:
             "h1 ."
             "p1 p1"
-            "a  a"
             "p2 p2"
+            "a  a"
             "p3 p3"
             "p4 p4"
             "p5 p5"
@@ -467,12 +477,12 @@ article {
             &.lightboxtime {
                 
                 position: fixed; 
-                width: 100%;
-                height: 100%;
-                max-width: none;
-                max-height: none;
-                top: 50%; 
-                left: 50%; 
+                inset: 0;
+                top: 40%; 
+                left: 40%; 
+                max-width: none !important;
+                max-height: none !important;
+                aspect-ratio: unset;
                 background-color: var(--bg-dark);
                 
                 animation: zoom .5s forwards;
@@ -705,7 +715,7 @@ article {
         background-repeat: no-repeat, no-repeat;
         background-size: cover;
         background-position: 50% 100%, ;
-        opacity: .13;
+        opacity: .1;
         filter: contrast(4) contrast(.95);
         mix-blend-mode: luminosity;
     }
@@ -740,7 +750,7 @@ article {
         flex-direction: column;
         border-top: .5rem solid var(--bg-color-light);
         margin: 0;
-        max-width: 50%;
+        // max-width: 50%;
         max-height: 40vh;
 
 
@@ -764,14 +774,18 @@ article {
         }
     }
     @include for-desktop {
-        flex-direction: column;
-        flex-wrap: nowrap;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-content: flex-start;
 
         figure {
-            flex-grow: 0;
-            max-width: 60%;
-            max-height: 30vh;
+            flex-grow: .6;
+            flex-basis: 14rem;
+            aspect-ratio: 1/1;
             
+            @media (min-width: 1750px) {
+                flex-grow: 1;
+            }
         }
     }
     @include for-mini {

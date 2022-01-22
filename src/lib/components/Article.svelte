@@ -21,13 +21,15 @@
             client.width = article.clientWidth 
 
             const images = article.querySelectorAll('img')
-            if ( coverImage ) {
-                coverImageUrl = [ ...images].find( im=> im.src.indexOf( "/" + coverImage.substring(0, coverImage.indexOf(".")) ) > 0 ).src
-                // console.log( "Predefined cover image!", "/" + coverImage.substring(0, coverImage.indexOf(".")) , coverImageUrl )
-            }
-            else {
-                coverImageUrl = images[ Math.floor(Math.random()*images.length) ].src
-                // console.log( "Predefined cover image!", coverImageUrl )
+            if ( images.length ) {
+                if ( coverImage ) {
+                    coverImageUrl = [ ...images].find( im=> im.src.indexOf( "/" + coverImage.substring(0, coverImage.indexOf(".")) ) > 0 ).src
+                    // console.log( "Predefined cover image!", "/" + coverImage.substring(0, coverImage.indexOf(".")) , coverImageUrl )
+                }
+                else {
+                    coverImageUrl = images[ Math.floor(Math.random()*images.length) ].src
+                    // console.log( "Predefined cover image!", coverImageUrl )
+                }
             }
         }
 

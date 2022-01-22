@@ -2,7 +2,7 @@
 title: Arhiv
 chapter: 4
 coverImage: 
-imgRoot: /img/arhiv/
+imgRoot: arhiv/
 layout: basic
 ---
 
@@ -29,19 +29,13 @@ _Time ovaj arhiv dobiva jednu širu i veću značajku on obuhvaća rad, razvoj, 
 ![Prostor čitaonice Gipsoteke, 1951., Knjiga negativa Gliptoteke HAZU G/N-4]({imgRoot}G-N-4.jpg 'Prostor čitaonice Gipsoteke, 1951.')
 ![Prostor čitaonice Gipsoteke, 1951., Knjiga negativa Gliptoteke HAZU]({imgRoot}img226.jpg 'Prostor čitaonice Gipsoteke, 1951.')
 
-Formirane su slijedeće zbirke:
+> Formirane su slijedeće zbirke:
 -	_Fototeka suvremene domaće umjetnosti_ koja obuhvaća članke, kataloge, reprodukcije, složena je prema autorima (domaćim i stranim koji su djelovali u našoj zemlji) 
 -	_Kartoteka izložaba_ naše suvre¬mene umjetnosti: fotografije, reprodukcije, članci i katalozi, bilješke o izložbama s kraja 19. i početka 20. stoljeća 
 -	_Zbirka studija, crteža, skica i grafika_ suvremenih domaćih umjetnika (današnja Zbirka crteža hrvatskih umjetnika Gliptoteke HAZU)
 -	_Fototeka negativa i dijapozitiva_
 -	_Arhiv strane umjetnosti_, osobito suvremene, u reprodukcijama i člancima kao priručni kom¬parativni materijal
 -	_Knjižnica_ s djelima iz područja domaće i strane umjetnosti, _Fotolaboratorij_ i _čitaonica Arhiva_ 
-
-
-
-
- 
-
 
 [^1]: PDF <a rel="external" href="/downloads/Bauer-Kečkemet_Arhiv-za-domaću-likovnu-umjetnost.pdf" target="_blank">Antun Bauer, Duško Kečkemet, Gipsoteka Arhiv za domaću likovnu umjetnost, tipkopis, Zagreb, 1948.</a>
 

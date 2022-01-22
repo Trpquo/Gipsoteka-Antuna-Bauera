@@ -2,7 +2,7 @@
 title: O muzeju
 chapter: 2
 coverImage: 
-imgRoot: /img/muzej/
+imgRoot: muzej/
 ---
 
 # { title }

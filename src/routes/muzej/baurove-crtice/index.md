@@ -2,7 +2,7 @@
 title: Baurove crtice o osnutku
 chapter: 2.1
 coverImage: F-42.jpg
-imgRoot: /img/muzej/bauerove-crtice/
+imgRoot: muzej/bauerove-crtice/
 ---
 
 # {title}

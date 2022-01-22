@@ -1,5 +1,4 @@
 <script>
-    import { fade } from 'svelte/transition'
 	import { spring } from 'svelte/motion';
 	import { onMount } from 'svelte';
 
@@ -17,7 +16,7 @@
     onMount(()=>{
 
         return ()=>{
-            console.error("D E S T R U C T I O N ! ! !")
+            console.log("%c 💥 D E S T R U C T I O N ! 💥", "color: orangered; font-weight: 800;")
             window.removeEventListener("mousemove", dispatchLocation)
             window.removeEventListener("mousedown", reactToPress)
             window.removeEventListener("mouseup", reactToRelease)
