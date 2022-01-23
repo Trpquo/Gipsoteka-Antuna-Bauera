@@ -39,6 +39,7 @@
   line-height: 1.4em;
   color: var(--text-color-dark);
   font-variant-numeric: var(--number-style);
+  scroll-behavior: smooth;
 }
 
 * {
