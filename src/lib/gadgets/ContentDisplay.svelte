@@ -18,7 +18,7 @@
         <a href={ slug } >
             <figure>
                 {#if coverImage }
-                <img src={ `/img/${ imgRoot }/${ coverImage }` } alt={ title } />
+                <img src={ `/img/${ imgRoot }${ coverImage }` } alt={ title } />
                 {:else}
                 <img src={ getImgUrl( imgRoot ? imgRoot : slug ) } alt={ title } />
                 {/if}
@@ -148,6 +148,7 @@
             position: absolute;
             right: 0;
             bottom: 0;
+            padding-bottom: 0;
         }
     }
 </style>
