@@ -61,6 +61,10 @@ button {
   cursor: pointer;
 }
 
+img {
+  pointer-events: none;
+}
+
 #wrapper {
   display: flex;
   flex-direction: column;
@@ -309,6 +313,9 @@ article h2 {
 article h1 + h2 {
   margin-top: var(--large-padding);
 }
+article h3, article h4, article h5 {
+  font-size: 2rem;
+}
 article h6 {
   /* Ovaj se koristi za broj poglavlja */
   margin: 0;
@@ -459,13 +466,11 @@ article .textContent figure div {
   cursor: none;
   position: relative;
 }
-article .textContent figure div img {
+article .textContent figure img {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
-  max-width: 100%;
-  pointer-events: none;
   filter: grayscale(0.8) sepia(0.3) contrast(0.666);
 }
 article .textContent figure figcaption {
@@ -692,8 +697,8 @@ article #bgImage {
   background-repeat: no-repeat, no-repeat;
   background-size: cover;
   background-position: 50% 100%;
-  opacity: 0.1;
-  filter: contrast(4) contrast(0.95);
+  opacity: 0.0666;
+  filter: contrast(3) contrast(0.9);
   mix-blend-mode: luminosity;
 }
 

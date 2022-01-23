@@ -1,9 +1,9 @@
 export const get = async () => {
 
     const posts = import.meta.globEager( "../**/*.md" );
-    const jpegs = Object.keys( import.meta.glob( "../**/*.jpg" ) )
-    const pngs = Object.keys( import.meta.glob( "../**/*.png" ) )
-    const webps = Object.keys( import.meta.glob( "../**/*.webp" ) )
+    const jpegs = Object.keys( import.meta.glob( "../../**/*.jpg" ) )
+    const pngs = Object.keys( import.meta.glob( "../../**/*.png" ) )
+    const webps = Object.keys( import.meta.glob( "../../**/*.webp" ) )
     const images = [ ...jpegs, ...pngs, ...webps ] // .map(url=> url.replace("../routes/", "") );
 
    
