@@ -52,7 +52,7 @@
 <style>
 	svg {
         position: absolute;
-        z-index: 100000;
+        z-index: 1000;
 		width: 800px;
 		height: 800px;
         margin-top: -402px;

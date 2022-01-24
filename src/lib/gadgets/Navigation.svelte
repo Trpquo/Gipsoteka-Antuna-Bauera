@@ -12,30 +12,13 @@
     let speed = 200
     
     function toggleSubmenu( { target }, { slug } ) {
-        target.removeEventListener( "mouseover", openIfHold )
+        // target.removeEventListener( "mouseover", openIfHold )
         openedSubmenu === slug ? openedSubmenu = "" : openedSubmenu = slug
         noNewSubmenu = false
-        setTimeout(()=>{
-            target.addEventListener( "mouseover",  ()=>openIfHold( { target }, { slug } ) )
-        }, 5000)
+        // setTimeout(()=>{
+        //     target.addEventListener( "mouseover",  ()=>openIfHold( { target }, { slug } ) )
+        // }, 5000)
     }
-
-    function openIfHold( { target }, { slug } ) {
-        
-
-            const anticipation = setTimeout( ()=> { 
-                if ( !target.classList.contains( "submenuOpen" ) ) {
-                    toggleSubmenu( { target }, { slug } )
-                }
-            }, 1000 )
-            
-            const withdrawal = ()=>{
-                clearTimeout( anticipation )
-                target.removeEventListener( "mouseout", withdrawal )
-            }
-            
-            target.addEventListener( "mouseout", withdrawal )
-    } 
 
     function selectItem( el, item ) {
         if ( el.tagName !== 'BUTTON' ) {
@@ -59,7 +42,7 @@
         >
             { item.meta.title }
             {#if item.sub }
-            <button on:click|preventDefault={ e=>toggleSubmenu( e, item ) } on:mouseover={ e=>openIfHold( e, item ) } on:focus={()=>{}} class:submenuOpen={ openedSubmenu === item.slug } >open</button>
+            <button on:click|preventDefault={ e=>toggleSubmenu( e, item ) } on:focus={()=>{}} class:submenuOpen={ openedSubmenu === item.slug } >open</button>
             {/if}
         </a>
         {#if item.sub  && 

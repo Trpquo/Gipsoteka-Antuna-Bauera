@@ -1,0 +1,374 @@
+@use 'vars' as *;
+
+#menuButton {
+    @include reset;
+    position: fixed;
+    margin: .5rem;
+    top: var(--default-padding);
+    right: var(--large-padding);
+    z-index: 2000;
+    display: block;
+    width: 3rem;
+    height: 3rem;
+    text-align: center;
+    display: inline-block;
+    transition: 
+        background-color .5s, 
+        border-radius 1s, 
+        bottom .5s ease .25s, 
+        right .25s ease-in-out .15s,
+        width .25s ease-in-out .15s; 
+    cursor: pointer;
+    // @include light-text-on-medium;
+    color: var(--text-color-light);
+    background-color: var(--bg-color-light);
+
+    span {
+        text-indent: -99999px;
+    }
+
+    &:before, &:after, span {
+        content: "";
+        display: block;
+        background-color: var(--text-color-light);
+        width: 60%;
+        height: .2rem;
+        border-radius: .1rem;
+        position: absolute;
+        top: calc( 50% - .1rem );
+        left: 20%;
+        transform-origin: center;
+        transition: transform .5s ease-out;
+    }
+    &:before {
+        transform: translateY( -.65rem );
+    }
+    &:after {
+        transform: translateY( .65rem );
+    }
+
+
+    &:hover, &.active {
+        background-color: var(--bg-color-medium);
+
+    }
+    &.active {
+        background-color: transparent;
+        span {
+            transform: scale(0);
+        }
+        &:before, &:after {
+            background-color: var(--text-color-dark);
+        }
+        &:before {
+            transform: rotate( 135deg );
+        }
+        &:after {
+            transform: rotate( -135deg );
+        }
+        
+        &:hover {
+            &:before, &:after {
+                background-color: var(--bg-color-light);
+            }
+        }
+
+    }
+    
+    @include for-desktop {
+        position: absolute;
+        z-index: 0;
+        margin: 0;
+        top: 0;
+        right: 0;
+        width: 0;
+        height: 100%;
+        background-color: var(--bg-dark);
+        
+        &:hover {
+            background-color: var(--bg-color-medium);
+        }
+        &.active {
+            background-color: var(--bg-color-medium);
+        }
+    }
+    
+    @include for-mini {
+        position: fixed;
+        inset: auto 0 -4rem;
+        height: 4rem;
+        width: 100%;
+        margin: 0;
+        background-color: var(--bg-color-dark);
+
+        &.visible, &.active {
+            bottom: 0;
+        } 
+
+        &:before, &:after, span {
+            width: 2.5rem;
+            left: auto;
+            right: 2rem;
+        }
+        
+        &.active {
+            &:before, &:after, span {
+                background-color: var(--text-color-light);
+            }
+        }
+    }
+}
+
+@include for-desktop {
+
+    #pageHeader h1:hover #menuButton, #menuButton.active {
+        right: -3rem;
+        width: 3rem;
+    }
+}
+
+
+
+#menu {
+    position: fixed;
+    inset: 0;
+    overflow: auto;
+    padding: calc( var(--large-padding) / 2 );
+    box-sizing: border-box;
+    background-color: var(--bg-dark);
+    z-index: 900;
+    font-size: var(--menuitem-size);
+    font-family: var(--text-face);
+    text-align: left;
+    text-transform: none;
+    letter-spacing: 0;
+    line-height: 1em;
+    
+    
+    a {
+        color: inherit;
+        padding: 1em;
+        box-sizing: border-box;
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+
+    ul {
+        @include reset;
+        display: flex;
+        flex-direction: column;
+
+        li {
+            list-style: none;
+            position: relative;
+            margin-right: .2rem;
+            margin: 0;
+            padding: 0;
+            transition: background-color .3s, color .1s;
+            @include dark-text-on-light;
+
+            a {
+                padding-left: var(--large-padding);
+            }
+
+            &:hover {
+                @include dark-text-on-color;
+
+                a button:after {
+                    border-color: var(--bg-color-light);
+                }
+            }
+
+            li {
+                @include dark-text-on-light;
+
+                a {
+                    padding-left: calc( var(--large-padding) * 2 );
+                }
+
+                &:hover {
+                    @include light-text-on-color;
+                }
+
+                li {
+                    font-size: .85em;
+                    a {
+                        padding: .5em 1em;
+                        padding-left: calc( var(--large-padding) * 3 );
+                    }
+
+                    &:hover {
+                        @include light-text-on-dark
+                    }
+                }
+            }
+            a {
+
+                button {
+                    @include reset;
+
+                    text-indent: -9999px;
+                    width: 3em;
+                    height: 3rem;
+                    margin: -2rem -.5rem;
+                    line-height: 1rem;
+                    position: relative;
+                    background-color: transparent;
+
+                    &:after {
+                        content: '';
+                        display: block;
+                        width: .85em;
+                        height: .85em;
+                        position: absolute;
+                        inset: 0;
+                        border-width: 0 2px 2px 0;
+                        border-style: solid;
+                        border-color: var(--bg-color-medium);
+                        transform: translate(50%, 100%) rotate(-45deg);
+                        transition: transform .5s;
+
+                    }
+                    &:hover:after {
+                        border-color: var(--text-color-light);
+                    }
+
+                    &.submenuOpen:after {
+                        transform: translate(70%, 100%) rotate(45deg);
+                    }
+                }
+            }
+        }
+        li.active {
+            @include dark-text-on-light;
+
+            &.current {
+                font-weight: 800;
+                cursor: default;
+
+                li {
+                    font-weight: 400;
+                }
+            }
+
+            & > a {
+                border-left: .25em solid var(--bg-color-light);
+
+                button:hover:after {
+                    border-color: var(--text-color-dark);
+                }
+            }
+            li {
+                &.active:hover {
+                    @include dark-text-on-color;
+                }
+            }
+
+        }
+
+
+
+    }
+
+    @include for-mini {
+        padding: 0;
+        padding-top: calc( var(--large-padding) * 2.333 );
+        background-color: var(--bg-color-light);
+        bottom: 4rem;
+    }
+
+    @include for-desktop {
+        position: absolute;
+        overflow: visible;
+        inset: auto;
+        width: auto;
+        top: 0;
+        right: -3rem;
+        height: 100%;
+        transform: translateX(100%);
+        padding: 0;
+        background-color: var(--bg-color-light);
+
+
+        & > ul {
+            // justify-items: stretch;
+            height: 100%;
+            font-size: 1rem;
+
+            li {
+                position: static;
+
+                &:hover {
+                    @include light-text-on-color;
+                }
+
+                &.active {
+                    @include dark-text-on-medium;
+                    a {
+                        font-weight: 500;
+                    }
+                }
+
+            }
+
+            & > li {
+                flex-shrink: 0;
+                flex-grow: 0;
+                @include light-text-on-accent;
+
+                a {
+                    padding: .5rem 1rem !important;
+                    
+                    
+                    button {
+                        height: 100%;
+                        margin: 0;
+                        &:after {
+                            // margin-top: -.25em;
+                            width: .5em;
+                            height: .5em;
+                        }
+                    }
+                    
+                }
+                &.active {
+                    
+                    a {
+                        border-left: 0;
+
+                        button {
+
+                            &:after {
+                                border-color: var(--bg-color-light); 
+                            }
+                            &:hover:after {
+                                border-color: var(--text-color-light);
+                            }
+                        }
+                    }
+                }
+
+                & ul {
+                    position: absolute;
+                    width: auto;
+                    min-height: 100%;
+                    top: 0;
+                    right: 0;
+                    transform: translateX(100%);
+
+
+                    ul {
+                        li {
+                            font-size: 1em;
+                            &:hover {
+                                @include light-text-on-medium;
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+}

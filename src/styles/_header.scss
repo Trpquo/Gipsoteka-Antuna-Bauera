@@ -1,0 +1,121 @@
+@use 'vars' as *;
+
+#pageHeader {
+    height: 55vh;
+    padding: var(--large-padding);
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+
+    @include for-mini {
+        height: 33vh;
+        padding: 0;
+    }
+    
+    h1 {
+        font-family: var(--text-face2);
+        font-size: var(--head-size);
+        font-weight: 400;
+        text-transform: uppercase;
+        text-align: center;
+        background-color: var(--bg-color-light);
+        color: var(--text-color-light);
+        line-height: 1em;
+        letter-spacing: .01em;
+        padding: max( var(--large-padding), 1rem );
+        display: flex;
+        position: relative;
+
+        @include for-desktop {
+            padding-top: var(--default-padding);
+        }
+
+
+        div {
+            font-size: .63em;
+            border-bottom: .0666em solid currentColor;
+            line-height: .75em;
+        }
+        
+        a {
+            color: inherit;
+            
+            //     & span {
+            //         color: var(--accent-color);
+            //         font-size: 1.2em;
+            //     }
+            //     & span:first-of-type {
+            //         margin-left: -.05em;
+            //         margin-right: 0.01em;
+            //     }
+            //     & span:nth-of-type(2) {
+            //         margin-left: -.01em;
+            //         margin-right: 0.0¸1em;
+            //     }
+            //     & span:nth-of-type(3) {
+            //         margin-left: -.00em;
+            //         margin-right: 0.01em;
+            //     }
+        }
+        
+        @include for-mini {
+            display: block;
+            width: 100%;
+            // align-self: flex-start;
+            // margin-bottom: .5em;
+
+            div {
+                // display: inline-block;
+                padding-bottom: 0;
+                border-bottom: none;
+                line-height: 1;
+            }
+        }
+    }
+
+
+    
+    
+
+    &.moj h1 {
+        font-family: var(--head-face);
+        padding-bottom: .25em;
+    }
+
+    #heroBg {
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        overflow: hidden;
+    
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        grid-template-rows: repeat(auto-fit, minmax(33.33%, 1fr));
+        grid-auto-flow: dense;
+
+        img {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+            filter: var(--basic-image-filter);
+        }
+        
+        figure:first-of-type, 
+        figure:nth-of-type(2n) {
+            grid-row: span 2;
+        }
+        figure:first-of-type, 
+        figure:nth-of-type(8), 
+        figure:nth-of-type(3n) {
+            grid-column: span 2;
+        }
+
+        @include for-mini {
+            grid-template-columns: repeat(auto-fit, minmax(20vw, 1fr));
+            grid-template-rows: repeat(auto-fit, minmax(33.333%, 1fr));
+        }
+    }
+
+}
+
+

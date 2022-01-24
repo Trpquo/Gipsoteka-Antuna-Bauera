@@ -13,6 +13,9 @@ $tiny-screen: 800px;
     --accent-color2: darkseagreen;  // cadetblue, darkcyan, darkseagreen
     --text-color-light: var(--bg-light);
     --text-color-dark: #363626;
+    --title-color-light: var(--bg-color-light);
+    --title-color-medium: var(--accent-color2);
+    --title-color-dark: var(--bg-color-dark);
     
 
     --head-face: 'Vesper Libre', serif;
@@ -24,7 +27,7 @@ $tiny-screen: 800px;
     --quote-face: var(--text-face2);
     --number-style: oldstyle-nums;
     
-    --head-size: clamp(4rem, 6vw, 6rem);
+    --head-size: clamp(4rem, 8.666vw, 6rem);
     --title-size: clamp( 2.5rem, 5vw, 3rem);
     --text-size: clamp( 16px, 1.3vw, 18px );
     --quote-size: clamp( 20px, 1.3vw, 22px );
@@ -37,6 +40,8 @@ $tiny-screen: 800px;
     --default-padding: clamp( .666rem, 1.5vw, 2rem );
     --large-padding: clamp( 2rem, 3vw, 6rem);
     --max-p-width: 1000px;
+
+    --basic-image-filter: grayscale(.8) sepia(.3) contrast(.666);
 }
 
 @mixin for-desktop {
@@ -73,15 +78,23 @@ $tiny-screen: 800px;
     color: var(--text-color-light);
     background-color: var(--bg-color-dark);
 }
+@mixin light-text-on-medium {
+    color: var(--text-color-light);
+    background-color: var(--bg-color-medium);
+}
 @mixin light-text-on-accent {
     color: var(--text-color-light);
-    background-color: var(--accent-color);
+    background-color: var(--bg-color-light);
 }
 @mixin dark-text-on-light {
     color: var(--text-color-dark);
     background-color: var(--bg-light);
 }
 @mixin dark-text-on-color {
+    color: var(--text-color-dark);
+    background-color: var(--bg-color-medium);
+}
+@mixin dark-text-on-medium {
     color: var(--text-color-dark);
     background-color: var(--bg-color-medium);
 }
@@ -119,7 +132,7 @@ $tiny-screen: 800px;
 }
 @mixin titles {
     font-family: var(--title-face2);
-    line-height: 1.3em;
+    line-height: 1.1em;
     margin-top: .5em;
 }
 @mixin quotes {

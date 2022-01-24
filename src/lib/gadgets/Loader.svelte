@@ -5,7 +5,7 @@
     let hideInitialContent = true
 
     onMount(()=>{
-        setTimeout(()=>{ hideInitialContent = false }, 1500)    
+        setTimeout(()=>{ hideInitialContent = false }, 500)    
     })
 
 </script>

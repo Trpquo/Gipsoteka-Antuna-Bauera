@@ -3,16 +3,13 @@
     import { slide } from 'svelte/transition';
     import { cubicOut, backIn } from 'svelte/easing'
 
-    import { site } from '$lib/utils/stores'
     import Navigation from '$lib/gadgets/Navigation.svelte'
 
-    let menu
+    export let images, menu
+    let dropDown, menuOpen = false, button, y, oldY = 0, down = false
 
-    $: {
-        if ( $site ) menu = $site.menu
-    }
 
-    let dropDown, menuOpen = false
+
     function openMenu( e ) {
         menuOpen = !menuOpen
     }
@@ -29,22 +26,44 @@
         ) menuOpen = !menuOpen
     }
 
-
+    function handleScroll() {
+        if ( oldY < y ) { 
+            down = true 
+        }
+        else down = false
+        
+        oldY = y
+    }
     
 </script>
-<header class="moj">
-    <h1><a href="/"><span>G</span>ipsoteka <div><span>A</span>ntuna <span>B</span>auera</div></a></h1>
 
-    <button id="menuButton" on:click={ openMenu } class:active={ menuOpen }>Izbornik</button>
-    {#if menuOpen }
-    <nav id="menu" 
-        bind:this={ dropDown }
-        in:slide={{ duration: 1000, easing: cubicOut }} 
-        out:slide={{ duration: 1500, easing: backIn }} 
-    >
-        <Navigation { menu } />
-    </nav>
+<svelte:window on:click={ handleClick } bind:scrollY={ y } on:scroll={ handleScroll } />
+
+<header id="pageHeader" class="moj">
+
+    <h1>
+        <a href="/"><span>G</span>ipsoteka <div><span>A</span>ntuna <span>B</span>auera</div></a>
+        <button id="menuButton" on:click={ openMenu } class:active={ menuOpen } class:visible={ !down } bind:this={ button } ><span>Izbornik</span></button>
+        
+        {#if menuOpen }
+        <nav id="menu" 
+            bind:this={ dropDown }
+            in:slide={{ duration: 1000, easing: cubicOut }} 
+            out:slide={{ duration: 1500, easing: backIn }} 
+        >
+            <Navigation { menu } />
+        </nav>
+        {/if}
+    </h1>
+    
+    {#if images }
+        <div id="heroBg">
+            {#each images as src }
+            <figure>
+                <img { src } alt="Gliptoteka Antuna Bauera" />
+            </figure>
+            {/each}
+        </div>
     {/if}
-</header>
 
-<svelte:window on:click={ handleClick } />
+</header>

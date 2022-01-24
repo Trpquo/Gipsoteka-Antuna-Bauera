@@ -15,28 +15,26 @@
     {#each content.menu as { slug, sub, meta: { title, imgRoot, coverImage, chapter } }, index }
     <li>
         <h3>{ chapter }</h3>
-        <a href={ slug } >
-            <figure>
-                {#if coverImage }
-                <img src={ `/img/${ imgRoot }${ coverImage }` } alt={ title } />
-                {:else}
-                <img src={ getImgUrl( imgRoot ? imgRoot : slug ) } alt={ title } />
-                {/if}
-                <figcaption>
-                    <h4>{ title }</h4> 
-                </figcaption>
-            </figure>
-        </a>
-        {#if sub }
-            <!-- <svelte:self content={{ menu: sub, posts: content.posts, images: content.images }} /> -->
-            <ul>
+        <figure>
+            {#if coverImage }
+            <img src={ `/img/${ imgRoot }${ coverImage }` } alt={ title } />
+            {:else}
+            <img src={ getImgUrl( imgRoot ? imgRoot : slug ) } alt={ title } />
+            {/if}
+        </figure>
+        <!-- <svelte:self content={{ menu: sub, posts: content.posts, images: content.images }} /> -->
+        <ul>
+            <h4>
+                <a href={ slug } >{ title }</a>
+            </h4> 
+            {#if sub }
                 {#each sub as s }
                     <li>
                         <a href={ s.slug }>{ s.meta.title }</a>
                     </li>
                 {/each}
+            {/if}
             </ul>
-        {/if}
     </li>
     {/each}
 </ul>
@@ -60,12 +58,16 @@
     }
     h3 {
         position: absolute;
-        top: -1.15em;
-        right: .5rem;
+        top: -1.2em;
+        right: 1rem;
         z-index: 2;
-        font-size: clamp(3rem, 8vw, 5rem);
+        font-size: clamp(3rem, 7vw, 4rem);
         color: var(--accent-color);
         text-shadow: none;
+        letter-spacing: -.1em;
+    }
+    h4 {
+        padding-inline: .5rem;
     }
 
     .content-display > li:after {
@@ -83,34 +85,47 @@
         background-color: var(--bg-light);
         transition: width .5s ease-out, background-color 0 linear .45s;
     } */
-    .content-display > li > ul, figcaption {
-        padding: 0 .25rem 1rem .75rem;
+    .content-display > li > ul {
+        padding: 0 .25rem 0 .75rem;
     }
-    figure {
-        width: 100%;
-        aspect-ratio: 1/1;
+    .content-display ul li, h4 {
+        float: left;
+        clear: both;
     }
-
     ul ul li {
         margin-top: .15rem;
         border-top: 1px solid var(--text-color-dark);
-        padding: .5rem;
+        padding: .666rem .5rem .333rem;
     }
-    ul ul a {
+    ul ul li:first-of-type {
+        border-top: none;
+    }
+    ul ul li a {
         display: block;
         color: var(--text-color-dark);
         font-variant: normal;
     }
-    ul ul a:hover {
+    h4 a:hover {
+        text-decoration-color: var(--bg-color-light);
+        text-decoration-thickness: 3px;
+    }
+    ul ul li a:hover {
         font-weight: bold;
+        text-decoration: none;
         /* color: var(--bg-color-medium); */
+    }
+    figure {
+        width: 100%;
+        aspect-ratio: 1/1;
     }
     @media ( max-width: 800px ) {
         .content-display {
            display: block;
         }
         .content-display > li {
-            height: 35vh;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            height: auto;
             border-top: 0;
             margin-bottom: var(--large-padding);
         }
@@ -118,36 +133,33 @@
            width: 1rem;
            background-color:  var(--bg-color-light);
            top: 0;
+           left: calc( 33% - .75rem );
            height: 100%;
         }
-        li > a {
+        /* .content-display > li > a {
             display: block;
-            width: 50%;
+            width: 100%;
             height: 100%;
-        }
+            float: left;
+        } */
 
         h3 {
-            left: 1.25rem;
+            left: .75rem;
             top: 0;
             line-height: 0;
             font-size: 6rem;
             right: auto;
         }
+        h4 {
+            border-top: .25rem solid var(--text-color-dark);
+            padding-top: 1rem;
+            margin-top: 0;
+        }
         figure {
             height: 100%;
-            aspect-ratio: unset;
+            /* aspect-ratio: unset; */
         }
-        figcaption {
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 50%;
-        }
-        .content-display ul {
-            width: 50%;
-            position: absolute;
-            right: 0;
-            bottom: 0;
+        .content-display > li > ul {
             padding-bottom: 0;
         }
     }

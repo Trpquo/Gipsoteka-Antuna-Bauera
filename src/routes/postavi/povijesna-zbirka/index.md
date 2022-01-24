@@ -8,7 +8,7 @@ layout: basic
 
 # {title}
 
-Specifičnost Zbirke sadrenih odljeva hrvatskih povijesnih jedinstvena je mogućnost da se na jednom mjestu, putem sadrenih odljeva, prezentira tijek i razvoj nacionalnog kiparskog stvaralaštva od predromanike do renesanse. 
+Specifičnost Zbirke sadrenih odljeva hrvatskih povijesnih spomenika jedinstvena je mogućnost da se na jednom mjestu, putem sadrenih odljeva, prezentira tijek i razvoj nacionalnog kiparskog stvaralaštva od predromanike do renesanse. 
 ![Zbirka historijskih spomenika u Gipsoteci, 1942.&mdash;1951., Knjiga negativa Gliptoteke HAZU]({imgRoot}gipsoteka-starohrv.jpg 'Zbirka historijskih spomenika, 1942.&mdash;1951.')
 
 Sakupljena su djela koja se nalaze diljem Hrvatske u brojnim muzejskim institucijama ili in situ na lokalitetima. U Gipsoteci je osnovana radionica u sklopu koje su stručnjaci niz godina obilazili lokalitete i uzimali otiske dijelova ili čitavih spomenika te ih lijevali. Najveći broj odljeva nastao je za izložbu _Srednjovjekovna umjetnost naroda Jugoslavije_ održana u Parizu 1950. godine.
