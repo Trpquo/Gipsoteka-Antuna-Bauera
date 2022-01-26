@@ -26,7 +26,6 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"aos": "^2.3.4",
 		"nvm": "^0.0.4"
 	}
 }

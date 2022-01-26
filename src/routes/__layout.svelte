@@ -1,11 +1,12 @@
 <script context="module">
     import loader from '$lib/utils/server'
     
+    
     export const load = ({ fetch, url: { pathname: slug } } )=>{
-        loader( fetch )
+        const getSite = ()=>loader( fetch )
         
-        
-        return { props: { slug } }
+        console.log( "%cLoading route", "color: darkseagreen", slug )
+        return { props: { slug, getSite } }
     }
     
 </script>
@@ -14,27 +15,25 @@
     import { Header, Footer, Loader } from '$lib/components/all'
     import { site } from '$lib/utils/stores'
     import '../app.css';
-    import '../../node_modules/aos/dist/aos.css';
+    // import '../../node_modules/aos/dist/aos.css';
     
-    export let slug
-
-    let images, relevantImages, menu
+    export let getSite, slug
+    let relevantImages, menu
     const numRelevantImages = 10
 
-        
-    $: if ( $site ) {
+
+    $: if ( $site && !menu ) {
         menu = $site.menu
+        console.log("%cSetting $site.menu", "color: darkseagreen")
+    }
+    $: if ( menu ) {
+        console.log( "%cSetting relevantImages", "color: darkseagreen" )
         const imageSet = new Set( $site.images.filter( im=> im.indexOf( '/img/' ) >= 0 ).map( im => im.substring( im.indexOf('/img/') )) ) 
-        images = [ ...imageSet ]
+        relevantImages = selectRandomImage( [ ...imageSet ].filter( im=> im.indexOf( slug ) >= 0 ), numRelevantImages, [ ...imageSet ] )
     }
-
-    $: if ( images ) {
-        relevantImages = selectRandom( images.filter( im=> im.indexOf( slug ) >= 0 ), numRelevantImages )
-    }
-
     
     
-    function selectRandom( arr, num ) {
+    function selectRandomImage( arr, num ,images ) {
 
         const { floor, random } = Math
         const selected = new Set()
@@ -59,7 +58,9 @@
 
 </script>
 
-<Header images={ relevantImages } { menu } />
+<svelte:window on:load|once={ getSite } />
+
+<Header images={ relevantImages } { menu } { slug } />
 
 <Loader />
 <main>

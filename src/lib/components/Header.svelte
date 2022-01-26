@@ -5,7 +5,7 @@
 
     import Navigation from '$lib/gadgets/Navigation.svelte'
 
-    export let images, menu
+    export let images, menu, slug
     let dropDown, menuOpen = false, button, y, oldY = 0, down = false
 
 
@@ -46,12 +46,12 @@
         <button id="menuButton" on:click={ openMenu } class:active={ menuOpen } class:visible={ !down } bind:this={ button } ><span>Izbornik</span></button>
         
         {#if menuOpen }
-        <nav id="menu" 
+        <nav id="menu" aria-label="Site navigation"
             bind:this={ dropDown }
             in:slide={{ duration: 1000, easing: cubicOut }} 
             out:slide={{ duration: 1500, easing: backIn }} 
         >
-            <Navigation { menu } />
+            <Navigation { menu } { slug } level=1 />
         </nav>
         {/if}
     </h1>

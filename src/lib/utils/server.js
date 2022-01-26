@@ -18,9 +18,9 @@ export default async ( fetch ) => {
         const { body } = await get()
         response = body
 
-        console.log( "Get in place of fetch!" )
+        console.log( "%cGet in place of fetch!", "color: magenta" )
     } else {
-        console.log( "Fetch in place of get!" )
+        console.log( "%cFetch in place of get!", "color: lime" )
     }
     
     site.set( response )

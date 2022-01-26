@@ -46,13 +46,14 @@
 
 
 {#if gallery }
-<aside class="gallery for{ gallerians }" >
-    <h2>Galerija</h2>
-    <slot />
-</aside>
+    <aside class="gallery for{ gallerians }" >
+        <h2>Galerija</h2>
+        <slot />
+    </aside>
 {:else}
-<p bind:this={ p }>
-    <slot />
+    <p bind:this={ p }>
+        <slot />
+    </p>
     {#if showbox.length }
     <div class={ `showbox for${ showbox.length }` }>
         {#each showbox as img }
@@ -60,5 +61,4 @@
         {/each}
     </div>
     {/if}
-</p>
 {/if}

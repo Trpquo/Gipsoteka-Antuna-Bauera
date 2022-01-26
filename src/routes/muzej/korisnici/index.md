@@ -29,8 +29,18 @@ Cilj muzejskog postava za Bauera i danas je aktualno, suvremeno razmišljanje mu
 > Nastojali smo uskladiti izložbeni prostor tako, da postav zbirke sam po sebi vodi posjetioca kroz muzejske dvorane…
 <br><br>
 
+<script>
+    import Link from '$lib/gadgets/Link.svelte'
+    import PDFviewer from '$lib/gadgets/PDFviewer.svelte'
 
-[^1]: <a rel="external" href="/downloads/Analiza-postava-moderne-plastike_Bauer.pdf" target="_blank">Antun Bauer: Analiza postava zbirke moderne plastike u Gipsoteci, tipkopis, Zagreb 1948.pdf</a>
+    const description = '<strong>Antun Bauer</strong>: Analiza postava zbirke moderne plastike u Gipsoteci, tipkopis, Zagreb 1948.pdf'
+</script>
+
+
+
+
+
+[^1]: <Link rel="external" href="/downloads/Analiza-postava-moderne-plastike_Bauer.pdf" target="iframe"><span slot="link">{@html description }</span><span slot="gadget"><PDFviewer src="/downloads/Analiza-postava-moderne-plastike_Bauer.pdf" /></span></Link>
 
 
 

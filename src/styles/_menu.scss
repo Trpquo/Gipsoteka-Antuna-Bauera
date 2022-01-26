@@ -283,8 +283,9 @@
         overflow: visible;
         inset: auto;
         width: auto;
+        min-width: 16vw;
         top: 0;
-        right: -3rem;
+        right: -2.9rem;
         height: 100%;
         transform: translateX(100%);
         padding: 0;
@@ -296,25 +297,9 @@
             height: 100%;
             font-size: 1rem;
 
-            li {
-                position: static;
-
-                &:hover {
-                    @include light-text-on-color;
-                }
-
-                &.active {
-                    @include dark-text-on-medium;
-                    a {
-                        font-weight: 500;
-                    }
-                }
-
-            }
-
             & > li {
                 flex-shrink: 0;
-                flex-grow: 0;
+                flex-grow: 1;
                 @include light-text-on-accent;
 
                 a {
@@ -325,7 +310,7 @@
                         height: 100%;
                         margin: 0;
                         &:after {
-                            // margin-top: -.25em;
+                            margin-top: .25em;
                             width: .5em;
                             height: .5em;
                         }
@@ -333,7 +318,7 @@
                     
                 }
                 &.active {
-                    
+                    @include light-text-on-medium;
                     a {
                         border-left: 0;
 
@@ -349,26 +334,102 @@
                     }
                 }
 
-                & ul {
+                li {
+                    position: relative;
+    
+                    &:hover {
+                        @include light-text-on-medium;
+                    }
+    
+                    &.active {
+                        & > a {
+                            font-weight: 800;
+                        }
+
+                    }
+                    &.opened:hover {
+                        @include light-text-on-dark;
+                    }
+    
+                }
+
+                ul {
+                    border-top: .25rem solid var(--bg-color-light);
+                    border-bottom: 1rem solid var(--bg-color-light);
                     position: absolute;
                     width: auto;
                     min-height: 100%;
-                    top: 0;
+                    top: -.25rem;
                     right: 0;
                     transform: translateX(100%);
 
-
-                    ul {
-                        li {
-                            font-size: 1em;
-                            &:hover {
-                                @include light-text-on-medium;
-                            }
-                        }
+                    li {
+                        font-size: inherit;
                     }
+
                 }
             }
+        }
+    }
+}
 
+.post-w-minicontent {
+    display: flex;
+
+    .mini-content {
+        position: fixed;
+        top: 33%;
+        list-style: none;
+        padding: var(--default-padding);
+        right: -20rem;
+        padding-right: 3.5rem;
+        border-radius: 2rem;
+        border-right: 0;
+        width: 20rem;
+        background-color: var(--accent-color2);
+        transition: right 1s ease-in;
+
+        h2, li {
+            border-bottom: 1.5px solid var(--bg-dark);
+            padding: .5rem;
+
+            &:last-of-type {
+                border-bottom: 0;
+            }
+
+            a {
+                color: var(--text-color-light);
+
+                &:hover {
+                    font-weight: bold;
+                }
+            }
+        }
+        
+        &:after {
+            content: "";
+            display: block;
+            width: 5rem;
+            height: 5rem;
+            background-color: inherit;
+            z-index: -1;
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translate( -50%, -50% ) rotate(45deg);
+            transition: transform 1s linear;
+            cursor: pointer;
+        }
+        
+        
+        &:hover, &.opened {
+            // background-color: var(--bg-light);
+            right: -2.5rem;
+
+            &:after {
+                transform: translate( 0%, -50% ) rotate(45deg);
+            }
+            
         }
     }
 }

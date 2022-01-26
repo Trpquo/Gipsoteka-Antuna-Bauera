@@ -1,14 +1,24 @@
 <script context="module">
     import { img, p } from '$lib/components/html/all'
     export { img, p }
+
+    export const load = ({ url: { pathname: slug } }) => {
+
+        console.log( "%cLoading Article", "color: salmon", slug )
+        return { props: {} }
+    }
+
 </script>
 <script>
     import { onMount, tick } from 'svelte'
-
     import { fly } from 'svelte/transition'
-    import AOS from 'aos'
 
-    export let title, chapter, coverImage;  
+    import Breadcrumbs from "$lib/gadgets/Breadcrumbs.svelte"
+    import { site } from "$lib/utils/stores"
+
+    // import AOS from 'aos'
+
+    export let title, chapter, coverImage
     let coverImageUrl, scrollY, innerHeight, article, client = {}
     
     if (chapter) chapter = chapter.toString()
@@ -33,7 +43,7 @@
             }
         }
 
-        AOS.init( { easing: 'ease-in-out-sine', once: true, mirror: false, duration: 1500, offset: 20 } )
+        // AOS.init( { easing: 'ease-in-out-sine', once: true, mirror: false, duration: 1500, offset: 20 } )
 
     })
 
@@ -64,6 +74,12 @@
     </h6>
     {/if}
     <section class="textContent" >
+        <h1>{@html title }</h1>
+        {#if $site }
+            {#if site.pathname }
+                <Breadcrumbs path={ $site.pathname } />
+            {/if}
+        {/if}
         <slot />
     </section>
     {#if coverImageUrl } 

@@ -83,7 +83,7 @@ export const get = async () => {
         body: {
             menu,
             posts,
-            images
+            images,
         }
     }
 }

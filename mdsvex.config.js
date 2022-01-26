@@ -1,6 +1,5 @@
 import path from 'path';
 import { fileURLToPath } from 'url';
-// import relativeImages from "mdsvex-relative-images";
 import remarkFootnotes from "remark-footnotes";
 
 const dirname = path.resolve(fileURLToPath(import.meta.url), '../');

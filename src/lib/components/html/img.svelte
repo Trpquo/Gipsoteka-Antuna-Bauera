@@ -21,15 +21,17 @@
     
 
 
-    const aosAnimations = [
-        "fade-up",
-        "fade-up-right",
-        "fade-up-left",
-        "zoom-in-up",
-        "zoom-out",
-        "zoom-out-up",
-        "zoom-out-down",
-    ]
+    // const aosAnimations = [
+    //     "fade-up",
+    //     "fade-up-right",
+    //     "fade-up-left",
+    //     "zoom-in-up",
+    //     "zoom-out",
+    //     "zoom-out-up",
+    //     "zoom-out-down",
+    // ]
+    // data-aos={ twist && (r() -.5 ) > 0 ? aosAnimations[ floor( r() * aosAnimations.length ) ] : "" } 
+    // data-aos-delay={ r() * 500 } data-aos-duration={ r() * 500 + 1000 } data-aos-offset={ r() * 20 }
 
     const { floor, random: r } = Math
 
@@ -37,15 +39,15 @@
     
 </script>
 
-<figure { style } bind:this={ figure }
-    data-aos={ twist && (r() -.5 ) > 0 ? aosAnimations[ floor( r() * aosAnimations.length ) ] : "" } 
-    data-aos-delay={ r() * 500 } data-aos-duration={ r() * 500 + 1000 } data-aos-offset={ r() * 20 }
-    >
+<figure { style } bind:this={ figure }>
     <div on:mouseover={ setCursor } on:focus={ ()=>{} } on:mouseleave={ ()=>hover = false }>
         <img src={ `${$imageRoot}/${$$props.src}` } title={ $$props.title } alt={ $$props.alt }  >
         {#if hover  }
          <Cursor { ...hover }  />
         {/if}
     </div>
-    <figcaption><span class="short">{ $$props.title }</span><span class="long">{ $$props.alt }</span></figcaption>
+    <figcaption>
+        <span class="short">{ $$props.title }</span>
+        <span class="long">{ $$props.alt }</span>
+    </figcaption>
 </figure>
