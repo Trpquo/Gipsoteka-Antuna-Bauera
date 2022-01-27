@@ -10,39 +10,24 @@
 
 
 
-    function openMenu( e ) {
+    function toggleMenu(t) {
+        // console.log(`Recieving toggle request for ${ t.tagName + " " + t.title }.`)
         menuOpen = !menuOpen
     }
     function handleClick({ target }) {
-
+        // console.log( !!dropDown, target.tagName, target.id, target.title )
+        if ( target.id === 'menuButton' ) return toggleMenu()
         if ( !dropDown || target.title === slug ) return
-
-        if ( target.tagName !== 'BUTTON' ) menuOpen = !menuOpen
+        if ( target.tagName !== 'BUTTON' ) toggleMenu()
     }
 
     function handleScroll() {
-        // const pageHeight = getPageHeight()
-        // console.log( "Scrooool", pageHeight, y ) 
-        if ( oldY < y  ) {  // || y >= pageHeight
+
+        if ( oldY < y  ) {  // || y >= pageHeight // samo ne mogu dobiti točan pageHeight
             down = true 
         }
         else down = false
-
         oldY = y
-    }
-
-    function getPageHeight() {
-        if ( document ) {
-
-            var body = document.body,
-            html = document.documentElement;
-            
-            if ( body && html ) {
-
-                return Math.max( body.scrollHeight, body.offsetHeight, body.clientHeight,
-                            html.clientHeight, html.scrollHeight, html.offsetHeight );
-            } 
-        }
     }
     
 </script>
@@ -53,13 +38,13 @@
 
     <h1>
         <a href="/"><span>G</span>ipsoteka <div><span>A</span>ntuna <span>B</span>auera</div></a>
-        <button id="menuButton" on:click={ openMenu } class:active={ menuOpen } class:visible={ !down } ><span>Izbornik</span></button>
+        <button id="menuButton" class:active={ menuOpen } class:visible={ !down } title="Izbornik"><span>Izbornik</span></button>
         
         {#if menuOpen }
         <nav id="menu" aria-label="Site navigation"
             bind:this={ dropDown }
-            in:slide={{ duration: 1000, easing: cubicOut }} 
-            out:slide={{ duration: 1500, easing: backIn }} 
+            in:slide={{ duration: 750, easing: cubicOut }} 
+            out:slide={{ duration: 750, easing: backIn }} 
         >
             <Navigation { menu } { slug } level=1 />
         </nav>
@@ -77,3 +62,9 @@
     {/if}
 
 </header>
+
+<style>
+    #menuButton span {
+        z-index: -1;
+    }
+</style>

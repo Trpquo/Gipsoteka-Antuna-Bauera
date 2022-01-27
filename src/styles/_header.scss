@@ -8,7 +8,7 @@
     align-items: flex-end;
 
     @include for-mini {
-        height: 33vh;
+        height: 45vh;
         padding: 0;
     }
     
@@ -60,6 +60,7 @@
         
         @include for-mini {
             display: block;
+            padding-inline: 0;
             width: 100%;
             // align-self: flex-start;
             // margin-bottom: .5em;

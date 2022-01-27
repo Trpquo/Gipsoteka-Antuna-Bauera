@@ -8,7 +8,7 @@
     export let menu, slug, level
 
     let openedSubmenu = "bar"
-    let speed = 200
+    let duration = 300
 
     $: if ( active === "foo" ) active = slug
     
@@ -36,7 +36,7 @@
 
 </script>
 
-<ul id="top" in:slide={{ duration: 500 }} out:slide={{ delay: (menu.length - level) * speed }}>
+<ul id="top" in:slide={{ duration }} out:slide={{ delay: ( 3 - level ) * duration }}>
 
 {#if menu }
 {#each menu as item, i }
@@ -45,8 +45,6 @@
     <li class:active={ slug.indexOf( item.slug ) >= 0 } class:current={ slug === item.slug } class:opened={ openedSubmenu === item.slug }>
         <a href="{ item.slug }" title={ item.slug }
             on:click={ ({ target  })=>selectItem( target, item ) } 
-            in:fly={{ y: 20, duration: 500, delay: speed + speed * i }}
-            out:fly={{ y: 20, duration: 500, delay: menu.length * speed - speed * ( menu.length - i ) }}
         >
             { item.meta.title }
             {#if item.sub }

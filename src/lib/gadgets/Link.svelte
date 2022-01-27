@@ -21,6 +21,7 @@
         text-shadow: none;
         float: left;
         width: calc( 100% - var(--large-padding) );
+        margin-bottom: 2rem;
     }
     a {
         font-family: var(--text-face);

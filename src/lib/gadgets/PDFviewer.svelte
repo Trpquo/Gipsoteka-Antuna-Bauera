@@ -192,8 +192,12 @@
     
     @media ( max-width: 800px ) {
         #pdf-main-container {
-            margin-left: calc( var(--large-padding) * -2.25 );
-            width: calc( 100vw - var(--large-padding) );
+            width: 100vw;
+        }
+
+        :global(.textContent .footnotes #pdf-main-container) {
+            margin-left: calc( ( var(--large-padding) + var(--default-padding) ) * -1.18  );
+            margin-top: 2rem;
         }
     }
     
@@ -202,6 +206,7 @@
         border-top: 1rem solid var(--bg-color-light);
         flex-direction: column-reverse;
         height: 90vh;
+        background-color: var(--bg-dark);
     }
 
     #pdf-canvas {
@@ -209,7 +214,6 @@
         height: 100%;
         aspect-ratio: var(--ratio);
         object-fit: contain;
-        background-color: var(--bg-dark);
         filter: contrast(1.75) brightness(1.1) saturate(.2) ;
     }
     
@@ -270,7 +274,7 @@
         height: 100px;
         line-height: 100px;
         text-align: center;
-        color: var(--accent-color);
+        color: var(--bg-color-light);
         font-size: var(--text-size);
     }
 

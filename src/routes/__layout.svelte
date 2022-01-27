@@ -21,6 +21,7 @@
     let relevantImages, menu
     const numRelevantImages = 10
 
+    $: if ( !$site ) getSite()
 
     $: if ( $site && !menu ) {
         menu = $site.menu
@@ -57,8 +58,6 @@
     }
 
 </script>
-
-<svelte:window on:load|once={ getSite } />
 
 <Header images={ relevantImages } { menu } { slug } />
 

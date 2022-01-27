@@ -166,6 +166,7 @@
 .gallery {
     display: flex;
     flex-wrap: wrap;
+    align-content: flex-start;
     gap: .5rem;
     margin: 0;
     margin-bottom: var(--large-padding);
@@ -212,18 +213,10 @@
         }
     }
     @include for-desktop {
-        flex-direction: row;
-        flex-wrap: wrap;
-        align-content: flex-start;
-
+        
         figure {
-            flex-grow: .6;
-            flex-basis: 14rem;
+            flex-basis: 13rem;
             aspect-ratio: 1/1;
-            
-            @media (min-width: 1750px) {
-                flex-grow: 1;
-            }
         }
     }
     @include for-mini {

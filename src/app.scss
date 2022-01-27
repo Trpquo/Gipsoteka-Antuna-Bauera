@@ -92,44 +92,37 @@ article {
             }
         }
 
-        display: grid;
-        grid-template-columns: 2fr 1fr;
-        gap: 0.7em 5rem;
-        grid-template-areas:
-            "h1 ."
-            "p1 p1"
-            "p2 p2"
-            "a  a"
-            "p3 p3"
-            "p4 p4"
-            "p5 p5"
-            "p6 p6"
-            "p7 p7"
-            "p8 p8"
-            "p9 p9"
-            "p10 p10"
-            "p11 p11"
-            "p12 p12"
-            "p13 p13"
-            "p14 p14"
-            "p15 p15";
+        display: flex;
+        flex-direction: column;
 
         h1 {
-            grid-area: h1;
+            order: 1;
         }
-        @for $i from 1 through 15 {
-            & > *:not( .gallery ):nth-child( #{$i} ) {
-                grid-area: p + $i;
-            }
-        }
+
         .gallery {
-            grid-area: a;
+            order: 2;
+        }
+
+        * {
+            order: 3;
+        }
+
+        @include for-mini {
+            .gallery {
+                order: 3;
+            }
+    
+            * {
+                order: 2;
+            }
         }
 
         @include for-desktop {
+            display: grid;
+            grid-template-columns: 5fr 3fr;
+            gap: var(--default-padding);
 
             grid-template-areas:
-                "h1 ."
                 "p1 a"
                 "p2 a"
                 "p3 a"
@@ -145,49 +138,38 @@ article {
                 "p13 a"
                 "p14 a"
                 "p15 a"
+                "p16 a"
+                "p17 a"
+                "p18 a"
+                "p19 a"
+                "p20 a"
                 ;
-
-        }
-        @include for-mini {
-
-            grid-template-areas:
-                "h1 h1"  
-                "p1 p1"
-                "p2 p2"
-                "p3 p3"
-                "p4 p4"
-                "p5 p5"
-                "p6 p6"
-                "p7 p7"
-                "p8 p8"
-                "p9 p9"
-                "p10 p10"
-                "p11 p11"
-                "p12 p12"
-                "p13 p13"
-                "p14 p14"
-                "p15 p15"
-                "a  a"
-                ;
-
-        }
-
-        & > *:nth-last-child(1):not( .gallery ), & > p:last-of-type {
-
-            & {
                 
-                @include outer-padding;
-                position: relative;
-                text-shadow: 0 0 .666rem var(--bg-light);
-        
-                &:before {
-                    @include pseudo-background;
-        
-                    background-image: linear-gradient( #FFF0 20%, var(--bg-light) 50% );
-                    opacity: .5;
+                @for $i from 1 through 20 {
+                    & > *:not( .gallery ):nth-child( #{$i} ) {
+                        grid-area: p + $i;
+                    }
                 }
-            }
+                .gallery {
+                    grid-area: a;
+                }
         }
+
+        // & > *:nth-last-child(1):not( .gallery ), & > p:last-of-type {
+
+        //     & {
+        //         @include outer-padding;
+        //         position: relative;
+        //         text-shadow: 0 0 .666rem var(--bg-light);
+        
+        //         &:before {
+        //             @include pseudo-background;
+        
+        //             background-image: linear-gradient( #FFF0 20%, var(--bg-light) 50% );
+        //             opacity: .5;
+        //         }
+        //     }
+        // }
     }
 
     /* tipografija */
@@ -234,12 +216,6 @@ article {
         margin-top: -.4em;
         margin-bottom: .5em;
         letter-spacing: -.05em;
-
-        @include for-desktop {
-            margin-top: 1rem;
-            margin-bottom: -.5rem;
-        }
-
         
         span {
             font-size: calc( var(--chapter-no-size) * .8 );
@@ -263,8 +239,11 @@ article {
         }
         
         @include for-desktop {
-            width: 80%;
+            width: 87%;
             opacity: .8;
+
+            margin-top: -.5rem;
+            margin-bottom: 1.5rem;
         }
     }
 

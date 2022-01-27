@@ -27,7 +27,7 @@ $tiny-screen: 800px;
     --quote-face: var(--text-face2);
     --number-style: oldstyle-nums;
     
-    --head-size: clamp(4rem, 8.666vw, 6rem);
+    --head-size: clamp(3rem, 9vw, 6rem);
     --title-size: clamp( 2.5rem, 5vw, 3rem);
     --text-size: clamp( 16px, 1.3vw, 18px );
     --quote-size: clamp( 20px, 1.3vw, 22px );
@@ -83,9 +83,13 @@ $tiny-screen: 800px;
     color: var(--text-color-light);
     background-color: var(--bg-color-medium);
 }
-@mixin light-text-on-accent {
+@mixin light-text-on-light {
     color: var(--text-color-light);
     background-color: var(--bg-color-light);
+}
+@mixin light-text-on-accent {
+    color: var(--text-color-light);
+    background-color: var(--accent-color);
 }
 @mixin dark-text-on-light {
     color: var(--text-color-dark);
