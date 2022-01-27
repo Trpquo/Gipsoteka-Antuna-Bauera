@@ -83,13 +83,13 @@
         right: 0;
         width: 0;
         height: 100%;
-        background-color: var(--bg-dark);
         
-        &:hover {
+        &:hover, &.active {
             background-color: var(--bg-color-medium);
-        }
-        &.active {
-            background-color: var(--bg-color-medium);
+            
+            &:before, &:after, span {
+                background-color: var(--bg-dark);
+            }
         }
     }
     
@@ -283,7 +283,7 @@
         overflow: visible;
         inset: auto;
         width: auto;
-        min-width: 16vw;
+        min-width: 16.666vw;
         top: 0;
         right: -2.9rem;
         height: 100%;
@@ -302,6 +302,21 @@
                 flex-grow: 1;
                 @include light-text-on-accent;
 
+                & > a button:after {
+                    margin-top: .3em !important;
+                }
+                &.current > a, &.active > a {
+                    color: var(--bg-dark);
+                    // background-color: var(--bg-color-light);
+                    font-weight: 800;
+
+                    button {
+                        &:before, &:after {
+                            border-color: var(--bg-light) !important;
+                        }
+                    }
+                }
+
                 a {
                     padding: .5rem 1rem !important;
                     
@@ -310,7 +325,7 @@
                         height: 100%;
                         margin: 0;
                         &:after {
-                            margin-top: .25em;
+                            margin-top: -.4em;
                             width: .5em;
                             height: .5em;
                         }
@@ -335,7 +350,7 @@
                 }
 
                 li {
-                    position: relative;
+                    // position: relative;
     
                     &:hover {
                         @include light-text-on-medium;
@@ -374,26 +389,44 @@
 }
 
 .post-w-minicontent {
-    display: flex;
 
     .mini-content {
+        width: 22rem;
+        margin: 0;
         position: fixed;
-        top: 33%;
-        list-style: none;
+        top: 50vh;
+        right: calc( var(--default-padding) * -2.5 );
         padding: var(--default-padding);
-        right: -20rem;
         padding-right: 3.5rem;
-        border-radius: 2rem;
-        border-right: 0;
-        width: 20rem;
+        transform: translate( calc( 100% - var(--large-padding) * .85 ), -50% );
+        z-index: 100;
+        
         background-color: var(--accent-color2);
-        transition: right 1s ease-in;
+        list-style: none;
+        border-radius: 2rem 0 0 2rem;
+        transition: transform .75s ease-out;
+        --animate: 15s;
 
-        h2, li {
+        h2 {
+            margin-bottom: .5rem;
+            padding-inline: .5rem;
+            line-height: 1.1em;
+
+
+            a {
+                color: var(--text-color-dark);
+                transition: .25s;
+                &:hover {
+                   opacity: .9;
+                }
+            }
+        }
+
+        li {
             border-bottom: 1.5px solid var(--bg-dark);
             padding: .5rem;
 
-            &:last-of-type {
+            &:last-of-type, &:nth-last-of-type(2) {
                 border-bottom: 0;
             }
 
@@ -404,14 +437,39 @@
                     font-weight: bold;
                 }
             }
+
+            &.utils {
+                column-span: all;
+                border-top: 4px double var(--text-color-light);
+                padding-top: .5rem;
+                a, button {
+                    display: inline-block;
+                    margin-right: .5rem;
+                    &:hover {
+                        color: var(--text-color-dark);
+                    }
+
+                    &[title=Natrag] {
+                        margin-left: 2rem;
+                    } 
+                }
+                button {
+                    color: var(--text-color-light);
+                    cursor: pointer;
+                    background-color: transparent;
+                    font-size: 1rem;
+                    padding: 0;
+                }
+            }
         }
         
         &:after {
             content: "";
             display: block;
-            width: 5rem;
-            height: 5rem;
+            width: 4rem;
+            aspect-ratio: 1/1;
             background-color: inherit;
+            clip-path: polygon(0 0, 100% 100%, 0 100%);
             z-index: -1;
             position: absolute;
             top: 50%;
@@ -419,17 +477,158 @@
             transform: translate( -50%, -50% ) rotate(45deg);
             transition: transform 1s linear;
             cursor: pointer;
+            border: 0px solid var(--accent-color2);
+            box-sizing: content-box;
+        }
+        &:not( .opened ):after {
+            animation: signal var(--animate) ease-out 5s 3;
         }
         
+        @keyframes signal {
+            0% { border-width: 0rem; opacity: 1;}
+            2% { border-width:.2rem; opacity:.9;}
+            3% { border-width: 0rem; opacity:.8;}  
+            5% { border-width:.3rem; opacity: 1;}
+            6% { border-width:.1rem; opacity:.9;}
+            7% { border-width:.4rem; opacity:.8;}
+           10% { border-width: 0rem; opacity: 1;}
+        }
         
-        &:hover, &.opened {
-            // background-color: var(--bg-light);
-            right: -2.5rem;
+        &:hover:after {
+            transform: translate( -50%, -50% ) rotate(45deg) scale(1.5);
+            transition: transform .35s ease-out;
+        }
+
+        &.opened {
+            transform: translate(0, -50%);
 
             &:after {
-                transform: translate( 0%, -50% ) rotate(45deg);
+                transform: translate( -10%, -50% ) rotate(45deg);
+                cursor: default;
             }
-            
+            &:hover:after {
+                transform: translate( -10%, -50% ) rotate(45deg);
+            }
         }
     }
+
+    @include for-desktop {
+        position: relative;
+        overflow: hidden;
+
+        h6 {
+            position: relative;
+            z-index: -1;
+        }
+
+        .mini-content {
+            
+            position: absolute;
+            width: 60%;
+            height: auto;
+            inset: 0 auto auto var(--large-padding);
+            border-radius: 0 0 2rem 2rem;
+            padding-right: 0;
+            padding-top: 2rem;
+            columns: auto 20rem;
+            column-rule: 1px dotted var(--text-color-dark);
+            -webkit-column-break-inside: avoid;
+            column-fill: balance;
+            page-break-inside: avoid;
+            break-inside: avoid;
+            transform: translateY( calc( -100% ) );
+
+            h2 {
+                width: 100%;
+                column-span: all;
+            }
+
+
+            &:after {
+                width: 4rem;
+                top: auto;
+                bottom: .5rem;
+                left: calc( var(--large-padding) * 2 );
+                clip-path: polygon(100% 0, 100% 100%, 0 100%);
+                transform: translate( -50%, 50% ) rotate(45deg);
+                background-color: var(--accent-color2);
+
+            }
+
+            &.sticky {
+                position: fixed;
+            }
+            
+            
+            &.opened {
+                right: auto;
+                transform: translateY( 0 );
+
+                h2, li {
+                    visibility: visible;
+                }
+    
+                &:after {
+                    transform: translate( -50%, 10% ) rotate(45deg);
+                }
+                
+            }
+            &:hover:after {
+                transform: translate( -50%, 50% ) rotate(45deg) scale(1.5);
+            }
+            &.opened:hover:after {
+                transform: translate( -50%, 10% ) rotate(45deg);
+            }
+        }
+
+    }
+
+    @include for-mini {
+
+        .mini-content {
+            width: 101vw;
+            height: 102vh;
+            transition: transform .75s ease-out, border-radius .75s ease-out;
+            padding: calc( var(--large-padding) * 2 );
+            display: grid;
+            place-content: center;
+            font-size: clamp( 1.3rem, 3vw, 2rem );
+            line-height: 1.3em;
+
+            li {
+                padding: var(--default-padding);
+                
+                &.utils {
+                    margin-top: var(--large-padding);
+    
+                    a, button {
+                        margin-right: 2rem;
+                        margin-top: 1rem;
+                        transform: scale(1.5);
+                    }
+
+                    button[title=Zatvori] {
+                        color: var(--text-color-dark);
+                        display: block;
+                        float: right;
+                        margin-right: 0;
+                        transform: scale(3);
+
+                        &:hover {
+                            color: var(--bg-color-dark);
+                        }
+                    }
+                }
+            } 
+            
+
+
+            &.opened {
+                transform: translate( calc( var(--large-padding) * -.8 ) , -50%);
+                border-radius: 0;
+            }
+        }
+
+    }
+
 }

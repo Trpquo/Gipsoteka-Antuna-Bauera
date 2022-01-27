@@ -2,7 +2,7 @@ import { get } from '../../routes/posts.json.js'
 import { site } from '$lib/utils/stores'
 
 export default async ( fetch ) => {
-
+    console.log("%cServer logging in.", "color: hotpink")
     let response = null;
 
     try {

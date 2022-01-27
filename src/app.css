@@ -32,6 +32,7 @@
   --default-padding: clamp( .666rem, 1.5vw, 2rem );
   --large-padding: clamp( 2rem, 3vw, 6rem);
   --max-p-width: 1000px;
+  --header-height: 60vh;
   --basic-image-filter: grayscale(.8) sepia(.3) contrast(.666);
 }
 
@@ -106,13 +107,12 @@
     right: 0;
     width: 0;
     height: 100%;
+  }
+  #menuButton:hover, #menuButton.active {
+    background-color: var(--bg-color-medium);
+  }
+  #menuButton:hover:before, #menuButton:hover:after, #menuButton:hover span, #menuButton.active:before, #menuButton.active:after, #menuButton.active span {
     background-color: var(--bg-dark);
-  }
-  #menuButton:hover {
-    background-color: var(--bg-color-medium);
-  }
-  #menuButton.active {
-    background-color: var(--bg-color-medium);
   }
 }
 @media (max-width: 800px) {
@@ -281,7 +281,7 @@
     overflow: visible;
     inset: auto;
     width: auto;
-    min-width: 16vw;
+    min-width: 16.666vw;
     top: 0;
     right: -2.9rem;
     height: 100%;
@@ -299,6 +299,16 @@
     color: var(--text-color-light);
     background-color: var(--bg-color-light);
   }
+  #menu > ul > li > a button:after {
+    margin-top: 0.3em !important;
+  }
+  #menu > ul > li.current > a, #menu > ul > li.active > a {
+    color: var(--bg-dark);
+    font-weight: 800;
+  }
+  #menu > ul > li.current > a button:before, #menu > ul > li.current > a button:after, #menu > ul > li.active > a button:before, #menu > ul > li.active > a button:after {
+    border-color: var(--bg-light) !important;
+  }
   #menu > ul > li a {
     padding: 0.5rem 1rem !important;
   }
@@ -307,7 +317,7 @@
     margin: 0;
   }
   #menu > ul > li a button:after {
-    margin-top: 0.25em;
+    margin-top: -0.4em;
     width: 0.5em;
     height: 0.5em;
   }
@@ -323,9 +333,6 @@
   }
   #menu > ul > li.active a button:hover:after {
     border-color: var(--text-color-light);
-  }
-  #menu > ul > li li {
-    position: relative;
   }
   #menu > ul > li li:hover {
     color: var(--text-color-light);
@@ -353,41 +360,78 @@
   }
 }
 
-.post-w-minicontent {
-  display: flex;
-}
 .post-w-minicontent .mini-content {
+  width: 22rem;
+  margin: 0;
   position: fixed;
-  top: 33%;
-  list-style: none;
+  top: 50vh;
+  right: calc( var(--default-padding) * -2.5 );
   padding: var(--default-padding);
-  right: -20rem;
   padding-right: 3.5rem;
-  border-radius: 2rem;
-  border-right: 0;
-  width: 20rem;
+  transform: translate(calc( 100% - var(--large-padding) * .85 ), -50%);
+  z-index: 100;
   background-color: var(--accent-color2);
-  transition: right 1s ease-in;
+  list-style: none;
+  border-radius: 2rem 0 0 2rem;
+  transition: transform 0.75s ease-out;
+  --animate: 15s;
 }
-.post-w-minicontent .mini-content h2, .post-w-minicontent .mini-content li {
+.post-w-minicontent .mini-content h2 {
+  margin-bottom: 0.5rem;
+  padding-inline: 0.5rem;
+  line-height: 1.1em;
+}
+.post-w-minicontent .mini-content h2 a {
+  color: var(--text-color-dark);
+  transition: 0.25s;
+}
+.post-w-minicontent .mini-content h2 a:hover {
+  opacity: 0.9;
+}
+.post-w-minicontent .mini-content li {
   border-bottom: 1.5px solid var(--bg-dark);
   padding: 0.5rem;
 }
-.post-w-minicontent .mini-content h2:last-of-type, .post-w-minicontent .mini-content li:last-of-type {
+.post-w-minicontent .mini-content li:last-of-type, .post-w-minicontent .mini-content li:nth-last-of-type(2) {
   border-bottom: 0;
 }
-.post-w-minicontent .mini-content h2 a, .post-w-minicontent .mini-content li a {
+.post-w-minicontent .mini-content li a {
   color: var(--text-color-light);
 }
-.post-w-minicontent .mini-content h2 a:hover, .post-w-minicontent .mini-content li a:hover {
+.post-w-minicontent .mini-content li a:hover {
   font-weight: bold;
+}
+.post-w-minicontent .mini-content li.utils {
+  -moz-column-span: all;
+       column-span: all;
+  border-top: 4px double var(--text-color-light);
+  padding-top: 0.5rem;
+}
+.post-w-minicontent .mini-content li.utils a, .post-w-minicontent .mini-content li.utils button {
+  display: inline-block;
+  margin-right: 0.5rem;
+}
+.post-w-minicontent .mini-content li.utils a:hover, .post-w-minicontent .mini-content li.utils button:hover {
+  color: var(--text-color-dark);
+}
+.post-w-minicontent .mini-content li.utils a[title=Natrag], .post-w-minicontent .mini-content li.utils button[title=Natrag] {
+  margin-left: 2rem;
+}
+.post-w-minicontent .mini-content li.utils button {
+  color: var(--text-color-light);
+  cursor: pointer;
+  background-color: transparent;
+  font-size: 1rem;
+  padding: 0;
 }
 .post-w-minicontent .mini-content:after {
   content: "";
   display: block;
-  width: 5rem;
-  height: 5rem;
+  width: 4rem;
+  aspect-ratio: 1/1;
   background-color: inherit;
+  -webkit-clip-path: polygon(0 0, 100% 100%, 0 100%);
+          clip-path: polygon(0 0, 100% 100%, 0 100%);
   z-index: -1;
   position: absolute;
   top: 50%;
@@ -395,12 +439,187 @@
   transform: translate(-50%, -50%) rotate(45deg);
   transition: transform 1s linear;
   cursor: pointer;
+  border: 0px solid var(--accent-color2);
+  box-sizing: content-box;
 }
-.post-w-minicontent .mini-content:hover, .post-w-minicontent .mini-content.opened {
-  right: -2.5rem;
+.post-w-minicontent .mini-content:not(.opened):after {
+  -webkit-animation: signal var(--animate) ease-out 5s 3;
+          animation: signal var(--animate) ease-out 5s 3;
 }
-.post-w-minicontent .mini-content:hover:after, .post-w-minicontent .mini-content.opened:after {
-  transform: translate(0%, -50%) rotate(45deg);
+@-webkit-keyframes signal {
+  0% {
+    border-width: 0rem;
+    opacity: 1;
+  }
+  2% {
+    border-width: 0.2rem;
+    opacity: 0.9;
+  }
+  3% {
+    border-width: 0rem;
+    opacity: 0.8;
+  }
+  5% {
+    border-width: 0.3rem;
+    opacity: 1;
+  }
+  6% {
+    border-width: 0.1rem;
+    opacity: 0.9;
+  }
+  7% {
+    border-width: 0.4rem;
+    opacity: 0.8;
+  }
+  10% {
+    border-width: 0rem;
+    opacity: 1;
+  }
+}
+@keyframes signal {
+  0% {
+    border-width: 0rem;
+    opacity: 1;
+  }
+  2% {
+    border-width: 0.2rem;
+    opacity: 0.9;
+  }
+  3% {
+    border-width: 0rem;
+    opacity: 0.8;
+  }
+  5% {
+    border-width: 0.3rem;
+    opacity: 1;
+  }
+  6% {
+    border-width: 0.1rem;
+    opacity: 0.9;
+  }
+  7% {
+    border-width: 0.4rem;
+    opacity: 0.8;
+  }
+  10% {
+    border-width: 0rem;
+    opacity: 1;
+  }
+}
+.post-w-minicontent .mini-content:hover:after {
+  transform: translate(-50%, -50%) rotate(45deg) scale(1.5);
+  transition: transform 0.35s ease-out;
+}
+.post-w-minicontent .mini-content.opened {
+  transform: translate(0, -50%);
+}
+.post-w-minicontent .mini-content.opened:after {
+  transform: translate(-10%, -50%) rotate(45deg);
+  cursor: default;
+}
+.post-w-minicontent .mini-content.opened:hover:after {
+  transform: translate(-10%, -50%) rotate(45deg);
+}
+@media (min-width: 1500px) {
+  .post-w-minicontent {
+    position: relative;
+    overflow: hidden;
+  }
+  .post-w-minicontent h6 {
+    position: relative;
+    z-index: -1;
+  }
+  .post-w-minicontent .mini-content {
+    position: absolute;
+    width: 60%;
+    height: auto;
+    inset: 0 auto auto var(--large-padding);
+    border-radius: 0 0 2rem 2rem;
+    padding-right: 0;
+    padding-top: 2rem;
+    -moz-columns: auto 20rem;
+         columns: auto 20rem;
+    -moz-column-rule: 1px dotted var(--text-color-dark);
+         column-rule: 1px dotted var(--text-color-dark);
+    -webkit-column-break-inside: avoid;
+    -moz-column-fill: balance;
+         column-fill: balance;
+    page-break-inside: avoid;
+    -moz-column-break-inside: avoid;
+         break-inside: avoid;
+    transform: translateY(calc( -100% ));
+  }
+  .post-w-minicontent .mini-content h2 {
+    width: 100%;
+    -moz-column-span: all;
+         column-span: all;
+  }
+  .post-w-minicontent .mini-content:after {
+    width: 4rem;
+    top: auto;
+    bottom: 0.5rem;
+    left: calc( var(--large-padding) * 2 );
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%);
+            clip-path: polygon(100% 0, 100% 100%, 0 100%);
+    transform: translate(-50%, 50%) rotate(45deg);
+    background-color: var(--accent-color2);
+  }
+  .post-w-minicontent .mini-content.sticky {
+    position: fixed;
+  }
+  .post-w-minicontent .mini-content.opened {
+    right: auto;
+    transform: translateY(0);
+  }
+  .post-w-minicontent .mini-content.opened h2, .post-w-minicontent .mini-content.opened li {
+    visibility: visible;
+  }
+  .post-w-minicontent .mini-content.opened:after {
+    transform: translate(-50%, 10%) rotate(45deg);
+  }
+  .post-w-minicontent .mini-content:hover:after {
+    transform: translate(-50%, 50%) rotate(45deg) scale(1.5);
+  }
+  .post-w-minicontent .mini-content.opened:hover:after {
+    transform: translate(-50%, 10%) rotate(45deg);
+  }
+}
+@media (max-width: 800px) {
+  .post-w-minicontent .mini-content {
+    width: 101vw;
+    height: 102vh;
+    transition: transform 0.75s ease-out, border-radius 0.75s ease-out;
+    padding: calc( var(--large-padding) * 2 );
+    display: grid;
+    place-content: center;
+    font-size: clamp( 1.3rem, 3vw, 2rem );
+    line-height: 1.3em;
+  }
+  .post-w-minicontent .mini-content li {
+    padding: var(--default-padding);
+  }
+  .post-w-minicontent .mini-content li.utils {
+    margin-top: var(--large-padding);
+  }
+  .post-w-minicontent .mini-content li.utils a, .post-w-minicontent .mini-content li.utils button {
+    margin-right: 2rem;
+    margin-top: 1rem;
+    transform: scale(1.5);
+  }
+  .post-w-minicontent .mini-content li.utils button[title=Zatvori] {
+    color: var(--text-color-dark);
+    display: block;
+    float: right;
+    margin-right: 0;
+    transform: scale(3);
+  }
+  .post-w-minicontent .mini-content li.utils button[title=Zatvori]:hover {
+    color: var(--bg-color-dark);
+  }
+  .post-w-minicontent .mini-content.opened {
+    transform: translate(calc( var(--large-padding) * -.8 ), -50%);
+    border-radius: 0;
+  }
 }
 
 #pageHeader {
@@ -929,6 +1148,12 @@ article h6 {
   margin-top: -0.4em;
   margin-bottom: 0.5em;
   letter-spacing: -0.05em;
+}
+@media (min-width: 1500px) {
+  article h6 {
+    margin-top: 1rem;
+    margin-bottom: -0.5rem;
+  }
 }
 article h6 span {
   font-size: calc( var(--chapter-no-size) * .8 );

@@ -235,6 +235,11 @@ article {
         margin-bottom: .5em;
         letter-spacing: -.05em;
 
+        @include for-desktop {
+            margin-top: 1rem;
+            margin-bottom: -.5rem;
+        }
+
         
         span {
             font-size: calc( var(--chapter-no-size) * .8 );

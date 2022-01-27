@@ -11,7 +11,7 @@
     import ContentMini from '$lib/gadgets/ContentMini.svelte'
 
     export let slug
-    let content, menu, path
+    let content, menu, path, title
 
 
     $: if ( slug ) path = slug.split('/').slice(1);
@@ -32,13 +32,14 @@
                     tempSite = tempSite.find( s=> s.slug.indexOf( "/" + p ) >= 0 )
                     
                     if ( tempSite ) if ( tempSite.sub ) {
+                        title = tempSite.meta.title
                         tempSite = tempSite.sub
                         temptempSite = [ ...tempSite ]
                     }
                     else break
                 }
                 content = temptempSite
-                console.log( "content", content )
+                // console.log( "content", content )
             }        
             else content = false
         } else content = false
@@ -48,11 +49,12 @@
 
 </script>
 
+
 <div class="post-w-minicontent">
-    <slot />
-    {#if content }
-        <ContentMini { content } { slug } />
+    {#if Array.isArray( content ) }
+        <ContentMini { content } { slug } { title } />
     {/if}
+    <slot />
 </div> 
 
 <style>

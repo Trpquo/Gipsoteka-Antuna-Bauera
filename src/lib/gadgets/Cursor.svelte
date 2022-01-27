@@ -16,7 +16,7 @@
     onMount(()=>{
 
         return ()=>{
-            console.log("%c 💥 D E S T R U C T I O N ! 💥", "color: orangered; font-weight: 800;")
+            // console.log("%c 💥 D E S T R U C T I O N ! 💥", "color: orangered; font-weight: 800;")
             window.removeEventListener("mousemove", dispatchLocation)
             window.removeEventListener("mousedown", reactToPress)
             window.removeEventListener("mouseup", reactToRelease)
@@ -52,7 +52,7 @@
 <style>
 	svg {
         position: absolute;
-        z-index: 1000;
+        z-index: 10;
 		width: 800px;
 		height: 800px;
         margin-top: -402px;

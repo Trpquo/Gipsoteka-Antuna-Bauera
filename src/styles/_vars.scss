@@ -40,6 +40,7 @@ $tiny-screen: 800px;
     --default-padding: clamp( .666rem, 1.5vw, 2rem );
     --large-padding: clamp( 2rem, 3vw, 6rem);
     --max-p-width: 1000px;
+    --header-height: 60vh;
 
     --basic-image-filter: grayscale(.8) sepia(.3) contrast(.666);
 }

@@ -3,7 +3,6 @@
         let noNewSubmenu = true
 </script>
 <script>
-    import { onMount } from 'svelte'
     import { fly, slide } from 'svelte/transition'
 
     export let menu, slug, level

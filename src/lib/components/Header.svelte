@@ -1,12 +1,12 @@
 <script>
-
+    import { onMount } from 'svelte'
     import { slide } from 'svelte/transition';
     import { cubicOut, backIn } from 'svelte/easing'
 
     import Navigation from '$lib/gadgets/Navigation.svelte'
 
     export let images, menu, slug
-    let dropDown, menuOpen = false, button, y, oldY = 0, down = false
+    let dropDown, menuOpen = false, y, oldY = 0, down = false
 
 
 
@@ -15,24 +15,34 @@
     }
     function handleClick({ target }) {
 
-        if ( !dropDown ) return
-        // console.log( target.tagName, target.id )
-        const menuItems = [ ...dropDown.querySelectorAll( '#menu *' ) ]
+        if ( !dropDown || target.title === slug ) return
 
-        if ( 
-            ( target === dropDown || menuItems.includes( target ) )
-            && 
-            target.tagName !== 'BUTTON' 
-        ) menuOpen = !menuOpen
+        if ( target.tagName !== 'BUTTON' ) menuOpen = !menuOpen
     }
 
     function handleScroll() {
-        if ( oldY < y ) { 
+        // const pageHeight = getPageHeight()
+        // console.log( "Scrooool", pageHeight, y ) 
+        if ( oldY < y  ) {  // || y >= pageHeight
             down = true 
         }
         else down = false
-        
+
         oldY = y
+    }
+
+    function getPageHeight() {
+        if ( document ) {
+
+            var body = document.body,
+            html = document.documentElement;
+            
+            if ( body && html ) {
+
+                return Math.max( body.scrollHeight, body.offsetHeight, body.clientHeight,
+                            html.clientHeight, html.scrollHeight, html.offsetHeight );
+            } 
+        }
     }
     
 </script>
@@ -43,7 +53,7 @@
 
     <h1>
         <a href="/"><span>G</span>ipsoteka <div><span>A</span>ntuna <span>B</span>auera</div></a>
-        <button id="menuButton" on:click={ openMenu } class:active={ menuOpen } class:visible={ !down } bind:this={ button } ><span>Izbornik</span></button>
+        <button id="menuButton" on:click={ openMenu } class:active={ menuOpen } class:visible={ !down } ><span>Izbornik</span></button>
         
         {#if menuOpen }
         <nav id="menu" aria-label="Site navigation"
