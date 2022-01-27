@@ -1,24 +1,17 @@
 <script context="module">
     import { img, p } from '$lib/components/html/all'
     export { img, p }
-
-    export const load = ({ url: { pathname: slug } }) => {
-
-        console.log( "%cLoading Article", "color: salmon", slug )
-        return { props: {} }
-    }
-
 </script>
+
 <script>
     import { onMount, tick } from 'svelte'
     import { fly } from 'svelte/transition'
 
     import Breadcrumbs from "$lib/gadgets/Breadcrumbs.svelte"
-    import { site } from "$lib/utils/stores"
 
     // import AOS from 'aos'
 
-    export let title, chapter, coverImage
+    export let title, chapter, coverImage, imgRoot
     let coverImageUrl, scrollY, innerHeight, article, client = {}
     
     if (chapter) chapter = chapter.toString()
@@ -75,10 +68,8 @@
     {/if}
     <section class="textContent" >
         <h1>{@html title }</h1>
-        {#if $site }
-            {#if site.pathname }
-                <Breadcrumbs path={ $site.pathname } />
-            {/if}
+        {#if imgRoot }
+            <Breadcrumbs path={ imgRoot } />
         {/if}
         <slot />
     </section>

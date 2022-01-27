@@ -1132,7 +1132,7 @@ article .textContent #breadcrumbs {
   flex-wrap: wrap;
   gap: 0.5rem;
   padding: 0;
-  margin-top: -1.8em;
+  margin-top: -1em;
   margin-bottom: 2em;
 }
 article .textContent #breadcrumbs span {
@@ -1150,10 +1150,39 @@ article .textContent #breadcrumbs li:last-of-type {
 }
 @media (min-width: 1500px) {
   article .textContent #breadcrumbs {
-    margin: 0;
+    margin: -2rem 0;
   }
 }
-article .textContent h1 {
+@media (max-width: 800px) {
+  article .textContent #breadcrumbs {
+    margin-top: 1rem;
+    justify-content: center;
+  }
+  article .textContent #breadcrumbs li {
+    background-color: var(--accent-color2);
+    padding: 2px 0.2rem 3px 1rem;
+    border-radius: 0.35em 1.5rem;
+    margin-right: 1rem;
+    transition: background-color 0.25s;
+  }
+  article .textContent #breadcrumbs li span {
+    display: none;
+  }
+  article .textContent #breadcrumbs li strong {
+    color: var(--bg-dark);
+    transform: translateX(1.25rem) scale(1.5);
+  }
+  article .textContent #breadcrumbs li:last-of-type, article .textContent #breadcrumbs li a {
+    color: var(--text-color-light);
+  }
+  article .textContent #breadcrumbs li:last-of-type:hover, article .textContent #breadcrumbs li a:hover {
+    text-decoration: none;
+  }
+  article .textContent #breadcrumbs li:hover {
+    background-color: var(--bg-color-medium);
+  }
+}
+article .textContent h1, article .textContent h1 + blockquote, article .textContent #breadcrumbs, article .textContent #breadcrumbs + blockquote {
   order: 1;
 }
 article .textContent .gallery {

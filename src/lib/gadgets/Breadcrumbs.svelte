@@ -3,10 +3,14 @@
 
     export let path
 
+    console.log( path )
+
     let breadcrumbs, last
 
     $: if ( $site ) {
         let sitemap = $site.menu
+        console.log( sitemap )
+        
         let steps = path.split('/').filter( p=> !!p ).reduce( ( crumbs, p )=> [ ...crumbs, crumbs.slice(-1)[0] ? crumbs.slice(-1).join('/') + '/' + p : "/" + p ], [])
         breadcrumbs = steps.reduce(( crumbs, step )=>{ 
 
@@ -23,11 +27,11 @@
         }, [] )
         
         last = breadcrumbs.pop()
-        // console.log( sitemap )
+        console.log( breadcrumbs )
     }
 </script>
 
-{#if breadcrumbs.length }
+{#if breadcrumbs }
 <ul id="breadcrumbs">
     <li>
         <a href="/" title="početna" >G.A.B.</a> <strong>/</strong>
@@ -38,7 +42,7 @@
         </li>
     {/each}
     <li>
-        <span>{ last.chapter }</span>  { last.title }
+        <span>{ last.chapter }</span>  { last.title } <strong>&nbsp;</strong>
     </li>
 </ul>
 {/if}

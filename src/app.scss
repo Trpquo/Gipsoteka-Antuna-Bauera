@@ -70,7 +70,7 @@ article {
             flex-wrap: wrap;
             gap: .5rem;
             padding: 0;
-            margin-top: -1.8em;
+            margin-top: -1em;
             margin-bottom: 2em;
             
             span {
@@ -88,15 +88,49 @@ article {
             }
 
             @include for-desktop {
-                margin: 0;
+                margin: -2rem 0;
+            }
+
+            @include for-mini {
+                margin-top: 1rem;
+                justify-content: center;
+
+                li {
+                    background-color: var(--accent-color2);
+                    padding: 2px .2rem 3px 1rem;
+                    border-radius: .35em 1.5rem;
+                    margin-right: 1rem;
+                    transition: background-color .25s;
+                    
+                    span {
+                        display: none;
+                    }
+                    strong {
+                        color: var(--bg-dark);
+                        transform: translateX(1.25rem) scale(1.5);
+                    }
+                    &:last-of-type, a {
+                        color: var(--text-color-light);
+
+                        &:hover {
+                            text-decoration: none;
+                        }
+                    }
+
+                    &:hover {
+                        background-color: var(--bg-color-medium);
+                    }
+                }
             }
         }
 
         display: flex;
         flex-direction: column;
 
-        h1 {
-            order: 1;
+        h1, #breadcrumbs {
+            &, & + blockquote {
+                order: 1;
+            }
         }
 
         .gallery {
