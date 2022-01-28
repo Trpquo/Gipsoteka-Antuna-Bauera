@@ -29,3 +29,29 @@ Bauer promatra izložbenu dvoranu kao jedinstvenu kompozicija kojoj _(…) sve d
 > Za **dekoraciju prostora** mogu se upotrebljavati najrazličitija sredstva… Izloženi su crteži (…) skice za spomenike pojedinih majstora…
 
 Postav u zbirci moderne plastike izložen je uglavnom **kronološki**, odnosno _u granicama mogućnosti prema autorima._
+
+<script>
+    import Link from '$lib/gadgets/Link.svelte'
+    import PDFviewer from '$lib/gadgets/PDFviewer.svelte'
+
+    const pdfs = [
+        {
+            src: 'Antun-Bauer_Postav-zbirke-moderne-plastike-1948.pdf',
+            description: '<strong>Antun Bauer</strong>: Postav zbirke moderne plastike, tipkopis, Zagreb 1948.pdf', 
+            settings: { contrast: 1.2, brightness: .9, backup: "postav" }
+        },
+        {
+            src: 'Analiza-postava-moderne-plastike_Bauer.pdf',
+            description: '<strong>Antun Bauer</strong>: Analiza postava zbirke moderne plastike u Gipsoteci, tipkopis, Zagreb 1948.pdf', 
+            settings: { contrast: 1.5, brightness: 1.1, backup: "analiza" }
+        },
+    ]
+
+</script>
+
+{#each pdfs as { src, description, settings } }
+<Link rel="external" href={ `/downloads/${ src }` } target={ settings.backup }>
+    <span slot="link">{@html description }</span>
+    <span slot="gadget"><PDFviewer src={ `/downloads/${ src }` } { settings } /></span>
+</Link>
+{/each}

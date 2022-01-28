@@ -12,7 +12,7 @@
     // import AOS from 'aos'
 
     export let title, chapter, coverImage, imgRoot
-    let coverImageUrl, scrollY, innerHeight, article, client = {}
+    let coverImageUrl, scrollY, innerHeight, article, imageTransfer, opacity, vignetteAngle
     
     if (chapter) chapter = chapter.toString()
     
@@ -20,8 +20,6 @@
         
         if ( article ) {
             await tick()
-            client.height = article.clientHeight 
-            client.width = article.clientWidth 
 
             const images = article.querySelectorAll('img')
             if ( images.length ) {
@@ -33,15 +31,19 @@
                     coverImageUrl = images[ Math.floor(Math.random()*images.length) ].src
                     // console.log( "Predefined cover image!", coverImageUrl )
                 }
+
+                // tu kreće kod za fancy galeriju
+
             }
         }
-
-        // AOS.init( { easing: 'ease-in-out-sine', once: true, mirror: false, duration: 1500, offset: 20 } )
-
     })
 
 
-    $: imageTransfer =  innerHeight - (1 - ( client.height - scrollY ) / client.height ) * innerHeight - ( client.width / client.height ) * (client.height - scrollY) / 4 
+    $: if ( article ) {
+        imageTransfer =  innerHeight - ( 350 + scrollY ) * ( innerHeight / article.clientHeight )
+        opacity = 0.025 + scrollY * .1 / article.clientHeight
+        vignetteAngle = 180 - ( innerHeight * 10 / article.clientWidth )
+    }
 
 
 </script>
@@ -57,24 +59,54 @@
 
 <article in:fly={{ x: 1000, delay: 300, duration: 1000 }} out:fly={{ x: -300, duration: 300 }} bind:this={ article } >
     {#if chapter }
-    <h6 id="chapNo">
-        {#if chapter.indexOf(".") > 0 }
-            { chapter.substring(0, chapter.indexOf(".")) }
-            <span>{chapter.substring(chapter.indexOf("."), chapter.length)}</span>
-        {:else}
-            { chapter }
-        {/if}
-    </h6>
+        <h6 id="chapNo">
+            {#if chapter.indexOf(".") > 0 }
+                { chapter.substring(0, chapter.indexOf(".")) }
+                <span>{chapter.substring(chapter.indexOf("."), chapter.length)}</span>
+            {:else}
+                { chapter }
+            {/if}
+        </h6>
     {/if}
+
     <section class="textContent" >
+
         <h1>{@html title }</h1>
+
         {#if imgRoot }
             <Breadcrumbs path={ imgRoot } />
         {/if}
+
         <slot />
+
     </section>
+
     {#if coverImageUrl } 
-        <div id="bgImage" style={ `--background-image: url('${ coverImageUrl }'); --vignette-angle: ${ 160 + ( client.height * 4 / client.width ) }deg; top: ${ imageTransfer }px; --opacity: ${ innerHeight * 0.5 / imageTransfer  }` } ></div>
+        <div id="bgImage" 
+            style={`
+                --background-image: url('${ coverImageUrl }'); 
+                --vignette-angle: ${ vignetteAngle }deg; 
+                top: ${ imageTransfer }px; 
+                --opacity: ${ opacity }
+            `} 
+        >
+            <!-- Document height: { article.clientHeight } | Scrolled by: { scrollY } | Image transfered: { imageTransfer } | Vignette angle: { 180 - ( innerHeight * 10 / article.clientWidth ) }deg | Opacity: { opacity } -->
+        </div>
     {/if}
-    <!--  -->
+    
+
 </article>
+
+<!-- <style>
+    #bgImage {
+        display: grid;
+        place-content: top center;
+        border: 3px solid magenta;
+        color: magenta;
+        opacity: 1;
+        filter: none;
+        text-align: center;
+        mix-blend-mode: normal;
+        z-index: 20000;
+    }
+</style> -->

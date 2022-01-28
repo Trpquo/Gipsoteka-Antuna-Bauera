@@ -536,7 +536,7 @@
             left: 2vw;
             top: 0;
             line-height: 0;
-            font-size: clamp( 3rem, 20vw, 6rem );
+            font-size: clamp( 2.5rem, 15vw, 6rem );
             right: auto;
         }
         h4 {
@@ -577,7 +577,7 @@
         background-color: var(--accent-color2);
         list-style: none;
         border-radius: 2rem 0 0 2rem;
-        transition: transform .75s ease-out;
+        transition: transform .5s ease-out;
         --animate: 15s;
 
         h2 {
@@ -649,7 +649,7 @@
             top: 50%;
             left: 0;
             transform: translate( -50%, -50% ) rotate(45deg);
-            transition: transform 1s linear;
+            transition: transform .5s linear;
             cursor: pointer;
             border: 0px solid var(--accent-color2);
             box-sizing: content-box;
@@ -764,12 +764,13 @@
 
         .mini-content {
             @include reset;
-            width: 101vw;
-            height: 102vh;
-            transition: transform .75s ease-out, border-radius .75s ease-out;
-            padding: calc( var(--large-padding) * 2 );
-            display: grid;
-            place-content: center;
+            width: 100vw;
+            height: 100vh;
+            transform: translate( 100%, 0 );
+            inset: 0;
+            transition: transform .5s ease-out, border-radius .5s ease-out;
+            padding: var(--large-padding);
+            
             font-size: clamp( 1.3rem, 3vw, 2rem );
             line-height: 1.3em;
 
@@ -802,8 +803,10 @@
 
 
             &.opened {
-                transform: translate( calc( var(--large-padding) * -.8 ) , -50%);
+                transform: translate( 0 );
                 border-radius: 0;
+                overflow: auto;
+                padding-bottom: 6rem;
             }
         }
 

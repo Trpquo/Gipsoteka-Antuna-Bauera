@@ -1,12 +1,13 @@
 <script>
+    import { tick } from 'svelte'
     import { slide } from 'svelte/transition'
     import GifGadget from '$lib/gadgets/GifGadget.svelte'
 
-    export let src, description
+    export let src, settings
 
-    let width, height
+    let width, height, pdfView, opened = false
 
-    var _PDF_DOC,
+    let _PDF_DOC,
         _CURRENT_PAGE,
         _TOTAL_PAGES,
         _PAGE_RENDERING_IN_PROGRESS = 0,
@@ -15,7 +16,8 @@
     
     // initialize and load the PDF
     async function showPDF(pdf_url) {
-        document.querySelector("#pdf-loader").style.display = 'block';
+        await tick()
+        pdfView.querySelector(".pdf-loader").style.opacity = 1;
     
         // get handle of pdf document
         try {
@@ -29,9 +31,9 @@
         _TOTAL_PAGES = _PDF_DOC.numPages;
         
         // Hide the pdf loader and show pdf container
-        document.querySelector("#pdf-loader").style.display = 'none';
-        document.querySelector("#pdf-contents").style.display = 'flex';
-        document.querySelector("#pdf-total-pages").innerHTML = _TOTAL_PAGES;
+        pdfView.querySelector(".pdf-loader").style.opacity = 0;
+        // pdfView.querySelector(".pdf-contents").style.display = 'flex';
+        pdfView.querySelector(".pdf-total-pages").innerHTML = _TOTAL_PAGES;
     
         // show the first page
         showPage(1);
@@ -43,15 +45,15 @@
         _CURRENT_PAGE = page_no
     
         // disable Previous & Next buttons while page is being loaded
-        document.querySelector("#pdf-next").disabled = true
-        document.querySelector("#pdf-prev").disabled = true
+        pdfView.querySelector(".pdf-next").disabled = true
+        pdfView.querySelector(".pdf-prev").disabled = true
     
         // while page is being rendered hide the canvas and show a loading message
-        document.querySelector("#pdf-canvas").style.display = 'none'
-        document.querySelector("#page-loader").style.display = 'block'
+        pdfView.querySelector(".pdf-canvas").style.opacity = 0
+        pdfView.querySelector(".page-loader").style.opacity = 1
     
         // update current page
-        document.querySelector("#pdf-current-page").innerHTML = page_no
+        pdfView.querySelector(".pdf-current-page").innerHTML = page_no
         
         // get handle of page
         try {
@@ -81,8 +83,8 @@
         
     
         // setting page loader height for smooth experience
-        document.querySelector("#page-loader").style.height =  height + 'px';
-        document.querySelector("#page-loader").style.lineHeight = height + 'px'
+        pdfView.querySelector(".page-loader").style.height =  height + 'px';
+        pdfView.querySelector(".page-loader").style.lineHeight = height + 'px'
     
         // page is rendered on <canvas> element
         var render_context = {
@@ -101,27 +103,33 @@
         _PAGE_RENDERING_IN_PROGRESS = 0;
     
         // re-enable Previous & Next buttons
-        document.querySelector("#pdf-next").disabled = false;
-        document.querySelector("#pdf-prev").disabled = false;
+        document.querySelector(".pdf-next").disabled = false;
+        document.querySelector(".pdf-prev").disabled = false;
     
         // show the canvas and hide the page loader
-        document.querySelector("#pdf-canvas").style.display = 'block';
-        document.querySelector("#page-loader").style.display = 'none';
+        document.querySelector(".pdf-canvas").style.opacity = 1;
+        document.querySelector(".page-loader").style.opacity = 0;
     }
 
 
 
     // click on "Show PDF" buuton
     function openVewer() {
-        this.style.display = 'none';
+        opened = !opened;
+        this.title = opened ? "Zatvori" : "Otvori"
 
-        try {
-            showPDF( src );
+        if ( opened ) {
+            setTimeout(()=>{
+                try {
+                    showPDF( src );
+                }
+                catch ({ message }) {
+                    console.error( message )
+                    _CONTAINER.innerHTML = `<iframe class="pdf-iframe" src=${ src } name="${ settings.backup }" title="Iframe Example" seamless></iframe>`
+                }
+            }, 1000)
         }
-        catch ({ message }) {
-            console.error( message )
-            _CONTAINER.innerHTML = `<iframe src=${ src } name="iframe" title="Iframe Example" seamless></iframe>`
-        }
+
     }    
     
     // click on the "Previous" page button
@@ -144,27 +152,34 @@
 
 
 
-<div class="pdf-view" style={ `--ratio: ${ Math.floor( width / 100 ) }/${ Math.floor( height / 100 ) }; --width: ${ width }px; --height: ${ height }px;` }>
+<div class="pdf-view" class:opened bind:this={ pdfView } style={ `
+    --ratio: ${ Math.floor( width / 100 ) }/${ Math.floor( height / 100 ) }; 
+    --width: ${ width }px; --height: ${ height }px;
+    --brightness: ${ settings.brightness };
+    --contrast: ${ settings.contrast };
+    ` }  >
 
-    <button id="show-pdf-button" on:click={ openVewer } title="Otvori">
+    <button class="show-pdf-button"  on:click={ openVewer } title="Otvori">
         <GifGadget src="/icons/icons8-pdf.gif" />
-        <span>{@html description || "PDF" }</span>
+        <span>PDF</span>
     </button> 
 
-    <div id="pdf-main-container" bind:this={ _CONTAINER }>
-        <div id="pdf-loader">Učitavam dokument...</div>
-        <div id="pdf-contents">
-            <div id="pdf-meta">
-                <div id="pdf-buttons">
-                    <button id="pdf-prev" title="prethodna" on:click={ previousPage } >Prev</button>
-                    <button id="pdf-next" title="iduća" on:click={ nextPage }>Next</button>
+    {#if opened }
+    <div class="pdf-main-container" bind:this={ _CONTAINER } transition:slide={{ duration: 1000 }}>
+        <div class="pdf-loader">Učitavam dokument...</div>
+        <div class="pdf-contents">
+            <div class="pdf-meta">
+                <div class="pdf-buttons">
+                    <button class="pdf-prev" title="prethodna" on:click={ previousPage } >Prev</button>
+                    <button class="pdf-next" title="iduća" on:click={ nextPage }>Next</button>
                 </div>
-                <div id="page-count-container"><strong>p.</strong> <div id="pdf-current-page"></div> / <div id="pdf-total-pages"></div></div>
+                <div class="page-count-container"><strong>p.</strong> <div class="pdf-current-page"></div> / <div class="pdf-total-pages"></div></div>
             </div>
-            <canvas id="pdf-canvas" bind:this={ _CANVAS }></canvas>
-            <div id="page-loader">Učitavam stranicu...</div>
+            <canvas class="pdf-canvas" bind:this={ _CANVAS }></canvas>
+            <div class="page-loader">Učitavam stranicu...</div>
         </div>
     </div>
+    {/if}
 </div>
 
 
@@ -173,61 +188,65 @@
     .pdf-view {
         font-family: var(--text-face);
     }
-
-    #show-pdf-button {
+    
+    .show-pdf-button {
         background-color: transparent;
         margin-left: -.75rem;
         width: 70px;
         float: left;
     }
-    #show-pdf-button span {
+    .show-pdf-button span {
         line-height: 1em; 
     }
     
-    #pdf-main-container {
+    .pdf-main-container {
         margin-inline: auto;
-        margin-top: calc( var(--default-padding) * -1 );
+        margin-top: 0;
         margin-bottom: 1rem;
     }
     
     @media ( max-width: 800px ) {
-        #pdf-main-container {
-            width: 100vw;
+        .pdf-main-container {
+            clear: both;
+            width: calc( 100% + var(--large-padding) * 2 );
+            margin-left: calc( var(--large-padding) * -1 );
         }
 
-        :global(.textContent .footnotes #pdf-main-container) {
+        :global(.textContent .footnotes .pdf-main-container) {
             margin-left: calc( ( var(--large-padding) + var(--default-padding) ) * -1.18  );
             margin-top: 2rem;
         }
     }
     
-    #pdf-contents {
-        display: none;
+    .pdf-contents {
+        display: flex;
         border-top: 1rem solid var(--bg-color-light);
         flex-direction: column-reverse;
         height: 90vh;
         background-color: var(--bg-dark);
+        position: relative;
     }
 
-    #pdf-canvas {
+    .pdf-canvas {
         box-sizing: border-box;
         height: 100%;
         aspect-ratio: var(--ratio);
         object-fit: contain;
-        filter: contrast(1.75) brightness(1.1) saturate(.2) ;
+        filter: contrast( var(--contrast) ) brightness( var(--brightness) ) saturate(.2) ;
+        transition: opacity .5s ease-out;
     }
     
-    #pdf-meta {
+    .pdf-meta {
         overflow: hidden;
         background-color: var(--bg-color-light);
         padding: var(--default-padding);
         color: var(--text-color-light);
     }
     
-    #pdf-buttons {
+    .pdf-buttons {
         float: left;
     }
-    #pdf-buttons button {
+    .pdf-buttons button {
         background-color: transparent;
         text-indent: -99999px;
         position: relative;
@@ -235,7 +254,7 @@
         height: 2rem;
         margin-right: .5rem;
     }
-    #pdf-next:before, #pdf-prev:before {
+    .pdf-next:before, .pdf-prev:before {
         content: "";
         display: block;
         position: absolute;
@@ -246,36 +265,40 @@
         border-color: var(--bg-dark);
         border-width: .25rem .25rem 0 0; 
     }
-    #pdf-prev:before {
+    .pdf-prev:before {
         border-width: 0 0 .25rem .25rem;
     }
-    #pdf-buttons button:hover:before {
+    .pdf-buttons button:hover:before {
         border-color: var(--bg-color-dark);
     }
     
-    #page-count-container {
+    .page-count-container {
         float: right;
     }
-    #page-count-container div {
+    .page-count-container div {
         font-size: 1.2em;
         color: var(--bg-dark);
     }
     
-    #pdf-current-page {
+    .pdf-current-page {
         display: inline;
     }
     
-    #pdf-total-pages {
+    .pdf-total-pages {
         display: inline;
     }
 
-    #pdf-loader , #page-loader {
-        display: none;
-        height: 100px;
-        line-height: 100px;
+    .pdf-loader , .page-loader {
+        position: absolute;
+        inset: 0;
+        height: 0;
+        line-height: 100%;
         text-align: center;
         color: var(--bg-color-light);
         font-size: var(--text-size);
+        background-color: var(--bg-dark);
+        opacity: 0;
+        /* transition: opacity .25s ease-out; */
     }
 
     

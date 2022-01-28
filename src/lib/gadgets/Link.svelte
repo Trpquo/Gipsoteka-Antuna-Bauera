@@ -3,7 +3,7 @@
 
 </script>
 
-<div>
+<div class="gadget-link">
     <slot name="gadget" />
     <a { rel } { target } { href } title="Preuzmi" >
         <slot name="link" />
@@ -16,12 +16,21 @@
 
 <style>
     div {
-        
+
         /* border: 1px solid var(--accent-color); */
         text-shadow: none;
-        float: left;
+        /* float: left; */
         width: calc( 100% - var(--large-padding) );
         margin-bottom: 2rem;
+        margin-top: var(--large-padding);
+    }
+    @media (max-width: 800px) {
+        div {
+            width: 100%;
+        }
+    }
+    :global( .gadget-link + .gadget-link ) {
+        margin-top: -1rem;
     }
     a {
         font-family: var(--text-face);
@@ -30,19 +39,22 @@
         height: 4rem;
         align-items: center;
         line-height: 1rem;
-        margin-top: clamp( -1rem, 100vw - 100vh, 0rem );
+        margin-top: clamp( -.5rem, 100vw - 100vh, 0rem );
     }
+    /* @media ( max-width: 800px ) {
+        a {
+            display: block;
+        }
+    } */
     small {
         display: block;
         font-family: var(--text-face);
         text-transform: uppercase;
         color: var(--bg-dark);
-        margin-top: clamp( -1.666rem, calc( -1.666rem + (100vh - 100vw) * .072 ), 1rem );
-        
+        margin-top: clamp( -1.1rem, calc( -1.5rem + (100vh - 100vw) * .04 ), 1rem );
+        line-height: 1.1em;
+
         /* margin-top: -1.55rem; */
-    }
-    :global(span[slot=gadget] + a) {
-        /* color: teal; */
     }
 
 </style>

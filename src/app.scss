@@ -212,6 +212,7 @@ article {
         font-size: var(--title-size);
         line-height: 1.2em;
         margin-bottom: .5em;
+        max-width: max( 10ch, 80% );
         
         
         @include for-mini {
@@ -380,14 +381,14 @@ article {
         position: fixed;
         z-index: -10;
         top: 100%;
-        left: calc( 50% - var(--vignette) / 2 );
+        left: 50%;
         transform: translate(-50%);
         box-shadow: var(--large-padding) var(--vignette) var(--vignette) var(--bg-light) inset;
         background-image: linear-gradient( var(--vignette-angle), var(--bg-light) 0%, #FFF0 50%, var(--bg-light) 98%), var(--background-image);
         background-repeat: no-repeat, no-repeat;
         background-size: cover;
         background-position: 50% 100%, ;
-        opacity: .0666;
+        opacity: var(--opacity);
         filter: contrast(3) contrast(.9);
         mix-blend-mode: luminosity;
     }

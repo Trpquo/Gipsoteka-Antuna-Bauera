@@ -3,13 +3,13 @@
 
     export let path
 
-    console.log( path )
+    // console.log( path )
 
     let breadcrumbs, last
 
     $: if ( $site ) {
         let sitemap = $site.menu
-        console.log( sitemap )
+        // console.log( sitemap )
         
         let steps = path.split('/').filter( p=> !!p ).reduce( ( crumbs, p )=> [ ...crumbs, crumbs.slice(-1)[0] ? crumbs.slice(-1).join('/') + '/' + p : "/" + p ], [])
         breadcrumbs = steps.reduce(( crumbs, step )=>{ 
@@ -27,7 +27,7 @@
         }, [] )
         
         last = breadcrumbs.pop()
-        console.log( breadcrumbs )
+        // console.log( breadcrumbs )
     }
 </script>
 

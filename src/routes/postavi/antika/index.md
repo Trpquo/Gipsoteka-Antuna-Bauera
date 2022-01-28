@@ -15,3 +15,17 @@ Sakupljanje sadrenih odljeva antičke skulpture u Hrvatskoj inicirao je 1892. go
 Bauer u svojim tekstovima i analizi postava ističe da je kriterij postava ove zbirke bio stilski. Naglašava kako je izložen u prostorijama bivšega tvorničkog postrojenja, koje nisu povezane zbog čega posjetioci nemaju kontinuitet obilaska, već se iz svake prostorije moraju vraćati istim putem. 
 
 [^1]: Više u: Getaldić, Magdalena, _Izidor Kršnjavi &ndash; inicijator zbirke sadrenih odljeva antičke skulpture i Gyps-Museuma, Iso Kršnjavi &ndash; veliki utemeljitelj,_ ur. Mance, Ivana, Matijević, Zlatko, Institut za povijest umjetnosti, Hrvatski institut za povijest, Zagreb, 2015., 182-199.
+
+<script>
+    import Link from '$lib/gadgets/Link.svelte'
+    import PDFviewer from '$lib/gadgets/PDFviewer.svelte'
+
+    const description = '<strong>Antun Bauer</strong>: Gipsoteka &ndash; Zbirka grčke plastike, tipkopis, Zagreb 1949.pdf'
+    const src = '/downloads/Antun-Bauer_Gipsoteka_Zbirka-grcke-plastike_1949.pdf'
+    const settings = { contrast: 1.1, brightness: .95, backup: "plastika" }
+</script>
+
+<Link rel="external" href={ src } target={ settings.backup }>
+    <span slot="link">{@html description }</span>
+    <span slot="gadget"><PDFviewer { src } { settings } /></span>
+</Link>

@@ -34,13 +34,11 @@ Cilj muzejskog postava za Bauera i danas je aktualno, suvremeno razmišljanje mu
     import PDFviewer from '$lib/gadgets/PDFviewer.svelte'
 
     const description = '<strong>Antun Bauer</strong>: Analiza postava zbirke moderne plastike u Gipsoteci, tipkopis, Zagreb 1948.pdf'
+    const src = "/downloads/Analiza-postava-moderne-plastike_Bauer.pdf"
+    const settings = { contrast: 1.75, brightness: 1.1, backup: "banananas" }
 </script>
 
-
-
-
-
-[^1]: <Link rel="external" href="/downloads/Analiza-postava-moderne-plastike_Bauer.pdf" target="iframe"><span slot="link">{@html description }</span><span slot="gadget"><PDFviewer src="/downloads/Analiza-postava-moderne-plastike_Bauer.pdf" /></span></Link>
+[^1]: <Link rel="external" href={ src } target={ settings.backup }><span slot="link">{@html description }</span><span slot="gadget"><PDFviewer { src } { settings } /></span></Link>
 
 
 

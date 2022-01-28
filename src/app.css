@@ -469,7 +469,7 @@
     left: 2vw;
     top: 0;
     line-height: 0;
-    font-size: clamp( 3rem, 20vw, 6rem );
+    font-size: clamp( 2.5rem, 15vw, 6rem );
     right: auto;
   }
   .textContent .content-display h4 {
@@ -501,7 +501,7 @@
   background-color: var(--accent-color2);
   list-style: none;
   border-radius: 2rem 0 0 2rem;
-  transition: transform 0.75s ease-out;
+  transition: transform 0.5s ease-out;
   --animate: 15s;
 }
 .post-w-minicontent .mini-content h2 {
@@ -565,7 +565,7 @@
   top: 50%;
   left: 0;
   transform: translate(-50%, -50%) rotate(45deg);
-  transition: transform 1s linear;
+  transition: transform 0.5s linear;
   cursor: pointer;
   border: 0px solid var(--accent-color2);
   box-sizing: content-box;
@@ -718,12 +718,12 @@
     margin: 0;
     border: 0;
     padding: 0;
-    width: 101vw;
-    height: 102vh;
-    transition: transform 0.75s ease-out, border-radius 0.75s ease-out;
-    padding: calc( var(--large-padding) * 2 );
-    display: grid;
-    place-content: center;
+    width: 100vw;
+    height: 100vh;
+    transform: translate(100%, 0);
+    inset: 0;
+    transition: transform 0.5s ease-out, border-radius 0.5s ease-out;
+    padding: var(--large-padding);
     font-size: clamp( 1.3rem, 3vw, 2rem );
     line-height: 1.3em;
   }
@@ -749,8 +749,10 @@
     color: var(--bg-color-dark);
   }
   .post-w-minicontent .mini-content.opened {
-    transform: translate(calc( var(--large-padding) * -.8 ), -50%);
+    transform: translate(0);
     border-radius: 0;
+    overflow: auto;
+    padding-bottom: 6rem;
   }
 }
 
@@ -760,6 +762,15 @@
   position: relative;
   display: flex;
   align-items: flex-end;
+}
+#pageHeader:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: conic-gradient(from 265deg at 100% 5%, var(--accent-color) 0deg, var(--bg-color-medium) 330deg, var(--bg-color-light) 340deg, var(--accent-color2) 341deg, var(--accent-color2) 352deg, var(--bg-dark) 363deg);
+  filter: blur(1px) sepia(0.4) saturate(0.4);
+  opacity: 0.35;
+  z-index: -2;
 }
 @media (max-width: 800px) {
   #pageHeader {
@@ -780,6 +791,7 @@
   padding: max(var(--large-padding), 1rem);
   display: flex;
   position: relative;
+  z-index: 1;
 }
 @media (min-width: 1500px) {
   #pageHeader h1 {
@@ -959,7 +971,6 @@
   color: var(--text-color-dark);
   background-color: var(--bg-light);
   max-width: 800px;
-  max-height: 70vh;
   padding: min(var(--default-padding), 1rem);
   padding-bottom: 0;
   box-shadow: 0.05rem 0.15rem 0.3rem #3332;
@@ -981,11 +992,9 @@
 }
 .textContent .showbox.for2 figure {
   max-width: 50%;
-  max-height: 40vh;
 }
 .textContent .showbox.for3 figure {
   max-width: 33%;
-  max-height: 32vh;
 }
 .textContent .showbox.for4 {
   flex-wrap: wrap;
@@ -996,7 +1005,6 @@
 }
 @media (max-width: 800px) {
   .textContent .showbox.for4 figure {
-    max-width: none;
     min-width: 40%;
     flex-grow: 1;
   }
@@ -1274,6 +1282,7 @@ article h1 {
   font-size: var(--title-size);
   line-height: 1.2em;
   margin-bottom: 0.5em;
+  max-width: max(10ch, 80%);
 }
 @media (max-width: 800px) {
   article h1 {
@@ -1432,14 +1441,14 @@ article #bgImage {
   position: fixed;
   z-index: -10;
   top: 100%;
-  left: calc( 50% - var(--vignette) / 2 );
+  left: 50%;
   transform: translate(-50%);
   box-shadow: var(--large-padding) var(--vignette) var(--vignette) var(--bg-light) inset;
   background-image: linear-gradient(var(--vignette-angle), var(--bg-light) 0%, #FFF0 50%, var(--bg-light) 98%), var(--background-image);
   background-repeat: no-repeat, no-repeat;
   background-size: cover;
   background-position: 50% 100%;
-  opacity: 0.0666;
+  opacity: var(--opacity);
   filter: contrast(3) contrast(0.9);
   mix-blend-mode: luminosity;
 }

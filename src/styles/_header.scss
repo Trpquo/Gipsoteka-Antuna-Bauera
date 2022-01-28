@@ -7,11 +7,22 @@
     display: flex;
     align-items: flex-end;
 
+    &:before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        // background-color: var(--bg-dark);
+        background-image: conic-gradient(from 265deg at 100% 5%, var(--accent-color) 0deg, var(--bg-color-medium) 330deg, var(--bg-color-light) 340deg, var(--accent-color2) 341deg, var(--accent-color2) 352deg, var(--bg-dark) 363deg);
+        filter: blur(1px) sepia(.4) saturate(.4);
+        opacity: .35;
+        z-index: -2;
+    }
+
     @include for-mini {
         height: 45vh;
         padding: 0;
     }
-    
+
     h1 {
         font-family: var(--text-face2);
         font-size: var(--head-size);
@@ -25,6 +36,7 @@
         padding: max( var(--large-padding), 1rem );
         display: flex;
         position: relative;
+        z-index: 1;
 
         @include for-desktop {
             padding-top: var(--default-padding);
@@ -36,10 +48,10 @@
             border-bottom: .0666em solid currentColor;
             line-height: .75em;
         }
-        
+
         a {
             color: inherit;
-            
+
             //     & span {
             //         color: var(--accent-color);
             //         font-size: 1.2em;
@@ -57,7 +69,7 @@
             //         margin-right: 0.01em;
             //     }
         }
-        
+
         @include for-mini {
             display: block;
             padding-inline: 0;
@@ -75,8 +87,8 @@
     }
 
 
-    
-    
+
+
 
     &.moj h1 {
         font-family: var(--head-face);
@@ -88,7 +100,7 @@
         inset: 0;
         z-index: -1;
         overflow: hidden;
-    
+
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         grid-template-rows: repeat(auto-fit, minmax(33.33%, 1fr));
@@ -100,13 +112,13 @@
             height: 100%;
             filter: var(--basic-image-filter);
         }
-        
-        figure:first-of-type, 
+
+        figure:first-of-type,
         figure:nth-of-type(2n) {
             grid-row: span 2;
         }
-        figure:first-of-type, 
-        figure:nth-of-type(8), 
+        figure:first-of-type,
+        figure:nth-of-type(8),
         figure:nth-of-type(3n) {
             grid-column: span 2;
         }

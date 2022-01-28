@@ -2,10 +2,6 @@ import { get } from '../../routes/posts.json.js'
 import { site } from '$lib/utils/stores'
 import { browser } from "$app/env";
 
-
-
-
-
 export default async ( fetch ) => {
     console.log("%c🌈 Loading sitemap....", "color: hotpink")
     const key = 'menu'
