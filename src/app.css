@@ -1,17 +1,5 @@
 @charset "UTF-8";
 :root {
-  --bg-light: seashell;
-  --bg-dark: #5a554cdd;
-  --bg-color-light: #d1ad64;
-  --bg-color-medium: #9e9175;
-  --bg-color-dark: sienna;
-  --accent-color: #da5630;
-  --accent-color2: darkseagreen;
-  --text-color-light: var(--bg-light);
-  --text-color-dark: #363626;
-  --title-color-light: var(--bg-color-light);
-  --title-color-medium: var(--accent-color2);
-  --title-color-dark: var(--bg-color-dark);
   --head-face: "Vesper Libre", serif;
   --text-face: "Fira Sans", "Segoe UI", Verdana, Tahoma, sans-serif;
   --text-face2: "Petrona", serif;
@@ -29,6 +17,9 @@
   /* clamp( 2rem, 3vw, 2.666rem ); */
   --subhead-size: var(--text-quote);
   --menuitem-size: clamp( 1.5rem, 3vh, 2.666rem );
+}
+
+:root {
   --default-padding: clamp( .666rem, 1.5vw, 2rem );
   --large-padding: clamp( 2rem, 3vw, 6rem);
   --max-p-width: 1000px;
@@ -36,15 +27,95 @@
   --basic-image-filter: grayscale(.8) sepia(.3) contrast(.666);
 }
 
+:root {
+  --bg-light: seashell;
+  --bg-dark: rgba(58, 53, 44, 0.8666);
+  --bg-color-light: var(--primary-color);
+  --bg-color-medium: #9e9175;
+  --bg-color-dark: sienna;
+  --primary-color: #d1ad64;
+  --accent-color: #da5630;
+  --accent-color2: darkseagreen;
+  --text-color-light: var(--bg-light);
+  --text-color-dark: #3a352c;
+  --title-color-light: var(--primary-color);
+  --title-color-medium: var(--accent-color2);
+  --title-color-dark: var(--text-color-dark);
+}
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role=list],
+ol[role=list] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+:root:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.4;
+  font-variant-numeric: var(--number-style);
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  -webkit-text-decoration-skip: ink;
+          text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
 #menuButton {
   margin: 0;
   border: 0;
   padding: 0;
+}
+#menuButton {
   position: fixed;
+  z-index: 2000;
   margin: 0.5rem;
   top: var(--default-padding);
   right: var(--large-padding);
-  z-index: 2000;
   display: block;
   width: 3rem;
   height: 3rem;
@@ -200,7 +271,7 @@
   text-indent: -9999px;
   width: 3em;
   height: 3rem;
-  margin: -2rem -0.5rem;
+  margin: -2rem 0.5rem;
   line-height: 1rem;
   position: relative;
   background-color: transparent;
@@ -208,8 +279,8 @@
 #menu ul li a button:after {
   content: "";
   display: block;
-  width: 0.85em;
-  height: 0.85em;
+  width: 1rem;
+  height: 1rem;
   position: absolute;
   inset: 0;
   border-width: 0 2px 2px 0;
@@ -763,7 +834,7 @@
   display: flex;
   align-items: flex-end;
 }
-#pageHeader:before {
+#pageHeader.funky:before {
   content: "";
   position: absolute;
   inset: 0;
@@ -811,6 +882,7 @@
     display: block;
     padding-inline: 0;
     width: 100%;
+    z-index: 10;
   }
   #pageHeader h1 div {
     padding-bottom: 0;
@@ -856,7 +928,86 @@
 }
 
 .textContent figure {
-  transition: opacity 0.3s;
+  transition: transform 0.5s 0s, z-index 0s 0.5s;
+  position: relative;
+}
+.textContent figure:before {
+  content: "";
+  display: block;
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-color: var(--bg-dark);
+  opacity: 0.5;
+  filter: blur(2px);
+  transform: scale(0.9);
+  transition: 0.5s 0;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+}
+.textContent figure:hover {
+  z-index: 1;
+  transform: scale(1.1);
+  transition: transform 0.5s 2s, z-index 0s 2s;
+  -webkit-animation: shake 0.25s ease-in 2.5s;
+          animation: shake 0.25s ease-in 2.5s;
+}
+.textContent figure:hover:before {
+  transform: translate(-1.5rem, 2rem);
+  filter: blur(0.75rem);
+  opacity: 0.3;
+  transition: 0.5s 2s;
+}
+@-webkit-keyframes shake {
+  0% {
+    transform: scale(1.1);
+  }
+  15% {
+    transform: scale(1.1) rotate(1deg);
+    filter: blur(1px);
+  }
+  30% {
+    transform: scale(1.1);
+  }
+  45% {
+    transform: scale(1.1) rotate(-1deg);
+  }
+  60% {
+    transform: scale(1.1);
+  }
+  75% {
+    transform: scale(1.1) rotate(1deg);
+  }
+  100% {
+    transform: scale(1.1);
+    filter: blur(0);
+  }
+}
+@keyframes shake {
+  0% {
+    transform: scale(1.1);
+  }
+  15% {
+    transform: scale(1.1) rotate(1deg);
+    filter: blur(1px);
+  }
+  30% {
+    transform: scale(1.1);
+  }
+  45% {
+    transform: scale(1.1) rotate(-1deg);
+  }
+  60% {
+    transform: scale(1.1);
+  }
+  75% {
+    transform: scale(1.1) rotate(1deg);
+  }
+  100% {
+    transform: scale(1.1);
+    filter: blur(0);
+  }
 }
 .textContent figure div {
   overflow: hidden;
@@ -886,81 +1037,6 @@
 .textContent figure figcaption .long {
   display: none;
 }
-.textContent figure.lightboxtime {
-  position: fixed;
-  inset: 0;
-  top: 40%;
-  left: 40%;
-  max-width: none !important;
-  max-height: none !important;
-  aspect-ratio: unset;
-  background-color: var(--bg-dark);
-  -webkit-animation: zoom 0.5s forwards;
-          animation: zoom 0.5s forwards;
-  z-index: 9000;
-  display: flex;
-  flex-direction: column;
-  aspect-ratio: unset !important;
-}
-.textContent figure.lightboxtime div {
-  flex-grow: 1;
-  display: grid;
-  place-items: center;
-  padding: 1rem 0;
-}
-.textContent figure.lightboxtime img {
-  display: block;
-  width: 90%;
-  height: 100%;
-  -o-object-fit: contain;
-     object-fit: contain;
-  filter: grayscale(0.2) contrast(0.7);
-}
-@media (min-width: 1500px) {
-  .textContent figure.lightboxtime img {
-    width: 80%;
-  }
-}
-.textContent figure.lightboxtime figcaption {
-  padding: var(--default-padding);
-  margin: 0 calc( var(--default-padding) * -1 );
-  box-sizing: content-box;
-  color: var(--text-color-light);
-  background-color: var(--bg-dark);
-  text-align: center;
-  text-shadow: none;
-}
-.textContent figure.lightboxtime figcaption .short {
-  display: none;
-}
-.textContent figure.lightboxtime figcaption .long {
-  display: inline;
-  font-size: var(--quote-size);
-}
-@-webkit-keyframes zoom {
-  0% {
-    transform: translate(-50%, -50%) scale(0.25);
-    opacity: 0.85;
-  }
-  100% {
-    top: 0;
-    left: 0;
-    transform: none;
-    opacity: 1;
-  }
-}
-@keyframes zoom {
-  0% {
-    transform: translate(-50%, -50%) scale(0.25);
-    opacity: 0.85;
-  }
-  100% {
-    top: 0;
-    left: 0;
-    transform: none;
-    opacity: 1;
-  }
-}
 .textContent .showbox {
   display: flex;
   margin: var(--default-padding) 0 var(--large-padding);
@@ -978,11 +1054,14 @@
   flex-direction: column;
   flex: 1;
 }
-.textContent .showbox figure.lightboxtime {
-  color: var(--text-color-light);
-  background-color: var(--bg-dark);
-  max-width: none;
-  border-top: 0.5rem solid var(--bg-color-light);
+.textContent .showbox figure:after {
+  content: "";
+  display: block;
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-color: var(--bg-light);
 }
 .textContent .showbox figure div {
   flex-grow: 1;
@@ -1073,19 +1152,309 @@
   }
 }
 
+#lightbox {
+  display: block;
+  position: fixed;
+  inset: 0;
+  z-index: 20000;
+}
+#lightbox:before {
+  content: "";
+  display: block;
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-color: var(--bg-dark);
+  opacity: 0.666;
+}
+#lightbox picture {
+  height: 66.6vmin;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -60%) scale(0.5);
+  transition-duration: 1.5s;
+  transition-timing-function: ease-out;
+  z-index: 0;
+}
+#lightbox picture:before, #lightbox picture:after {
+  content: "";
+  display: block;
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-color: var(--bg-dark);
+  opacity: 0.3;
+  mix-blend-mode: multiply;
+  filter: blur(0.25rem);
+  transform: translate(0.25rem, 0.25rem);
+}
+#lightbox picture:after {
+  transform: translate(-0.1rem, -0.1rem);
+  filter: blur(0.1rem);
+}
+#lightbox picture img {
+  border: 1rem solid var(--bg-light);
+  border-bottom-width: 5rem;
+  max-width: none;
+  width: auto;
+  height: 100%;
+  transition: border 0.75s;
+  box-sizing: border-box;
+}
+#lightbox.active picture.spread-out-by-10 {
+  transform: translate(-50%, -60%) scale(0.4) rotate(6deg) translateX(114vmin) rotate(-14deg);
+}
+#lightbox.active picture.spread-out-by-20 {
+  transform: translate(-50%, -60%) scale(0.4) rotate(34deg) translateX(132vmin) rotate(-21deg);
+}
+#lightbox.active picture.spread-out-by-30 {
+  transform: translate(-50%, -60%) scale(0.4) rotate(43deg) translateX(118vmin) rotate(-31deg);
+}
+#lightbox.active picture.spread-out-by-40 {
+  transform: translate(-50%, -60%) scale(0.4) rotate(58deg) translateX(109vmin) rotate(-47deg);
+}
+#lightbox.active picture.spread-out-by-50 {
+  transform: translate(-50%, -60%) scale(0.4) rotate(46deg) translateX(101vmin) rotate(-55deg);
+}
+#lightbox.active picture.spread-out-by-60 {
+  transform: translate(-50%, -60%) scale(0.4) rotate(77deg) translateX(110vmin) rotate(-65deg);
+}
+#lightbox.active picture.spread-out-by-70 {
+  transform: translate(-50%, -60%) scale(0.4) rotate(65deg) translateX(103vmin) rotate(-65deg);
+}
+#lightbox.active picture.spread-out-by-80 {
+  transform: translate(-50%, -60%) scale(0.4) rotate(91deg) translateX(109vmin) rotate(-88deg);
+}
+#lightbox.active picture.spread-out-by-90 {
+  transform: translate(-50%, -60%) scale(0.4) rotate(107deg) translateX(130vmin) rotate(-99deg);
+}
+#lightbox.active picture.spread-out-by-100 {
+  transform: translate(-50%, -60%) scale(0.4) rotate(96deg) translateX(131vmin) rotate(-99deg);
+}
+#lightbox.active picture.spread-out-by-110 {
+  transform: translate(-50%, -60%) scale(0.4) rotate(122deg) translateX(126vmin) rotate(-101deg);
+}
+#lightbox.active picture.spread-out-by-120 {
+  transform: translate(-50%, -60%) scale(0.4) rotate(123deg) translateX(121vmin) rotate(-116deg);
+}
+#lightbox.active picture.spread-out-by-130 {
+  transform: translate(-50%, -60%) scale(0.4) rotate(141deg) translateX(108vmin) rotate(-126deg);
+}
+#lightbox.active picture.spread-out-by-140 {
+  transform: translate(-50%, -60%) scale(0.4) rotate(153deg) translateX(116vmin) rotate(-136deg);
+}
+#lightbox.active picture.spread-out-by-150 {
+  transform: translate(-50%, -60%) scale(0.4) rotate(137deg) translateX(140vmin) rotate(-160deg);
+}
+#lightbox.active picture.spread-out-by-160 {
+  transform: translate(-50%, -60%) scale(0.4) rotate(154deg) translateX(118vmin) rotate(-157deg);
+}
+#lightbox.active picture.spread-out-by-170 {
+  transform: translate(-50%, -60%) scale(0.4) rotate(156deg) translateX(122vmin) rotate(-162deg);
+}
+#lightbox.active picture.spread-out-by-180 {
+  transform: translate(-50%, -60%) scale(0.4) rotate(176deg) translateX(128vmin) rotate(-178deg);
+}
+#lightbox.active picture.spread-out-by-190 {
+  transform: translate(-50%, -60%) scale(0.4) rotate(174deg) translateX(115vmin) rotate(-190deg);
+}
+#lightbox.active picture.spread-out-by-200 {
+  transform: translate(-50%, -60%) scale(0.4) rotate(205deg) translateX(104vmin) rotate(-208deg);
+}
+#lightbox.active picture.spread-out-by-210 {
+  transform: translate(-50%, -60%) scale(0.4) rotate(229deg) translateX(125vmin) rotate(-217deg);
+}
+#lightbox.active picture.spread-out-by-220 {
+  transform: translate(-50%, -60%) scale(0.4) rotate(213deg) translateX(111vmin) rotate(-230deg);
+}
+#lightbox.active picture.spread-out-by-230 {
+  transform: translate(-50%, -60%) scale(0.4) rotate(231deg) translateX(116vmin) rotate(-238deg);
+}
+#lightbox.active picture.spread-out-by-240 {
+  transform: translate(-50%, -60%) scale(0.4) rotate(221deg) translateX(138vmin) rotate(-250deg);
+}
+#lightbox.active picture.spread-out-by-250 {
+  transform: translate(-50%, -60%) scale(0.4) rotate(254deg) translateX(101vmin) rotate(-247deg);
+}
+#lightbox.active picture.spread-out-by-260 {
+  transform: translate(-50%, -60%) scale(0.4) rotate(243deg) translateX(138vmin) rotate(-264deg);
+}
+#lightbox.active picture.spread-out-by-270 {
+  transform: translate(-50%, -60%) scale(0.4) rotate(286deg) translateX(127vmin) rotate(-274deg);
+}
+#lightbox.active picture.spread-out-by-280 {
+  transform: translate(-50%, -60%) scale(0.4) rotate(275deg) translateX(103vmin) rotate(-281deg);
+}
+#lightbox.active picture.spread-out-by-290 {
+  transform: translate(-50%, -60%) scale(0.4) rotate(290deg) translateX(133vmin) rotate(-293deg);
+}
+#lightbox.active picture.spread-out-by-300 {
+  transform: translate(-50%, -60%) scale(0.4) rotate(300deg) translateX(124vmin) rotate(-306deg);
+}
+#lightbox.active picture.spread-out-by-310 {
+  transform: translate(-50%, -60%) scale(0.4) rotate(299deg) translateX(110vmin) rotate(-309deg);
+}
+#lightbox.active picture.spread-out-by-320 {
+  transform: translate(-50%, -60%) scale(0.4) rotate(334deg) translateX(123vmin) rotate(-329deg);
+}
+#lightbox.active picture.spread-out-by-330 {
+  transform: translate(-50%, -60%) scale(0.4) rotate(322deg) translateX(131vmin) rotate(-325deg);
+}
+#lightbox.active picture.spread-out-by-340 {
+  transform: translate(-50%, -60%) scale(0.4) rotate(349deg) translateX(122vmin) rotate(-338deg);
+}
+#lightbox.active picture.spread-out-by-350 {
+  transform: translate(-50%, -60%) scale(0.4) rotate(356deg) translateX(139vmin) rotate(-358deg);
+}
+#lightbox.active picture.spread-out-by-360 {
+  transform: translate(-50%, -60%) scale(0.4) rotate(344deg) translateX(110vmin) rotate(-354deg);
+}
+#lightbox.active picture.spread-out-by-370 {
+  transform: translate(-50%, -60%) scale(0.4) rotate(377deg) translateX(131vmin) rotate(-363deg);
+}
+#lightbox.active picture.spread-out-by-380 {
+  transform: translate(-50%, -60%) scale(0.4) rotate(394deg) translateX(110vmin) rotate(-376deg);
+}
+#lightbox.active picture.spread-out-by-390 {
+  transform: translate(-50%, -60%) scale(0.4) rotate(385deg) translateX(140vmin) rotate(-383deg);
+}
+#lightbox.active picture.spread-out-by-400 {
+  transform: translate(-50%, -60%) scale(0.4) rotate(396deg) translateX(136vmin) rotate(-396deg);
+}
+#lightbox.active picture.focused {
+  transform: rotate(0deg) translate(-50%, -60%) scale(1);
+  z-index: 4;
+  transition-delay: 0s;
+}
+#lightbox.active picture.focused:before, #lightbox.active picture.focused:after {
+  filter: blur(1rem);
+  transform: translateY(5%) scale(1.1);
+}
+#lightbox.active picture.focused:after {
+  filter: blur(0.25rem);
+  transform: translate(3%, 2%);
+}
+#lightbox.active picture.focused img {
+  border-width: 0.75rem;
+  border-bottom-width: 3rem;
+}
+@media (max-width: 800px) {
+  #lightbox.active picture.focused {
+    height: -webkit-min-content;
+    height: -moz-min-content;
+    height: min-content;
+    background-color: var(--bg-light);
+    width: 100%;
+    transform: rotate(0deg) translate(-50%, -50%) scale(1);
+  }
+  #lightbox.active picture.focused img {
+    width: 100%;
+    height: auto;
+    -o-object-fit: contain;
+       object-fit: contain;
+  }
+}
+#lightbox .description {
+  color: var(--text-color-light);
+  position: fixed;
+  inset: auto 0 0;
+  z-index: 3;
+  background-color: var(--bg-dark);
+  padding: var(--default-padding) var(--large-padding);
+  box-sizing: border-box;
+  text-align: center;
+  border-bottom: 0.25rem solid var(--primary-color);
+}
+#lightbox .description .numerator {
+  position: fixed;
+  top: var(--default-padding);
+  right: var(--large-padding);
+  margin-right: 1.25rem;
+}
+#lightbox .description .numerator span {
+  font-family: var(--head-face);
+  font-size: var(--head-size);
+  display: block;
+  line-height: 1.3em;
+  text-shadow: 0.3em 0.25em 0.5em #3337;
+}
+#lightbox .description .numerator span:first-of-type {
+  line-height: 0.8em;
+  border-bottom: 0.5rem solid var(--primary-color);
+}
+#lightbox .description .controls .prev, #lightbox .description .controls .next {
+  position: fixed;
+  top: 50%;
+  right: var(--large-padding);
+  width: 4rem;
+  aspect-ratio: 1/2;
+  transform: translateY(-50%);
+  background-color: transparent;
+  text-indent: -99999rem;
+  overflow: hidden;
+  transition: 0.5s;
+}
+#lightbox .description .controls .prev:before, #lightbox .description .controls .next:before {
+  content: "";
+  display: block;
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  aspect-ratio: 1/1;
+  transform: translate(-50%, 50%) rotate(45deg);
+  border: 0.5rem solid var(--primary-color);
+  transition: 0.5s;
+}
+#lightbox .description .controls .prev:not(:active):hover, #lightbox .description .controls .next:not(:active):hover {
+  transform: translateY(-50%) scale(1.2);
+}
+#lightbox .description .controls .prev:not(:active):hover:before, #lightbox .description .controls .next:not(:active):hover:before {
+  background-color: var(--bg-dark);
+  transition: 2s 1s;
+}
+#lightbox .description .controls .prev {
+  right: auto;
+  left: var(--large-padding);
+}
+#lightbox .description .controls .prev:before {
+  transform: translate(50%, 50%) rotate(45deg);
+}
+#lightbox .description .controls .exit {
+  position: absolute;
+  top: -6rem;
+  right: var(--large-padding);
+  margin-right: 1rem;
+  width: 3rem;
+  aspect-ratio: 1/1;
+  background-color: transparent;
+  text-indent: -99999em;
+  overflow: hidden;
+}
+#lightbox .description .controls .exit:before, #lightbox .description .controls .exit:after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: calc( 50% - .25rem );
+  width: 0.42rem;
+  height: 100%;
+  background-color: var(--primary-color);
+  transform: rotate(45deg);
+}
+#lightbox .description .controls .exit:after {
+  transform: rotate(-40deg);
+}
+
 :root {
   background-color: var(--bg-light);
   font-family: var(--text-face);
   font-weight: 400;
   font-size: var(--text-size);
-  line-height: 1.4em;
   color: var(--text-color-dark);
-  font-variant-numeric: var(--number-style);
-  scroll-behavior: smooth;
-}
-
-* {
-  box-sizing: border-box;
 }
 
 .rm {
@@ -1097,7 +1466,7 @@ a {
   text-decoration: none;
 }
 
-button {
+button, .button {
   border: 0;
   display: inline-block;
   background-color: var(--bg-color-medium);
@@ -1106,6 +1475,10 @@ button {
 
 img {
   pointer-events: none;
+}
+
+img:active {
+  transform: scale(1.5);
 }
 
 #wrapper {
@@ -1287,6 +1660,7 @@ article h1 {
 @media (max-width: 800px) {
   article h1 {
     text-align: center;
+    max-width: 100%;
   }
 }
 article h2, article h3, article h4, article h5 {
@@ -1409,6 +1783,7 @@ article .footnotes:before {
   position: absolute;
   inset: 0;
   z-index: -1;
+  pointer-events: none;
   background-color: var(--bg-light);
   opacity: 0.4;
 }
@@ -1458,6 +1833,29 @@ footer {
   color: var(--text-color-light);
   background-color: var(--bg-dark);
   padding: var(--default-padding) var(--large-padding);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-height: 4rem;
+}
+footer p:first-of-type {
+  flex-grow: 0.5;
+  flex-basis: 50vw;
+}
+footer .logo {
+  margin: -1rem 0 calc( var(--default-padding) * -1 );
+  flex-grow: 0.1;
+  transition: 0.25s;
+}
+footer .logo:hover {
+  transform: scale(1.1);
+}
+footer a:hover {
+  transition: 0.25s;
+  color: var(--primary-color);
+}
+footer img {
+  max-height: 100%;
 }
 
 /* global style  */

@@ -1,49 +1,40 @@
 <script>
-    import { onMount } from 'svelte';
-    import Cursor from '$lib/gadgets/Cursor.svelte'
+    import { onDestroy, createEventDispatcher } from 'svelte'
     import { imageRoot } from '$lib/utils/stores'
-    
-    export let twist
-    const acuteness = 3
-    const angle =  Math.random() * acuteness - acuteness / 2
-    let style, figure, hover
+    import EventHandler from '$lib/gadgets/ImageEventsHandler.svelte'
+
+    let hovered, scrollY, scrollX, oldY, oldX
+    const dispatch = createEventDispatcher()
     
 
-    onMount(()=>{
+    const cursorTracker = setInterval(()=>{ oldY = scrollY; oldX = scrollX }, 100 )
 
-        if ( figure ) {
-            setTimeout(()=>{
-                if ( figure ) style = twist ? `transition: transform ${ r() + 1000 }s; transform: rotate(${ angle }deg)` : ""
-            }, 20000)
-        }
-        
+
+    
+    const setEventHandler =({ clientX, clientY, target })=> {
+        hovered = { 
+            x: clientX - target.getBoundingClientRect().left, 
+            y: clientY - target.getBoundingClientRect().top  }
+    }
+
+    onDestroy(()=>{
+        clearInterval( cursorTracker )
     })
-    
 
-
-    // const aosAnimations = [
-    //     "fade-up",
-    //     "fade-up-right",
-    //     "fade-up-left",
-    //     "zoom-in-up",
-    //     "zoom-out",
-    //     "zoom-out-up",
-    //     "zoom-out-down",
-    // ]
-    // data-aos={ twist && (r() -.5 ) > 0 ? aosAnimations[ floor( r() * aosAnimations.length ) ] : "" } 
-    // data-aos-delay={ r() * 500 } data-aos-duration={ r() * 500 + 1000 } data-aos-offset={ r() * 20 }
-
-    const { floor, random: r } = Math
-
-    const setCursor =e=> hover = { x: e.clientX - e.target.parentNode.getBoundingClientRect().left, y: e.clientY - e.target.parentNode.getBoundingClientRect().top  }
+    function openLightbox({ detail: { rect } }) {
+		console.log( rect.x + rect.width === rect.right )
+        dispatch('lightson')
+	}
     
 </script>
 
-<figure { style } bind:this={ figure }>
-    <div on:mouseover={ setCursor } on:focus={ ()=>{} } on:mouseleave={ ()=>hover = false }>
+<svelte:window bind:scrollY bind:scrollX />
+
+<figure>
+    <div on:mouseenter={ setEventHandler } on:mouseleave={ ()=>hovered = false }>
         <img src={ `${$imageRoot}/${$$props.src}` } title={ $$props.title } alt={ $$props.alt }  >
-        {#if hover  }
-         <Cursor { ...hover }  />
+        {#if hovered  }
+         <EventHandler { ...hovered } on:lightboxtime={ openLightbox } />
         {/if}
     </div>
     <figcaption>

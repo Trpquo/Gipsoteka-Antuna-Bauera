@@ -6,13 +6,13 @@
 <script>
     import { onMount, tick } from 'svelte'
     import { fly } from 'svelte/transition'
-
-    import Breadcrumbs from "$lib/gadgets/Breadcrumbs.svelte"
+    import { Breadcrumbs, Lightbox } from "$lib/components/all"
 
     // import AOS from 'aos'
 
     export let title, chapter, coverImage, imgRoot
-    let coverImageUrl, scrollY, innerHeight, article, imageTransfer, opacity, vignetteAngle
+
+    let coverImageUrl, scrollY, innerHeight, article, imageTransfer, opacity, vignetteAngle, images, lightbox
     
     if (chapter) chapter = chapter.toString()
     
@@ -20,11 +20,10 @@
         
         if ( article ) {
             await tick()
-
-            const images = article.querySelectorAll('img')
+            images = [ ...article.querySelectorAll('.showbox img, .gallery img') ].map( ({ title, alt, src })=>({ title, alt, src }) )
             if ( images.length ) {
                 if ( coverImage ) {
-                    coverImageUrl = [ ...images].find( im=> im.src.indexOf( "/" + coverImage.substring(0, coverImage.indexOf(".")) ) > 0 ).src
+                    coverImageUrl = [ ...images].find( ({ src })=> src.indexOf( "/" + coverImage.substring(0, coverImage.indexOf(".")) ) > 0 ).src
                     // console.log( "Predefined cover image!", "/" + coverImage.substring(0, coverImage.indexOf(".")) , coverImageUrl )
                 }
                 else {
@@ -33,6 +32,11 @@
                 }
 
                 // tu kreće kod za fancy galeriju
+
+                const event = window.addEventListener('lightboxtime', e=>{
+                    lightbox = e.detail.focus
+                    console.log("Hvatam signal!", lightbox )
+                } )
 
             }
         }
@@ -45,7 +49,6 @@
         vignetteAngle = 180 - ( innerHeight * 10 / article.clientWidth )
     }
 
-
 </script>
 
 <svelte:head>
@@ -57,7 +60,12 @@
 </svelte:head>
 <svelte:window bind:scrollY bind:innerHeight />
 
-<article in:fly={{ x: 1000, delay: 300, duration: 1000 }} out:fly={{ x: -300, duration: 300 }} bind:this={ article } >
+<article 
+    in:fly={{ x: 1000, delay: 300, duration: 1000 }} 
+    out:fly={{ x: -300, duration: 300 }} 
+    bind:this={ article } 
+    on:lightson={ console.log }
+>
     {#if chapter }
         <h6 id="chapNo">
             {#if chapter.indexOf(".") > 0 }
@@ -69,7 +77,7 @@
         </h6>
     {/if}
 
-    <section class="textContent" >
+    <section class="textContent">
 
         <h1>{@html title }</h1>
 
@@ -92,6 +100,10 @@
         >
             <!-- Document height: { article.clientHeight } | Scrolled by: { scrollY } | Image transfered: { imageTransfer } | Vignette angle: { 180 - ( innerHeight * 10 / article.clientWidth ) }deg | Opacity: { opacity } -->
         </div>
+    {/if}
+
+    {#if images && lightbox }
+    <Lightbox { images } focused={ lightbox } on:lightsoff={ ()=> lightbox = false } />
     {/if}
     
 

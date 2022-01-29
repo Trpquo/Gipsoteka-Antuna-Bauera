@@ -1,49 +1,25 @@
-$big-screen: 1500px;
-$tiny-screen: 800px;
+@use 'forwards' as *;
 
 
 :root {
 
-    --bg-light: seashell; // papayawhip, oldlace
-    --bg-dark: #5a554cdd;
-    --bg-color-light: #d1ad64; // tan, burlywood
-    --bg-color-medium: #9e9175; 
-    --bg-color-dark: sienna; // peru, chocolate, sienna
-    --accent-color: #da5630; // orangered, crimson
-    --accent-color2: darkseagreen;  // cadetblue, darkcyan, darkseagreen
+
+    --bg-light: #{ $color-neutral-900 }; // papayawhip, oldlace
+    --bg-dark: #{ $color-neutral-300_85 };
+    --bg-color-light: var(--primary-color); // tan, burlywood
+    --bg-color-medium: #{ $color-primary-neutral }; 
+    --bg-color-dark: #{ $color-accent-primary-darker }; // peru, chocolate, sienna
+    --primary-color: #{ $color-primary };
+    --accent-color: #{ $color-accent-primary }; // orangered, crimson
+    --accent-color2: #{ $color-accent-secondary };  // cadetblue, darkcyan, darkseagreen
     --text-color-light: var(--bg-light);
-    --text-color-dark: #363626;
-    --title-color-light: var(--bg-color-light);
-    --title-color-medium: var(--accent-color2);
-    --title-color-dark: var(--bg-color-dark);
-    
+    --text-color-dark: #{ $color-neutral-100 };
+    --title-color-light: var(--primary-color);
+    --title-color-medium: var(--accent-color2); 
+    --title-color-dark: var(--text-color-dark); 
 
-    --head-face: 'Vesper Libre', serif;
-    --text-face: 'Fira Sans', "Segoe UI", Verdana, Tahoma, sans-serif;
-    --text-face2: 'Petrona', serif;
-    --title-face: 'Nobile', Verdana, Tahoma, sans-serif;
-    --title-face2: var(--head-face);
-    --caption-face: var(--text-face2);
-    --quote-face: var(--text-face2);
-    --number-style: oldstyle-nums;
-    
-    --head-size: clamp(3rem, 9vw, 6rem);
-    --title-size: clamp( 2.5rem, 5vw, 3rem);
-    --text-size: clamp( 16px, 1.3vw, 18px );
-    --quote-size: clamp( 20px, 1.3vw, 22px );
-    --caption-size: clamp( 15px, 1.2vw, 17px );
-    --chapter-no-size: clamp( 7rem, 13vmax, 11rem );/* clamp( 2rem, 3vw, 2.666rem ); */
-    --subhead-size: var(--text-quote);
-    --menuitem-size: clamp( 1.5rem, 3vh, 2.666rem );
-
-    
-    --default-padding: clamp( .666rem, 1.5vw, 2rem );
-    --large-padding: clamp( 2rem, 3vw, 6rem);
-    --max-p-width: 1000px;
-    --header-height: 60vh;
-
-    --basic-image-filter: grayscale(.8) sepia(.3) contrast(.666);
 }
+
 
 @mixin for-desktop {
     @media ( min-width: $big-screen ) {
@@ -131,6 +107,7 @@ $tiny-screen: 800px;
     position: absolute;
     inset: 0;
     z-index: -1;
+    pointer-events: none;
 }
 @mixin titles {
     font-family: var(--title-face2);

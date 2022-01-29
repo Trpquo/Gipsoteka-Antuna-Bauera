@@ -1,9 +1,50 @@
-@use 'vars' as *;
+@use '../vars' as *;
 
 .textContent {
     figure {
+        $popup-transition: .5s;
+        $popup-delay: 2s;
+        $popup-scale: 1.1;
         // animation: shrink .3s forwards;
-        transition: opacity .3s;
+        transition: transform $popup-transition 0s, z-index 0s $popup-transition;
+        position: relative;
+
+        &:before {
+            @include pseudo-background;
+            background-color: var(--bg-dark);
+            opacity: .5;
+            filter: blur(2px);
+            transform: scale(.9);
+            transition: $popup-transition 0;
+            pointer-events: none;
+            mix-blend-mode: multiply;
+        }
+
+
+        &:hover {
+            z-index: 1;
+            transform: scale( $popup-scale );
+            transition: transform $popup-transition $popup-delay, z-index 0s $popup-delay;
+            animation: shake $popup-transition / 2 ease-in $popup-delay + $popup-transition;
+            
+            &:before {
+                transform: translate( -1.5rem, 2rem );
+                filter: blur(.75rem);
+                opacity: .3;
+                transition: $popup-transition $popup-delay;
+            }
+
+        }
+
+        @keyframes shake {
+             0% { transform: scale( $popup-scale ) }
+            15% { transform: scale( $popup-scale ) rotate(1deg); filter: blur(1px)}
+            30% { transform: scale( $popup-scale ) }
+            45% { transform: scale( $popup-scale ) rotate(-1deg) }
+            60% { transform: scale( $popup-scale ) }
+            75% { transform: scale( $popup-scale ) rotate(1deg);  }
+           100% { transform: scale( $popup-scale ); filter: blur(0)}
+        }
 
         // @keyframes shrink {
         //     0% { opacity: .85; transform: translate(-50%, -50%) scale(.5); top: 50%; left: 50%; }
@@ -33,73 +74,6 @@
             }
         }
 
-        &.lightboxtime {
-            
-            position: fixed; 
-            inset: 0;
-            top: 40%; 
-            left: 40%; 
-            max-width: none !important;
-            max-height: none !important;
-            aspect-ratio: unset;
-            background-color: var(--bg-dark);
-            
-            animation: zoom .5s forwards;
-            z-index: 9000;
-            
-            display: flex;
-            flex-direction: column;
-            aspect-ratio: unset !important;
-
-
-            div {
-                flex-grow: 1;
-                display: grid;
-                place-items: center;
-                padding: 1rem 0;
-            }
-
-            img {
-                display: block;
-                width: 90%;
-                height: 100%;
-                object-fit: contain;
-                filter: grayscale(.2) contrast(.7);
-
-                @include for-desktop {
-                    width: 80%;
-                }
-            }
-
-
-            figcaption {
-                @include basic-padding;
-                margin: 0 calc( var(--default-padding) * -1 );
-                box-sizing: content-box;
-                @include light-text-on-dark;
-                text-align: center;
-                text-shadow: none;
-                
-                .short {
-                    display: none;
-                }
-                .long {
-                    display: inline;
-                    font-size: var(--quote-size);
-                }
-            }
-
-            @keyframes zoom {
-                0% { transform: translate(-50%, -50%) scale(.25); opacity: .85; }
-                100% { 
-                    top: 0; left: 0;
-                    transform: none;
-                    opacity: 1;  
-                }
-            }
-            
-        }
-
     }
 
     .showbox {
@@ -118,11 +92,10 @@
             display: flex;
             flex-direction: column;
             flex: 1;
-            
-            &.lightboxtime {
-                @include light-text-on-dark;
-                max-width: none;
-                border-top: .5rem solid var(--bg-color-light);
+
+            &:after {
+                @include pseudo-background;
+                background-color: var(--bg-light);
             }
 
             div {

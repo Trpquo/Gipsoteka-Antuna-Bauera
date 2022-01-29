@@ -1,0 +1,19 @@
+:root {
+    --head-face: 'Vesper Libre', serif;
+    --text-face: 'Fira Sans', "Segoe UI", Verdana, Tahoma, sans-serif;
+    --text-face2: 'Petrona', serif;
+    --title-face: 'Nobile', Verdana, Tahoma, sans-serif;
+    --title-face2: var(--head-face);
+    --caption-face: var(--text-face2);
+    --quote-face: var(--text-face2);
+    --number-style: oldstyle-nums;
+    
+    --head-size: clamp(3rem, 9vw, 6rem);
+    --title-size: clamp( 2.5rem, 5vw, 3rem);
+    --text-size: clamp( 16px, 1.3vw, 18px );
+    --quote-size: clamp( 20px, 1.3vw, 22px );
+    --caption-size: clamp( 15px, 1.2vw, 17px );
+    --chapter-no-size: clamp( 7rem, 13vmax, 11rem );/* clamp( 2rem, 3vw, 2.666rem ); */
+    --subhead-size: var(--text-quote);
+    --menuitem-size: clamp( 1.5rem, 3vh, 2.666rem );
+}

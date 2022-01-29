@@ -6,7 +6,7 @@
     const slugs = content.map(s=> s.slug )
     const parent = '/' + slugs[0].split("/")[1]
     const chapter = '/' + slugs[0].substring(1, slugs[0].lastIndexOf('/') )
-    console.log( chapter )
+    // console.log( chapter )
 
     function handleScroll() {
         if ( !headerHeight ) headerHeight = document.querySelector('header').offsetHeight

@@ -1,0 +1,222 @@
+@use '../vars' as *;
+
+#lightbox {
+    
+    display: block;
+
+
+    position: fixed;
+    inset: 0;
+    z-index: 20000;
+
+
+    &:before {
+        @include pseudo-background;
+        background-color: var(--bg-dark);
+        opacity: .666;
+    }
+
+    picture {
+        height: 66.6vmin;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -60%) scale(.5);
+        transition-duration: 1.5s;
+        transition-timing-function: ease-out;
+        z-index: 0;
+        // animation-fill-mode: forwards
+    
+
+        &:before, &:after {
+            @include pseudo-background;
+            background-color: var(--bg-dark);
+            opacity: .3;
+            mix-blend-mode: multiply;
+            filter: blur(.25rem);
+            transform: translate(.25rem, .25rem);
+        }
+        &:after {
+            transform: translate( -.1rem, -.1rem );
+            filter: blur( .1rem );
+        }
+
+        img {
+            border: 1rem solid var(--bg-light);
+            border-bottom-width: 5rem;
+            max-width: none;
+            width: auto;
+            height: 100%;
+            transition: border .75s;
+            box-sizing: border-box;
+        }
+    }
+
+    &.active {
+
+        picture {
+
+
+            @for $i from 1 through 40 {
+                &.spread-out-by-#{$i * 10} {
+                    transform: 
+                        translate(-50%, -60%) scale(.4)  
+                        rotate( #{10 * $i + 20 - random(40)}deg ) 
+                        translateX( #{ 1vmin * ( 100 + random(40) ) } ) 
+                        rotate( #{-10 * $i + 10 - random(20)}deg );
+                }
+            }
+
+    
+
+            &.focused {
+                transform: rotate(0deg) translate( -50%, -60% ) scale(1);
+                z-index: 4;
+                transition-delay: 0s;
+                // animation: shake .35s ease 8s;
+
+               
+
+
+                // @keyframes shake {
+                //      0% { transform: rotate( 0deg ) translate( -50%, -60% ) scale( 1 )  }
+                //     15% { transform: rotate( 0deg ) translate( -50%, -60% ) scale( 1 )  rotate(1deg); filter: blur(1px)}
+                //     30% { transform: rotate( 0deg ) translate( -50%, -60% ) scale( 1 )  }
+                //     45% { transform: rotate( 0deg ) translate( -50%, -60% ) scale( 1 )  rotate(-1deg) }
+                //     60% { transform: rotate( 0deg ) translate( -50%, -60% ) scale( 1 )  }
+                //     75% { transform: rotate( 0deg ) translate( -50%, -60% ) scale( 1 )  rotate(1deg);  }
+                //     100% { transform: rotate( 0deg ) translate( -50%, -60% ) scale( 1 ) ; filter: blur(0)}
+                // }
+
+                &:before, &:after {
+                    filter: blur(1rem);
+                    transform: translateY(5%) scale(1.1);
+                }
+                &:after {
+                    filter: blur( .25rem );
+                    transform: translate( 3%, 2% );
+                }
+
+                img {
+                    border-width: .75rem;
+                    border-bottom-width: 3rem;
+                }
+
+                @include for-mini {
+                    height: min-content;
+                    background-color: var(--bg-light);
+                    width: 100%;
+                    transform: rotate(0deg) translate( -50%, -50% ) scale(1);
+
+                    img {
+                        width: 100%;
+                        height: auto;
+                        object-fit: contain;
+                    }
+                }
+            }
+        }
+
+    }
+
+    
+
+    .description {
+        color: var(--text-color-light);
+        position: fixed;
+        inset: auto 0 0;
+        z-index: 3;
+        background-color: var(--bg-dark);
+        padding: var(--default-padding) var(--large-padding);
+        box-sizing: border-box;
+        text-align: center;
+        border-bottom: .25rem solid var(--primary-color);
+
+        .numerator {
+            position: fixed;
+            top: var(--default-padding);
+            right: var(--large-padding);
+            margin-right: 1.25rem;
+            span {
+                font-family: var(--head-face);
+                font-size: var(--head-size);
+                display: block;
+                line-height: 1.3em;
+                text-shadow: .3em .25em .5em #3337;
+                
+                &:first-of-type {
+                    line-height: .8em;
+                    border-bottom: .5rem solid var(--primary-color);
+                }
+            }
+
+        }
+        .controls {
+            .prev, .next {
+
+                position: fixed;
+                top: 50%;
+                right: var(--large-padding);
+                width: 4rem;
+                aspect-ratio: 1/2;
+                transform: translateY(-50%);
+                background-color: transparent;
+                text-indent: -99999rem;
+                overflow: hidden;
+                transition: .5s;
+                
+                &:before {
+                    @include pseudo-background;
+                    aspect-ratio: 1/1;
+                    transform: translate( -50%, 50% ) rotate( 45deg );
+                    border: .5rem solid var(--primary-color);
+                    transition: .5s;
+                }
+                &:not( :active ):hover {
+                    transform: translateY( -50% ) scale(1.2) ;
+                    &:before {
+                        background-color: var(--bg-dark);
+                        transition: 2s 1s;
+                        
+                    }
+                }
+            }
+            .prev {
+                right: auto;
+                left: var(--large-padding);
+
+                &:before {
+                    transform: translate( 50%, 50% ) rotate( 45deg );
+                }
+            }
+
+            .exit {
+                position: absolute;
+                top: -6rem;
+                right: var(--large-padding);
+                margin-right: 1rem;
+                width: 3rem;
+                aspect-ratio: 1/1;
+                background-color: transparent;
+                text-indent: -99999em;
+                overflow: hidden;
+
+                &:before, &:after {
+                    content: "";
+                    display: block;
+                    position: absolute;
+                    top: 0;
+                    left: calc( 50% - .25rem );
+                    width: .42rem;
+                    height: 100%;
+                    background-color: var(--primary-color);
+                    transform: rotate(45deg);
+                }
+                &:after {
+                    transform: rotate(-40deg);
+                }
+            }
+            
+        }
+    }
+}

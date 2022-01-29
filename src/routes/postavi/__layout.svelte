@@ -24,7 +24,7 @@
     $: if ( menu && path ) {
 
         if ( path.length > 1 ) {
-            console.log( "path.length", path.length )
+            // console.log( "path.length", path.length )
             let tempSite = [ ...menu ]
             let temptempSite
             if ( Array.isArray( tempSite ) ) {
