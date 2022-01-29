@@ -16,7 +16,7 @@
             const angle = Math.round( 36 / pictures.length ) * 10
 
             focused = pictures.find( p=> p.querySelector('img').src === focused )
-            console.log( focused )
+            // console.log( focused )
             if ( !focused ) {
                 focused = pictures[ Math.floor( Math.random() * pictures.length ) ]
                 focused.classList.add( "focused" )
@@ -52,8 +52,6 @@
     
 
 </script>
-
-<svelte:window on:keypress={({ key, which })=>{ console.log( key, key == "Escape" || which == 27 ) }} />
 
 
 <section id="lightbox" aria-hidden="true" bind:this={ lightbox } class:active in:scale={{ duration: 666 }} out:blur={{ duration: 1000 }} >

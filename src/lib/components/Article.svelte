@@ -33,9 +33,9 @@
 
                 // tu kreće kod za fancy galeriju
 
-                const event = window.addEventListener('lightboxtime', e=>{
+                window.addEventListener('lightboxtime', e=>{
                     lightbox = e.detail.focus
-                    console.log("Hvatam signal!", lightbox )
+                    // console.log("Hvatam signal!", lightbox )
                 } )
 
             }
