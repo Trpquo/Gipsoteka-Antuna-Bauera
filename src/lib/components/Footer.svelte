@@ -8,6 +8,6 @@
         
     </p>
     <p class="logo"> 
-        <a href="https://gliptoteka.hazu.hr/hr/" title="Gliptoteka HAZU"><img src="/HAZU.svg" alt="Logotip HAZU" /></a>
+        <a rel="external" href="//gliptoteka.hazu.hr/hr/" title="Gliptoteka HAZU"><img src="/HAZU.svg" alt="Logotip HAZU" /></a>
     </p>
 </footer>

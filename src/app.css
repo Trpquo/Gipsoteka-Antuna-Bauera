@@ -457,7 +457,7 @@ select {
   position: absolute;
   top: -1.2em;
   right: 1rem;
-  z-index: 2;
+  z-index: 1;
   font-size: clamp(3rem, 7vw, 4rem);
   color: var(--accent-color);
   text-shadow: none;
@@ -862,7 +862,7 @@ select {
   padding: max(var(--large-padding), 1rem);
   display: flex;
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 @media (min-width: 1500px) {
   #pageHeader h1 {
@@ -1037,6 +1037,15 @@ select {
 .textContent figure figcaption .long {
   display: none;
 }
+.textContent .content-display figure:hover {
+  z-index: 0;
+  transform: none;
+  -webkit-animation: none;
+          animation: none;
+}
+.textContent .content-display figure:hover:before, .textContent .content-display figure:hover:after {
+  display: none;
+}
 .textContent .showbox {
   display: flex;
   margin: var(--default-padding) 0 var(--large-padding);
@@ -1205,124 +1214,124 @@ select {
   box-sizing: border-box;
 }
 #lightbox.active picture.spread-out-by-10 {
-  transform: translate(-50%, -60%) scale(0.4) rotate(6deg) translateX(114vmin) rotate(-14deg);
+  transform: translate(-50%, -60%) scale(0.4) rotate(-8deg) translateX(127vmin) rotate(-12deg);
 }
 #lightbox.active picture.spread-out-by-20 {
-  transform: translate(-50%, -60%) scale(0.4) rotate(34deg) translateX(132vmin) rotate(-21deg);
+  transform: translate(-50%, -60%) scale(0.4) rotate(13deg) translateX(121vmin) rotate(-16deg);
 }
 #lightbox.active picture.spread-out-by-30 {
-  transform: translate(-50%, -60%) scale(0.4) rotate(43deg) translateX(118vmin) rotate(-31deg);
+  transform: translate(-50%, -60%) scale(0.4) rotate(14deg) translateX(113vmin) rotate(-31deg);
 }
 #lightbox.active picture.spread-out-by-40 {
-  transform: translate(-50%, -60%) scale(0.4) rotate(58deg) translateX(109vmin) rotate(-47deg);
+  transform: translate(-50%, -60%) scale(0.4) rotate(28deg) translateX(121vmin) rotate(-45deg);
 }
 #lightbox.active picture.spread-out-by-50 {
-  transform: translate(-50%, -60%) scale(0.4) rotate(46deg) translateX(101vmin) rotate(-55deg);
+  transform: translate(-50%, -60%) scale(0.4) rotate(59deg) translateX(139vmin) rotate(-48deg);
 }
 #lightbox.active picture.spread-out-by-60 {
-  transform: translate(-50%, -60%) scale(0.4) rotate(77deg) translateX(110vmin) rotate(-65deg);
+  transform: translate(-50%, -60%) scale(0.4) rotate(48deg) translateX(128vmin) rotate(-56deg);
 }
 #lightbox.active picture.spread-out-by-70 {
-  transform: translate(-50%, -60%) scale(0.4) rotate(65deg) translateX(103vmin) rotate(-65deg);
+  transform: translate(-50%, -60%) scale(0.4) rotate(82deg) translateX(135vmin) rotate(-77deg);
 }
 #lightbox.active picture.spread-out-by-80 {
-  transform: translate(-50%, -60%) scale(0.4) rotate(91deg) translateX(109vmin) rotate(-88deg);
+  transform: translate(-50%, -60%) scale(0.4) rotate(86deg) translateX(133vmin) rotate(-75deg);
 }
 #lightbox.active picture.spread-out-by-90 {
-  transform: translate(-50%, -60%) scale(0.4) rotate(107deg) translateX(130vmin) rotate(-99deg);
+  transform: translate(-50%, -60%) scale(0.4) rotate(70deg) translateX(133vmin) rotate(-88deg);
 }
 #lightbox.active picture.spread-out-by-100 {
-  transform: translate(-50%, -60%) scale(0.4) rotate(96deg) translateX(131vmin) rotate(-99deg);
+  transform: translate(-50%, -60%) scale(0.4) rotate(108deg) translateX(133vmin) rotate(-100deg);
 }
 #lightbox.active picture.spread-out-by-110 {
-  transform: translate(-50%, -60%) scale(0.4) rotate(122deg) translateX(126vmin) rotate(-101deg);
+  transform: translate(-50%, -60%) scale(0.4) rotate(101deg) translateX(109vmin) rotate(-120deg);
 }
 #lightbox.active picture.spread-out-by-120 {
-  transform: translate(-50%, -60%) scale(0.4) rotate(123deg) translateX(121vmin) rotate(-116deg);
+  transform: translate(-50%, -60%) scale(0.4) rotate(105deg) translateX(116vmin) rotate(-126deg);
 }
 #lightbox.active picture.spread-out-by-130 {
-  transform: translate(-50%, -60%) scale(0.4) rotate(141deg) translateX(108vmin) rotate(-126deg);
+  transform: translate(-50%, -60%) scale(0.4) rotate(125deg) translateX(133vmin) rotate(-127deg);
 }
 #lightbox.active picture.spread-out-by-140 {
-  transform: translate(-50%, -60%) scale(0.4) rotate(153deg) translateX(116vmin) rotate(-136deg);
+  transform: translate(-50%, -60%) scale(0.4) rotate(151deg) translateX(111vmin) rotate(-146deg);
 }
 #lightbox.active picture.spread-out-by-150 {
-  transform: translate(-50%, -60%) scale(0.4) rotate(137deg) translateX(140vmin) rotate(-160deg);
+  transform: translate(-50%, -60%) scale(0.4) rotate(141deg) translateX(125vmin) rotate(-142deg);
 }
 #lightbox.active picture.spread-out-by-160 {
-  transform: translate(-50%, -60%) scale(0.4) rotate(154deg) translateX(118vmin) rotate(-157deg);
+  transform: translate(-50%, -60%) scale(0.4) rotate(166deg) translateX(113vmin) rotate(-151deg);
 }
 #lightbox.active picture.spread-out-by-170 {
-  transform: translate(-50%, -60%) scale(0.4) rotate(156deg) translateX(122vmin) rotate(-162deg);
+  transform: translate(-50%, -60%) scale(0.4) rotate(153deg) translateX(121vmin) rotate(-175deg);
 }
 #lightbox.active picture.spread-out-by-180 {
-  transform: translate(-50%, -60%) scale(0.4) rotate(176deg) translateX(128vmin) rotate(-178deg);
+  transform: translate(-50%, -60%) scale(0.4) rotate(162deg) translateX(124vmin) rotate(-180deg);
 }
 #lightbox.active picture.spread-out-by-190 {
-  transform: translate(-50%, -60%) scale(0.4) rotate(174deg) translateX(115vmin) rotate(-190deg);
+  transform: translate(-50%, -60%) scale(0.4) rotate(192deg) translateX(116vmin) rotate(-193deg);
 }
 #lightbox.active picture.spread-out-by-200 {
-  transform: translate(-50%, -60%) scale(0.4) rotate(205deg) translateX(104vmin) rotate(-208deg);
+  transform: translate(-50%, -60%) scale(0.4) rotate(188deg) translateX(131vmin) rotate(-191deg);
 }
 #lightbox.active picture.spread-out-by-210 {
-  transform: translate(-50%, -60%) scale(0.4) rotate(229deg) translateX(125vmin) rotate(-217deg);
+  transform: translate(-50%, -60%) scale(0.4) rotate(193deg) translateX(103vmin) rotate(-213deg);
 }
 #lightbox.active picture.spread-out-by-220 {
-  transform: translate(-50%, -60%) scale(0.4) rotate(213deg) translateX(111vmin) rotate(-230deg);
+  transform: translate(-50%, -60%) scale(0.4) rotate(221deg) translateX(113vmin) rotate(-211deg);
 }
 #lightbox.active picture.spread-out-by-230 {
-  transform: translate(-50%, -60%) scale(0.4) rotate(231deg) translateX(116vmin) rotate(-238deg);
+  transform: translate(-50%, -60%) scale(0.4) rotate(239deg) translateX(130vmin) rotate(-237deg);
 }
 #lightbox.active picture.spread-out-by-240 {
-  transform: translate(-50%, -60%) scale(0.4) rotate(221deg) translateX(138vmin) rotate(-250deg);
+  transform: translate(-50%, -60%) scale(0.4) rotate(232deg) translateX(110vmin) rotate(-246deg);
 }
 #lightbox.active picture.spread-out-by-250 {
-  transform: translate(-50%, -60%) scale(0.4) rotate(254deg) translateX(101vmin) rotate(-247deg);
+  transform: translate(-50%, -60%) scale(0.4) rotate(240deg) translateX(113vmin) rotate(-251deg);
 }
 #lightbox.active picture.spread-out-by-260 {
-  transform: translate(-50%, -60%) scale(0.4) rotate(243deg) translateX(138vmin) rotate(-264deg);
+  transform: translate(-50%, -60%) scale(0.4) rotate(240deg) translateX(139vmin) rotate(-258deg);
 }
 #lightbox.active picture.spread-out-by-270 {
-  transform: translate(-50%, -60%) scale(0.4) rotate(286deg) translateX(127vmin) rotate(-274deg);
+  transform: translate(-50%, -60%) scale(0.4) rotate(259deg) translateX(101vmin) rotate(-276deg);
 }
 #lightbox.active picture.spread-out-by-280 {
-  transform: translate(-50%, -60%) scale(0.4) rotate(275deg) translateX(103vmin) rotate(-281deg);
+  transform: translate(-50%, -60%) scale(0.4) rotate(264deg) translateX(127vmin) rotate(-285deg);
 }
 #lightbox.active picture.spread-out-by-290 {
-  transform: translate(-50%, -60%) scale(0.4) rotate(290deg) translateX(133vmin) rotate(-293deg);
+  transform: translate(-50%, -60%) scale(0.4) rotate(280deg) translateX(129vmin) rotate(-284deg);
 }
 #lightbox.active picture.spread-out-by-300 {
-  transform: translate(-50%, -60%) scale(0.4) rotate(300deg) translateX(124vmin) rotate(-306deg);
+  transform: translate(-50%, -60%) scale(0.4) rotate(307deg) translateX(112vmin) rotate(-308deg);
 }
 #lightbox.active picture.spread-out-by-310 {
-  transform: translate(-50%, -60%) scale(0.4) rotate(299deg) translateX(110vmin) rotate(-309deg);
+  transform: translate(-50%, -60%) scale(0.4) rotate(321deg) translateX(119vmin) rotate(-317deg);
 }
 #lightbox.active picture.spread-out-by-320 {
-  transform: translate(-50%, -60%) scale(0.4) rotate(334deg) translateX(123vmin) rotate(-329deg);
+  transform: translate(-50%, -60%) scale(0.4) rotate(307deg) translateX(125vmin) rotate(-311deg);
 }
 #lightbox.active picture.spread-out-by-330 {
-  transform: translate(-50%, -60%) scale(0.4) rotate(322deg) translateX(131vmin) rotate(-325deg);
+  transform: translate(-50%, -60%) scale(0.4) rotate(345deg) translateX(123vmin) rotate(-327deg);
 }
 #lightbox.active picture.spread-out-by-340 {
-  transform: translate(-50%, -60%) scale(0.4) rotate(349deg) translateX(122vmin) rotate(-338deg);
+  transform: translate(-50%, -60%) scale(0.4) rotate(344deg) translateX(104vmin) rotate(-340deg);
 }
 #lightbox.active picture.spread-out-by-350 {
-  transform: translate(-50%, -60%) scale(0.4) rotate(356deg) translateX(139vmin) rotate(-358deg);
+  transform: translate(-50%, -60%) scale(0.4) rotate(362deg) translateX(140vmin) rotate(-349deg);
 }
 #lightbox.active picture.spread-out-by-360 {
-  transform: translate(-50%, -60%) scale(0.4) rotate(344deg) translateX(110vmin) rotate(-354deg);
+  transform: translate(-50%, -60%) scale(0.4) rotate(373deg) translateX(129vmin) rotate(-365deg);
 }
 #lightbox.active picture.spread-out-by-370 {
-  transform: translate(-50%, -60%) scale(0.4) rotate(377deg) translateX(131vmin) rotate(-363deg);
+  transform: translate(-50%, -60%) scale(0.4) rotate(386deg) translateX(123vmin) rotate(-374deg);
 }
 #lightbox.active picture.spread-out-by-380 {
-  transform: translate(-50%, -60%) scale(0.4) rotate(394deg) translateX(110vmin) rotate(-376deg);
+  transform: translate(-50%, -60%) scale(0.4) rotate(396deg) translateX(110vmin) rotate(-389deg);
 }
 #lightbox.active picture.spread-out-by-390 {
-  transform: translate(-50%, -60%) scale(0.4) rotate(385deg) translateX(140vmin) rotate(-383deg);
+  transform: translate(-50%, -60%) scale(0.4) rotate(401deg) translateX(134vmin) rotate(-381deg);
 }
 #lightbox.active picture.spread-out-by-400 {
-  transform: translate(-50%, -60%) scale(0.4) rotate(396deg) translateX(136vmin) rotate(-396deg);
+  transform: translate(-50%, -60%) scale(0.4) rotate(389deg) translateX(103vmin) rotate(-399deg);
 }
 #lightbox.active picture.focused {
   transform: rotate(0deg) translate(-50%, -60%) scale(1);
@@ -1370,8 +1379,8 @@ select {
 }
 #lightbox .description .numerator {
   position: fixed;
-  top: var(--default-padding);
-  right: var(--large-padding);
+  top: 3vh;
+  right: 2vw;
   margin-right: 1.25rem;
 }
 #lightbox .description .numerator span {
@@ -1388,8 +1397,8 @@ select {
 #lightbox .description .controls .prev, #lightbox .description .controls .next {
   position: fixed;
   top: 50%;
-  right: var(--large-padding);
-  width: 4rem;
+  right: 1vw;
+  width: max(2.5rem, 4vw);
   aspect-ratio: 1/2;
   transform: translateY(-50%);
   background-color: transparent;
@@ -1418,17 +1427,17 @@ select {
 }
 #lightbox .description .controls .prev {
   right: auto;
-  left: var(--large-padding);
+  left: 1vw;
 }
 #lightbox .description .controls .prev:before {
   transform: translate(50%, 50%) rotate(45deg);
 }
 #lightbox .description .controls .exit {
   position: absolute;
-  top: -6rem;
-  right: var(--large-padding);
+  top: calc( -4rem - 2vw);
+  right: 1.5vw;
   margin-right: 1rem;
-  width: 3rem;
+  width: max(2.5rem, 3.666vw);
   aspect-ratio: 1/1;
   background-color: transparent;
   text-indent: -99999em;
@@ -1447,6 +1456,10 @@ select {
 }
 #lightbox .description .controls .exit:after {
   transform: rotate(-40deg);
+}
+#lightbox .description .controls .exit:hover {
+  transform: rotate(90deg);
+  transition: transform 0.12s ease-in-out;
 }
 
 :root {
@@ -1496,6 +1509,7 @@ article {
 article .textContent {
   max-width: var(--max-p-width);
   margin-inline: auto;
+  position: relative;
   display: flex;
   flex-direction: column;
 }

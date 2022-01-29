@@ -134,8 +134,8 @@
 
         .numerator {
             position: fixed;
-            top: var(--default-padding);
-            right: var(--large-padding);
+            top: 3vh;
+            right: 2vw;
             margin-right: 1.25rem;
             span {
                 font-family: var(--head-face);
@@ -156,8 +156,8 @@
 
                 position: fixed;
                 top: 50%;
-                right: var(--large-padding);
-                width: 4rem;
+                right: 1vw;
+                width: max( 2.5rem, 4vw );
                 aspect-ratio: 1/2;
                 transform: translateY(-50%);
                 background-color: transparent;
@@ -183,7 +183,7 @@
             }
             .prev {
                 right: auto;
-                left: var(--large-padding);
+                left: 1vw;
 
                 &:before {
                     transform: translate( 50%, 50% ) rotate( 45deg );
@@ -192,14 +192,15 @@
 
             .exit {
                 position: absolute;
-                top: -6rem;
-                right: var(--large-padding);
+                top: calc( -4rem - 2vw);
+                right: 1.5vw;
                 margin-right: 1rem;
-                width: 3rem;
+                width: max( 2.5rem, 3.666vw );
                 aspect-ratio: 1/1;
                 background-color: transparent;
                 text-indent: -99999em;
                 overflow: hidden;
+                
 
                 &:before, &:after {
                     content: "";
@@ -215,7 +216,14 @@
                 &:after {
                     transform: rotate(-40deg);
                 }
+
+                &:hover {
+                    transform: rotate(90deg);
+                    transition: transform .12s ease-in-out;
+                }
+
             }
+
             
         }
     }

@@ -5,7 +5,7 @@
 <script>
     import { fly, slide } from 'svelte/transition'
 
-    export let menu, slug, level
+    export let menu, slug, level = 1
 
     let openedSubmenu = "bar"
     let duration = 300
@@ -36,7 +36,7 @@
 
 </script>
 
-<ul id="top" in:slide={{ duration }} out:slide={{ delay: ( 3 - level ) * duration }}>
+<ul id="top" transition:slide={{ duration }} >
 
 {#if menu }
 {#each menu as item, i }

@@ -52,6 +52,7 @@ article {
     .textContent {
         max-width: var(--max-p-width);
         margin-inline: auto;
+        position: relative;
 
         @include for-desktop {
             max-width: none;

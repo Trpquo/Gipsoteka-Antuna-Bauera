@@ -76,6 +76,18 @@
 
     }
 
+    .content-display figure:hover {
+        
+        z-index: 0;
+        transform: none;
+        animation: none;
+        
+        &:before, &:after {
+            display: none;
+        }
+
+    }
+
     .showbox {
         display: flex;
         margin: var(--default-padding) 0 var(--large-padding);
