@@ -47,7 +47,11 @@
         index = pictures.indexOf( target )
     }
 
-    const loop =i=> i % pictures.length
+    const loop =i=> {
+        if ( i > pictures.length - 1 ) return 0
+        if ( i < 0 ) return pictures.length - 1
+        return i
+    }
 
     
 

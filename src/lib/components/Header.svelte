@@ -56,7 +56,7 @@
     </h1>
     
     {#if images }
-        <div id="heroBg">
+        <div id="heroBg" class:funky={ images.length > 3 && images.length < 7 }>
             {#each images as src }
             <figure>
                 <img { src } alt="Gliptoteka Antuna Bauera" />

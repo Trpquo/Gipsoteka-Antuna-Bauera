@@ -7,17 +7,6 @@
     display: flex;
     align-items: flex-end;
 
-    &.funky:before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        // background-color: var(--bg-dark);
-        background-image: conic-gradient(from 265deg at 100% 5%, var(--accent-color) 0deg, var(--bg-color-medium) 330deg, var(--bg-color-light) 340deg, var(--accent-color2) 341deg, var(--accent-color2) 352deg, var(--bg-dark) 363deg);
-        filter: blur(1px) sepia(.4) saturate(.4);
-        opacity: .35;
-        z-index: -2;
-    }
-
     @include for-mini {
         height: 45vh;
         padding: 0;
@@ -123,6 +112,17 @@
         figure:nth-of-type(8),
         figure:nth-of-type(3n) {
             grid-column: span 2;
+        }
+
+        &.funky:before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            // background-color: var(--bg-dark);
+            background-image: conic-gradient(from 265deg at 100% 5%, var(--accent-color) 0deg, var(--bg-color-medium) 330deg, var(--bg-color-light) 340deg, var(--accent-color2) 341deg, var(--accent-color2) 352deg, var(--bg-dark) 363deg);
+            filter: blur(1px) sepia(.4) saturate(.4);
+            opacity: .35;
+            z-index: -2;
         }
 
         @include for-mini {
