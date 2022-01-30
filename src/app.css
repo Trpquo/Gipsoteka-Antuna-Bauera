@@ -112,7 +112,6 @@ select {
 }
 #menuButton {
   position: fixed;
-  z-index: 2000;
   margin: 0.5rem;
   top: var(--default-padding);
   right: var(--large-padding);
@@ -120,7 +119,7 @@ select {
   width: 3rem;
   height: 3rem;
   display: inline-block;
-  transition: background-color 0.5s, border-radius 1s, bottom 0.5s ease 0.25s, right 0.25s ease-in-out 0.15s, width 0.25s ease-in-out 0.15s;
+  transition: background-color 0.5s;
   cursor: pointer;
   color: var(--text-color-light);
   background-color: var(--bg-color-light);
@@ -171,7 +170,6 @@ select {
 @media (min-width: 1500px) {
   #menuButton {
     position: absolute;
-    z-index: 0;
     margin: 0;
     top: 0;
     right: 0;
@@ -198,6 +196,7 @@ select {
     margin: 0;
     padding: 0;
     background-color: var(--bg-color-dark);
+    transition: background-color 0.5s, bottom 0.5s ease 0.25s;
   }
   #menuButton.visible, #menuButton.active {
     bottom: 0;
@@ -207,7 +206,16 @@ select {
     left: auto;
     right: 2rem;
   }
+  #menuButton.active {
+    left: calc(100% - 5.25rem);
+    right: 1.75rem;
+    width: 4rem;
+    border-radius: 50% 50% 0 0;
+    aspect-ratio: 1/1;
+    background-color: var(--primary-color);
+  }
   #menuButton.active:before, #menuButton.active:after, #menuButton.active span {
+    right: 0.75rem;
     background-color: var(--text-color-light);
   }
 }
@@ -227,7 +235,6 @@ select {
   position: fixed;
   inset: 0;
   overflow: auto;
-  z-index: 1000;
   margin: 0;
   padding: calc( var(--large-padding) / 2 );
   /* # # # # D E S I G N # # # # */
@@ -346,7 +353,7 @@ select {
     margin: 0;
   }
   #menu ul li a button:after {
-    margin-top: -0.4em;
+    margin-top: -0.2em;
     width: 0.5em;
     height: 0.5em;
   }
@@ -457,7 +464,6 @@ select {
   position: absolute;
   top: -1.2em;
   right: 1rem;
-  z-index: 1;
   font-size: clamp(3rem, 7vw, 4rem);
   color: var(--accent-color);
   text-shadow: none;
@@ -568,7 +574,6 @@ select {
   padding: var(--default-padding);
   padding-right: 3.5rem;
   transform: translate(calc( 100% - var(--large-padding) * .85 ), -50%);
-  z-index: 100;
   background-color: var(--accent-color2);
   list-style: none;
   border-radius: 2rem 0 0 2rem;
@@ -726,7 +731,6 @@ select {
   }
   .post-w-minicontent h6 {
     position: relative;
-    z-index: -1;
   }
   .post-w-minicontent .mini-content {
     position: absolute;
@@ -862,7 +866,6 @@ select {
   padding: max(var(--large-padding), 1rem);
   display: flex;
   position: relative;
-  z-index: 2;
 }
 @media (min-width: 1500px) {
   #pageHeader h1 {
@@ -882,7 +885,6 @@ select {
     display: block;
     padding-inline: 0;
     width: 100%;
-    z-index: 10;
   }
   #pageHeader h1 div {
     padding-bottom: 0;
@@ -897,7 +899,6 @@ select {
 #pageHeader #heroBg {
   position: absolute;
   inset: 0;
-  z-index: -1;
   overflow: hidden;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -947,7 +948,6 @@ select {
   mix-blend-mode: multiply;
 }
 .textContent figure:hover {
-  z-index: 1;
   transform: scale(1.1);
   transition: transform 0.5s 2s, z-index 0s 2s;
   -webkit-animation: shake 0.25s ease-in 2.5s;
@@ -1038,7 +1038,7 @@ select {
   display: none;
 }
 .textContent .content-display figure:hover {
-  z-index: 0;
+  position: static;
   transform: none;
   -webkit-animation: none;
           animation: none;
@@ -1165,7 +1165,6 @@ select {
   display: block;
   position: fixed;
   inset: 0;
-  z-index: 20000;
 }
 #lightbox:before {
   content: "";
@@ -1183,9 +1182,8 @@ select {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -60%) scale(0.5);
-  transition-duration: 1.5s;
-  transition-timing-function: ease-out;
-  z-index: 0;
+  transition-duration: 1s;
+  transition-timing-function: ease-in-out;
 }
 #lightbox picture:before, #lightbox picture:after {
   content: "";
@@ -1214,128 +1212,127 @@ select {
   box-sizing: border-box;
 }
 #lightbox.active picture.spread-out-by-10 {
-  transform: translate(-50%, -60%) scale(0.4) rotate(-8deg) translateX(127vmin) rotate(-12deg);
+  transform: translate(-50%, -60%) scale(0.4) rotate(14deg) translateX(105vmin) rotate(-16deg);
 }
 #lightbox.active picture.spread-out-by-20 {
-  transform: translate(-50%, -60%) scale(0.4) rotate(13deg) translateX(121vmin) rotate(-16deg);
+  transform: translate(-50%, -60%) scale(0.4) rotate(36deg) translateX(115vmin) rotate(-29deg);
 }
 #lightbox.active picture.spread-out-by-30 {
-  transform: translate(-50%, -60%) scale(0.4) rotate(14deg) translateX(113vmin) rotate(-31deg);
+  transform: translate(-50%, -60%) scale(0.4) rotate(17deg) translateX(113vmin) rotate(-28deg);
 }
 #lightbox.active picture.spread-out-by-40 {
-  transform: translate(-50%, -60%) scale(0.4) rotate(28deg) translateX(121vmin) rotate(-45deg);
+  transform: translate(-50%, -60%) scale(0.4) rotate(49deg) translateX(115vmin) rotate(-39deg);
 }
 #lightbox.active picture.spread-out-by-50 {
-  transform: translate(-50%, -60%) scale(0.4) rotate(59deg) translateX(139vmin) rotate(-48deg);
+  transform: translate(-50%, -60%) scale(0.4) rotate(63deg) translateX(123vmin) rotate(-54deg);
 }
 #lightbox.active picture.spread-out-by-60 {
-  transform: translate(-50%, -60%) scale(0.4) rotate(48deg) translateX(128vmin) rotate(-56deg);
+  transform: translate(-50%, -60%) scale(0.4) rotate(67deg) translateX(139vmin) rotate(-55deg);
 }
 #lightbox.active picture.spread-out-by-70 {
-  transform: translate(-50%, -60%) scale(0.4) rotate(82deg) translateX(135vmin) rotate(-77deg);
+  transform: translate(-50%, -60%) scale(0.4) rotate(87deg) translateX(128vmin) rotate(-75deg);
 }
 #lightbox.active picture.spread-out-by-80 {
-  transform: translate(-50%, -60%) scale(0.4) rotate(86deg) translateX(133vmin) rotate(-75deg);
+  transform: translate(-50%, -60%) scale(0.4) rotate(87deg) translateX(130vmin) rotate(-72deg);
 }
 #lightbox.active picture.spread-out-by-90 {
-  transform: translate(-50%, -60%) scale(0.4) rotate(70deg) translateX(133vmin) rotate(-88deg);
+  transform: translate(-50%, -60%) scale(0.4) rotate(96deg) translateX(114vmin) rotate(-100deg);
 }
 #lightbox.active picture.spread-out-by-100 {
-  transform: translate(-50%, -60%) scale(0.4) rotate(108deg) translateX(133vmin) rotate(-100deg);
+  transform: translate(-50%, -60%) scale(0.4) rotate(89deg) translateX(134vmin) rotate(-109deg);
 }
 #lightbox.active picture.spread-out-by-110 {
-  transform: translate(-50%, -60%) scale(0.4) rotate(101deg) translateX(109vmin) rotate(-120deg);
+  transform: translate(-50%, -60%) scale(0.4) rotate(110deg) translateX(116vmin) rotate(-108deg);
 }
 #lightbox.active picture.spread-out-by-120 {
-  transform: translate(-50%, -60%) scale(0.4) rotate(105deg) translateX(116vmin) rotate(-126deg);
+  transform: translate(-50%, -60%) scale(0.4) rotate(119deg) translateX(110vmin) rotate(-128deg);
 }
 #lightbox.active picture.spread-out-by-130 {
-  transform: translate(-50%, -60%) scale(0.4) rotate(125deg) translateX(133vmin) rotate(-127deg);
+  transform: translate(-50%, -60%) scale(0.4) rotate(135deg) translateX(138vmin) rotate(-125deg);
 }
 #lightbox.active picture.spread-out-by-140 {
-  transform: translate(-50%, -60%) scale(0.4) rotate(151deg) translateX(111vmin) rotate(-146deg);
+  transform: translate(-50%, -60%) scale(0.4) rotate(155deg) translateX(129vmin) rotate(-148deg);
 }
 #lightbox.active picture.spread-out-by-150 {
-  transform: translate(-50%, -60%) scale(0.4) rotate(141deg) translateX(125vmin) rotate(-142deg);
+  transform: translate(-50%, -60%) scale(0.4) rotate(162deg) translateX(125vmin) rotate(-146deg);
 }
 #lightbox.active picture.spread-out-by-160 {
-  transform: translate(-50%, -60%) scale(0.4) rotate(166deg) translateX(113vmin) rotate(-151deg);
+  transform: translate(-50%, -60%) scale(0.4) rotate(159deg) translateX(138vmin) rotate(-170deg);
 }
 #lightbox.active picture.spread-out-by-170 {
-  transform: translate(-50%, -60%) scale(0.4) rotate(153deg) translateX(121vmin) rotate(-175deg);
+  transform: translate(-50%, -60%) scale(0.4) rotate(173deg) translateX(127vmin) rotate(-180deg);
 }
 #lightbox.active picture.spread-out-by-180 {
-  transform: translate(-50%, -60%) scale(0.4) rotate(162deg) translateX(124vmin) rotate(-180deg);
+  transform: translate(-50%, -60%) scale(0.4) rotate(198deg) translateX(109vmin) rotate(-186deg);
 }
 #lightbox.active picture.spread-out-by-190 {
-  transform: translate(-50%, -60%) scale(0.4) rotate(192deg) translateX(116vmin) rotate(-193deg);
+  transform: translate(-50%, -60%) scale(0.4) rotate(180deg) translateX(119vmin) rotate(-194deg);
 }
 #lightbox.active picture.spread-out-by-200 {
-  transform: translate(-50%, -60%) scale(0.4) rotate(188deg) translateX(131vmin) rotate(-191deg);
+  transform: translate(-50%, -60%) scale(0.4) rotate(214deg) translateX(135vmin) rotate(-208deg);
 }
 #lightbox.active picture.spread-out-by-210 {
-  transform: translate(-50%, -60%) scale(0.4) rotate(193deg) translateX(103vmin) rotate(-213deg);
+  transform: translate(-50%, -60%) scale(0.4) rotate(222deg) translateX(140vmin) rotate(-210deg);
 }
 #lightbox.active picture.spread-out-by-220 {
-  transform: translate(-50%, -60%) scale(0.4) rotate(221deg) translateX(113vmin) rotate(-211deg);
+  transform: translate(-50%, -60%) scale(0.4) rotate(202deg) translateX(103vmin) rotate(-218deg);
 }
 #lightbox.active picture.spread-out-by-230 {
-  transform: translate(-50%, -60%) scale(0.4) rotate(239deg) translateX(130vmin) rotate(-237deg);
+  transform: translate(-50%, -60%) scale(0.4) rotate(220deg) translateX(108vmin) rotate(-229deg);
 }
 #lightbox.active picture.spread-out-by-240 {
-  transform: translate(-50%, -60%) scale(0.4) rotate(232deg) translateX(110vmin) rotate(-246deg);
+  transform: translate(-50%, -60%) scale(0.4) rotate(224deg) translateX(125vmin) rotate(-236deg);
 }
 #lightbox.active picture.spread-out-by-250 {
-  transform: translate(-50%, -60%) scale(0.4) rotate(240deg) translateX(113vmin) rotate(-251deg);
+  transform: translate(-50%, -60%) scale(0.4) rotate(230deg) translateX(105vmin) rotate(-254deg);
 }
 #lightbox.active picture.spread-out-by-260 {
-  transform: translate(-50%, -60%) scale(0.4) rotate(240deg) translateX(139vmin) rotate(-258deg);
+  transform: translate(-50%, -60%) scale(0.4) rotate(270deg) translateX(120vmin) rotate(-251deg);
 }
 #lightbox.active picture.spread-out-by-270 {
-  transform: translate(-50%, -60%) scale(0.4) rotate(259deg) translateX(101vmin) rotate(-276deg);
+  transform: translate(-50%, -60%) scale(0.4) rotate(285deg) translateX(107vmin) rotate(-280deg);
 }
 #lightbox.active picture.spread-out-by-280 {
-  transform: translate(-50%, -60%) scale(0.4) rotate(264deg) translateX(127vmin) rotate(-285deg);
+  transform: translate(-50%, -60%) scale(0.4) rotate(278deg) translateX(102vmin) rotate(-278deg);
 }
 #lightbox.active picture.spread-out-by-290 {
-  transform: translate(-50%, -60%) scale(0.4) rotate(280deg) translateX(129vmin) rotate(-284deg);
+  transform: translate(-50%, -60%) scale(0.4) rotate(278deg) translateX(120vmin) rotate(-291deg);
 }
 #lightbox.active picture.spread-out-by-300 {
-  transform: translate(-50%, -60%) scale(0.4) rotate(307deg) translateX(112vmin) rotate(-308deg);
+  transform: translate(-50%, -60%) scale(0.4) rotate(301deg) translateX(118vmin) rotate(-291deg);
 }
 #lightbox.active picture.spread-out-by-310 {
-  transform: translate(-50%, -60%) scale(0.4) rotate(321deg) translateX(119vmin) rotate(-317deg);
+  transform: translate(-50%, -60%) scale(0.4) rotate(329deg) translateX(103vmin) rotate(-308deg);
 }
 #lightbox.active picture.spread-out-by-320 {
-  transform: translate(-50%, -60%) scale(0.4) rotate(307deg) translateX(125vmin) rotate(-311deg);
+  transform: translate(-50%, -60%) scale(0.4) rotate(338deg) translateX(104vmin) rotate(-315deg);
 }
 #lightbox.active picture.spread-out-by-330 {
-  transform: translate(-50%, -60%) scale(0.4) rotate(345deg) translateX(123vmin) rotate(-327deg);
+  transform: translate(-50%, -60%) scale(0.4) rotate(335deg) translateX(115vmin) rotate(-330deg);
 }
 #lightbox.active picture.spread-out-by-340 {
-  transform: translate(-50%, -60%) scale(0.4) rotate(344deg) translateX(104vmin) rotate(-340deg);
+  transform: translate(-50%, -60%) scale(0.4) rotate(323deg) translateX(118vmin) rotate(-346deg);
 }
 #lightbox.active picture.spread-out-by-350 {
-  transform: translate(-50%, -60%) scale(0.4) rotate(362deg) translateX(140vmin) rotate(-349deg);
+  transform: translate(-50%, -60%) scale(0.4) rotate(369deg) translateX(124vmin) rotate(-356deg);
 }
 #lightbox.active picture.spread-out-by-360 {
-  transform: translate(-50%, -60%) scale(0.4) rotate(373deg) translateX(129vmin) rotate(-365deg);
+  transform: translate(-50%, -60%) scale(0.4) rotate(376deg) translateX(124vmin) rotate(-361deg);
 }
 #lightbox.active picture.spread-out-by-370 {
-  transform: translate(-50%, -60%) scale(0.4) rotate(386deg) translateX(123vmin) rotate(-374deg);
+  transform: translate(-50%, -60%) scale(0.4) rotate(357deg) translateX(134vmin) rotate(-376deg);
 }
 #lightbox.active picture.spread-out-by-380 {
-  transform: translate(-50%, -60%) scale(0.4) rotate(396deg) translateX(110vmin) rotate(-389deg);
+  transform: translate(-50%, -60%) scale(0.4) rotate(364deg) translateX(103vmin) rotate(-382deg);
 }
 #lightbox.active picture.spread-out-by-390 {
-  transform: translate(-50%, -60%) scale(0.4) rotate(401deg) translateX(134vmin) rotate(-381deg);
+  transform: translate(-50%, -60%) scale(0.4) rotate(400deg) translateX(137vmin) rotate(-400deg);
 }
 #lightbox.active picture.spread-out-by-400 {
-  transform: translate(-50%, -60%) scale(0.4) rotate(389deg) translateX(103vmin) rotate(-399deg);
+  transform: translate(-50%, -60%) scale(0.4) rotate(406deg) translateX(130vmin) rotate(-394deg);
 }
 #lightbox.active picture.focused {
   transform: rotate(0deg) translate(-50%, -60%) scale(1);
-  z-index: 4;
   transition-delay: 0s;
 }
 #lightbox.active picture.focused:before, #lightbox.active picture.focused:after {
@@ -1370,7 +1367,6 @@ select {
   color: var(--text-color-light);
   position: fixed;
   inset: auto 0 0;
-  z-index: 3;
   background-color: var(--bg-dark);
   padding: var(--default-padding) var(--large-padding);
   box-sizing: border-box;
@@ -1460,6 +1456,52 @@ select {
 #lightbox .description .controls .exit:hover {
   transform: rotate(90deg);
   transition: transform 0.12s ease-in-out;
+}
+
+header h1 {
+  z-index: 3;
+}
+header h1 #menuButton {
+  z-index: 2;
+}
+header h1 #menu {
+  z-index: 1;
+}
+header #heroBg {
+  z-index: -1;
+}
+
+main .post-w-minicontent .mini-content {
+  z-index: 2;
+}
+@media (min-width: 1500px) {
+  main .post-w-minicontent article h6 {
+    z-index: -1;
+  }
+}
+main article figure:hover {
+  z-index: 1;
+}
+main article .textContent .content-display h3 {
+  z-index: 1;
+}
+main article .textContent .content-display figure:hover {
+  z-index: 0;
+}
+main article #bgImage {
+  z-index: -3;
+}
+main article #lightbox {
+  z-index: 10;
+}
+main article #lightbox picture {
+  z-index: 0;
+}
+main article #lightbox picture.focused {
+  z-index: 2;
+}
+main article #lightbox .description {
+  z-index: 1;
 }
 
 :root {
@@ -1828,7 +1870,6 @@ article #bgImage {
   width: calc( 100% + var(--vignette) );
   height: 100%;
   position: fixed;
-  z-index: -10;
   top: 100%;
   left: 50%;
   transform: translate(-50%);

@@ -1,0 +1,83 @@
+@use 'vars' as *;
+
+header {
+    // position: relative
+    
+    h1 {
+        // position: relative 
+        z-index: 3; // mini-content je 2 jer je figure:hover 1
+
+        #menuButton {
+            // position: fixed
+            z-index: 2;
+        }
+        #menu {
+            // position: fixed
+            z-index: 1;
+        }
+    }
+
+
+    #heroBg {
+        // position: absolute
+        z-index: -1;
+    }
+}
+
+main {
+    .post-w-minicontent {
+        // @include for desktop { position: relative }
+
+        .mini-content {
+            // position: fixed
+            z-index: 2;
+        }
+        @include for-desktop {
+            article h6 {
+                // position: relative
+                z-index: -1;
+            }
+        }
+    }
+    article {
+        figure:hover {
+            // position: relative
+            z-index: 1;
+        }
+        .textContent {
+            .content-display {
+                h3 {
+                    // position: absolute
+                    z-index: 1;
+                }
+                figure:hover {
+                    // position: static
+                    z-index: 0; // ovo vjerojatno ne treba
+                }
+            }
+
+            
+        }
+
+        #bgImage {
+            // position: fixed
+            z-index: -3;
+        }
+        #lightbox {
+            // position: fixed
+            z-index: 10;
+
+            picture {
+                // position: absolute
+                z-index: 0;
+                &.focused {
+                    z-index: 2;
+                }
+            }
+            .description {
+                // position: fixed
+                z-index: 1;
+            }
+        }
+    }
+}

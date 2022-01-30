@@ -22,7 +22,7 @@
 
 
         &:hover {
-            z-index: 1;
+            // z-index in styles/stack
             transform: scale( $popup-scale );
             transition: transform $popup-transition $popup-delay, z-index 0s $popup-delay;
             animation: shake $popup-transition / 2 ease-in $popup-delay + $popup-transition;
@@ -46,11 +46,6 @@
            100% { transform: scale( $popup-scale ); filter: blur(0)}
         }
 
-        // @keyframes shrink {
-        //     0% { opacity: .85; transform: translate(-50%, -50%) scale(.5); top: 50%; left: 50%; }
-        //     99% { position: fixed;  }
-        //     100% { position: static; top: 0; left: 0; opacity: 1; z-index: 1; max-width: 100%; }
-        // }
         div {
             overflow: hidden;
             cursor: none;
@@ -78,7 +73,7 @@
 
     .content-display figure:hover {
         
-        z-index: 0;
+        position: static;
         transform: none;
         animation: none;
         

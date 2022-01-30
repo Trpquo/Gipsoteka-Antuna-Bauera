@@ -29,7 +29,7 @@
 
             pictures.forEach(( p, i )=> { 
                 p.classList.add( `spread-out-by-${ angle * ( i + 1 ) }` ) 
-                if ( p !== focused ) p.style.transitionDelay = `${ Math.random() * pictures.length * .35 }s` 
+                if ( p !== focused ) p.style.transitionDelay = `${ ( Math.random() * pictures.length / 2 + i / 2 ) * .2 }s` 
                 stack( p, p === focused )
             })
 

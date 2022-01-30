@@ -7,7 +7,8 @@
 
     position: fixed;
     inset: 0;
-    z-index: 20000;
+    // z-index in styles/stack
+    
 
 
     &:before {
@@ -21,10 +22,12 @@
         position: absolute;
         top: 50%;
         left: 50%;
+        // z-index in styles/stack
         transform: translate(-50%, -60%) scale(.5);
-        transition-duration: 1.5s;
-        transition-timing-function: ease-out;
-        z-index: 0;
+        transition-duration: 1s;
+        transition-timing-function: ease-in-out;
+
+        
         // animation-fill-mode: forwards
     
 
@@ -71,7 +74,7 @@
 
             &.focused {
                 transform: rotate(0deg) translate( -50%, -60% ) scale(1);
-                z-index: 4;
+                // z-index in styles/stack
                 transition-delay: 0s;
                 // animation: shake .35s ease 8s;
 
@@ -125,7 +128,7 @@
         color: var(--text-color-light);
         position: fixed;
         inset: auto 0 0;
-        z-index: 3;
+        // z-index in styles/stack
         background-color: var(--bg-dark);
         padding: var(--default-padding) var(--large-padding);
         box-sizing: border-box;

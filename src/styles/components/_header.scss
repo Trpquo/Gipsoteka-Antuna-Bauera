@@ -36,7 +36,7 @@
         padding: max( var(--large-padding), 1rem );
         display: flex;
         position: relative;
-        z-index: 2;
+        // z-index in styles/stack
 
         @include for-desktop {
             padding-top: var(--default-padding);
@@ -71,10 +71,11 @@
         }
 
         @include for-mini {
+            // z-index in styles/stack
             display: block;
             padding-inline: 0;
             width: 100%;
-            z-index: 10;
+            
             // align-self: flex-start;
             // margin-bottom: .5em;
 
@@ -99,7 +100,7 @@
     #heroBg {
         position: absolute;
         inset: 0;
-        z-index: -1;
+        // z-index in styles/stack
         overflow: hidden;
 
         display: grid;

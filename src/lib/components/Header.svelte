@@ -1,5 +1,5 @@
 <script>
-    import { onMount } from 'svelte'
+    import { onDestroy } from 'svelte'
     import { slide } from 'svelte/transition';
     import { cubicOut, backIn } from 'svelte/easing'
 
@@ -29,6 +29,10 @@
         else down = false
         oldY = y
     }
+
+    onDestroy(()=>{
+        dropDown = null
+    })
     
 </script>
 

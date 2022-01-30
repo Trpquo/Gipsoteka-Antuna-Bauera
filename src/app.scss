@@ -1,6 +1,7 @@
 @charset "UTF-8";
 @use 'styles/vars' as *;
 @use 'styles/components';
+@use 'styles/stack';
 
 
 
@@ -377,7 +378,7 @@ article {
         width: calc( 100% + var(--vignette) );
         height: 100%;
         position: fixed;
-        z-index: -10;
+        // z-index in styles/stack
         top: 100%;
         left: 50%;
         transform: translate(-50%);

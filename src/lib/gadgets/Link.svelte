@@ -39,7 +39,7 @@
         height: 4rem;
         align-items: center;
         line-height: 1rem;
-        margin-top: clamp( -.5rem, 100vw - 100vh, 0rem );
+        margin-top: clamp( -.5rem, 100vw - 100vh, -.35rem );
     }
     /* @media ( max-width: 800px ) {
         a {
@@ -51,8 +51,10 @@
         font-family: var(--text-face);
         text-transform: uppercase;
         color: var(--bg-dark);
-        margin-top: clamp( -1.1rem, calc( -1.5rem + (100vh - 100vw) * .04 ), 1rem );
+        margin-top: clamp( -1.1rem, -1.5rem + (100vh - 100vw) * .05, 1.1rem );
         line-height: 1.1em;
+        font-size: .666rem;
+        font-weight: 500;
 
         /* margin-top: -1.55rem; */
     }
