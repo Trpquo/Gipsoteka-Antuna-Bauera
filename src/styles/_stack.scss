@@ -5,15 +5,15 @@ header {
     
     h1 {
         // position: relative 
-        z-index: 3; // mini-content je 2 jer je figure:hover 1
+        // z-index: 2; // nesmijem mu dati z-index, jer je onda naslov preko mini-contenta
 
         #menuButton {
             // position: fixed
-            z-index: 2;
+            z-index: 4;
         }
         #menu {
             // position: fixed
-            z-index: 1;
+            z-index: 3; // mini-content je 2 jer je figure:hover 1
         }
     }
 
@@ -76,7 +76,7 @@ main {
             }
             .description {
                 // position: fixed
-                z-index: 1;
+                z-index: 3;
             }
         }
     }

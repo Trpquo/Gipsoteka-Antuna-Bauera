@@ -1,5 +1,4 @@
 <script>
-    import { onDestroy } from 'svelte'
     import { slide } from 'svelte/transition';
     import { cubicOut, backIn } from 'svelte/easing'
 
@@ -10,9 +9,9 @@
 
 
 
-    function toggleMenu(t) {
-        // console.log(`Recieving toggle request for ${ t.tagName + " " + t.title }.`)
-        menuOpen = !menuOpen
+    function toggleMenu(  ) {
+         menuOpen = !menuOpen
+        if ( !menuOpen ) dropDown = null
     }
     function handleClick({ target }) {
         // console.log( !!dropDown, target.tagName, target.id, target.title )
@@ -29,10 +28,6 @@
         else down = false
         oldY = y
     }
-
-    onDestroy(()=>{
-        dropDown = null
-    })
     
 </script>
 

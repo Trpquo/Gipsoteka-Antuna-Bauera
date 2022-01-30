@@ -1,7 +1,7 @@
 <script>
     export let content, slug, title
 
-    let prev, next, opened, scrollY, sticky, headerHeight, animate = "15s"
+    let prev, next, opened, scrollY, sticky, headerHeight, animate = "15s" // za titranje
 
     const slugs = content.map(s=> s.slug )
     const parent = '/' + slugs[0].split("/")[1]
@@ -12,6 +12,15 @@
         if ( !headerHeight ) headerHeight = document.querySelector('header').offsetHeight
         sticky = scrollY - headerHeight > 0
     }
+
+    function handleClick({ target }) {
+        const test = [ ...target.classList, ...target.parentNode.classList ].some(x=> [ "mini-content", "mini-button", "current" ].indexOf(x) >= 0 )
+        if ( test ) {
+            opened = true
+            animate = false
+        }
+        else opened = false
+    } 
 
     function updateUtils( active ) {
         const i = slugs.indexOf( active )
@@ -27,19 +36,19 @@
 
 <svelte:window 
     bind:scrollY={ scrollY }
-    on:click={ ({ target: { classList: c } })=> [ ...c ].some(x=> [ "mini-content", "mini-button", "active" ].indexOf(x) >= 0 ) ? null : opened = false } 
+    on:click={ handleClick } 
     on:scroll={ handleScroll }
 />
 
 {#if Array.isArray( content ) }
-<ul class="mini-content" class:opened class:sticky on:click={ ()=> { opened = true; animate = false } } style={ `--animate: ${ animate }` } >
+<ul class="mini-content" class:opened class:sticky style={ `--animate: ${ animate }` } >
     <h2><a href={ chapter } >{ title }</a></h2>
     {#each content as { slug: cSlug, meta: { title: cTitle } }, i }
     <li>
         {#if cSlug !== slug }
         <a href={ cSlug } >{ cTitle }</a>
         {:else}
-        <span class="active">{ cTitle }</span>
+        <span class="current">{ cTitle }</span>
         {/if}
     </li>
     {/each}
